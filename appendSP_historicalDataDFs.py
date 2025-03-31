@@ -1,9 +1,10 @@
 import pandas as pd
+import os
 
 
 def appendSP_historicalDataDFs(dfMain, dfsToAppendList, outputDF):
 
-    dfMain = pd.read_csv(main_csv_file)
+    dfMain = pd.read_csv(dfMain)
 
     #Loop through DFs in list and append each
     for df in dfsToAppendList:
@@ -26,6 +27,6 @@ if __name__ == "__main__":
 
     outputFolder = "S&P 500 Data Sets"
     outputDF = 'S&P 500 Data (12_26_1979 to 3_14_2025)'
-    outputDF = os.path.join(output_folder, output_filename)
+    outputDF = os.path.join(outputFolder, outputDF)
 
     appendSP_historicalDataDFs(dfMain, dfsToAppendList, outputDF)
