@@ -13,7 +13,7 @@ def appendSP_historicalDataDFs(dfMain, dfsToAppendList, outputDF):
 
     outputDir = os.path.dirname(outputDF)
 
-    main_df.to_csv(outputDF, index=False)
+    dfMain.to_csv(outputDF, index=False)
 
 if __name__ == "__main__":
 
