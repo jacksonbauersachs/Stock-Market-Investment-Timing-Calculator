@@ -8,7 +8,7 @@ def appendSP_historicalDataDFs(dfMain, dfsToAppendList, outputDF):
 
     #Loop through DFs in list and append each
     for df in dfsToAppendList:
-        dfToAppend = pd.read_csv(csv_file)
+        dfToAppend = pd.read_csv(df)
         dfMain = pd.concat([dfMain, dfToAppend], ignore_index=True)
 
     outputDir = os.path.dirname(outputDF)
