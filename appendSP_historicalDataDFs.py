@@ -23,7 +23,7 @@ if __name__ == "__main__":
     fileToAppend2 = "S&P 500 Data Sets/S&P 500 Data (12_26_1979 to 9_30_1999).csv"
 
 
-    dfsToAppendList = ["fileToAppend1", "fileToAppend2"]
+    dfsToAppendList = [fileToAppend1, fileToAppend2]
 
     outputFolder = "S&P 500 Data Sets"
     outputDF = 'S&P 500 Data (12_26_1979 to 3_14_2025)'
