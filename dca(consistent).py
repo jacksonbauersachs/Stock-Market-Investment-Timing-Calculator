@@ -1,79 +1,81 @@
-import pandas as pd
-import numpy as np
+import csv
 from datetime import datetime, timedelta
 
 
-def calculate_dca_returns(data_path, investment_amount=100):
-    # Load and prepare data - ensure no chained assignments
-    df = pd.read_csv(data_path, parse_dates=['Date']).sort_values('Date')
-    df = df.copy()  # Create explicit copy to avoid warnings
-    df['Price'] = pd.to_numeric(df['Price'].astype(str).str.replace(',', ''), errors='coerce')
+def calculate_investment_growth(file_path):
+    # Read the CSV file
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        data = [row for row in reader]
 
-    # Historical parameters
-    dividend_yield = 0.02  # 2% average dividend yield
-    inflation_rate = 0.038  # 3.8% average inflation
+    # Convert date strings to datetime objects and parse numeric values
+    for row in data:
+        row['Date'] = datetime.strptime(row['Date'], '%m/%d/%Y')
+        row['Price'] = float(row['Price'])
 
-    # Calculate total return index without warnings
-    price_ratio = df['Price'].values[1:] / df['Price'].values[:-1]
-    days = (df['Date'].values[1:] - df['Date'].values[:-1]).astype('timedelta64[D]').astype(int)
-    daily_div = (1 + dividend_yield) ** (1 / 365.25)
+    # Sort data by date (just in case)
+    data.sort(key=lambda x: x['Date'])
 
-    total_return = np.zeros(len(df))
-    total_return[0] = df['Price'].iloc[0]
-    for i in range(1, len(df)):
-        total_return[i] = total_return[i - 1] * price_ratio[i - 1] * (daily_div ** days[i - 1])
+    # Investment parameters
+    initial_investment = 1000  # $1,000 every other week
+    inflation_adjustment = 0.035  # 3.5% annual increase
+    dividend_yield = 0.013  # 1.3% annual dividend yield
 
-    df['Total_Return'] = total_return
+    # Initialize variables
+    current_date = data[0]['Date']
+    end_date = data[-1]['Date']
+    shares_owned = 0
+    total_invested = 0
+    current_biweekly_investment = initial_investment
+    last_inflation_adjustment_date = current_date
 
-    # Inflation adjustment
-    years_elapsed = (df['Date'] - df['Date'].iloc[0]).dt.days / 365.25
-    df['Inflation_Factor'] = (1 + inflation_rate) ** years_elapsed
-
-    results = []
-
-    for start_day in range(14):
-        current_date = df['Date'].iloc[0] + timedelta(days=start_day)
-        shares = 0.0
-        total_invested = 0.0
-
-        while current_date <= df['Date'].iloc[-1]:
-            mask = df['Date'] >= current_date
-            if not mask.any():
+    # Main investment loop
+    while current_date <= end_date:
+        # Find the closest date in the data (since markets are closed some days)
+        price_data = None
+        for day in data:
+            if day['Date'] >= current_date:
+                price_data = day
                 break
 
-            next_row = df[mask].iloc[0]
-            real_price = next_row['Total_Return'] / next_row['Inflation_Factor']
-            shares += investment_amount / real_price
-            total_invested += investment_amount
-            current_date += timedelta(days=14)
+        if price_data:
+            # Calculate how many shares we can buy with current investment
+            price = price_data['Price']
+            shares_bought = current_biweekly_investment / price
+            shares_owned += shares_bought
+            total_invested += current_biweekly_investment
 
-        if total_invested == 0:
-            continue
+            # Apply dividend (assuming reinvestment)
+            dividend_shares = shares_owned * (dividend_yield / 26)  # 26 biweekly periods per year
+            shares_owned += dividend_shares
 
-        final_value = shares * (df['Total_Return'].iloc[-1] / df['Inflation_Factor'].iloc[-1])
-        years = (df['Date'].iloc[-1] - df['Date'].iloc[0]).days / 365.25
-        cagr = (final_value / total_invested) ** (1 / years) - 1
+        # Move to next investment date (every other week)
+        current_date += timedelta(days=14)
 
-        results.append({
-            'start_day': start_day,
-            'real_cagr': cagr * 100,
-            'total_real_return': ((final_value - total_invested) / total_invested) * 100,
-            'years': years
-        })
+        # Adjust for inflation annually
+        if (current_date - last_inflation_adjustment_date).days >= 365:
+            current_biweekly_investment *= (1 + inflation_adjustment)
+            last_inflation_adjustment_date = current_date
 
-    return pd.DataFrame(results)
+    # Calculate final value
+    final_price = data[-1]['Price']
+    final_value = shares_owned * final_price
+    total_growth = (final_value - total_invested) / total_invested * 100
+
+    return {
+        'total_invested': total_invested,
+        'final_value': final_value,
+        'total_growth_percent': total_growth,
+        'shares_owned': shares_owned
+    }
 
 
+# Example usage
 if __name__ == "__main__":
-    try:
-        results = calculate_dca_returns("S&P 500 Data Sets/S&P 500 Total Data Cleaned.csv")
+    file_path = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"  # Replace with your actual file path
+    results = calculate_investment_growth(file_path)
 
-        print("Accurate Inflation-Adjusted DCA Simulation")
-        print("-----------------------------------------")
-        print(f"Time Period: {results['years'].mean():.1f} years")
-        print(f"Average Real CAGR: {results['real_cagr'].mean():.2f}%")
-        print(f"Total Real Return: {results['total_real_return'].mean():.0f}%")
-        print("\nNote: Real returns = after inflation")
-
-    except Exception as e:
-        print(f"Error: {str(e)}")
+    print(f"Total Invested: ${results['total_invested']:,.2f}")
+    print(f"Final Portfolio Value: ${results['final_value']:,.2f}")
+    print(f"Total Growth: {results['total_growth_percent']:.2f}%")
+    print(f"Total Shares Owned: {results['shares_owned']:,.2f}")
