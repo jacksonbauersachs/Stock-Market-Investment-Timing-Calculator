@@ -28,7 +28,7 @@ def clean_sp500_data(input_file, output_file):
 if __name__ == "__main__":
     # Get absolute paths
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    DATA_DIR = os.path.join(BASE_DIR, "S&P 500 Data Sets")
+    DATA_DIR = os.path.join(BASE_DIR, "../S&P 500 Data Sets")
 
     # CORRECTED: Using the actual filename without .csv
     input_filename = "S&P 500 Data (12_26_1979 to 3_14_2025)"  # Removed .csv

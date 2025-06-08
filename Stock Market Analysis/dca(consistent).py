@@ -72,7 +72,7 @@ def calculate_investment_growth(file_path):
 
 # Example usage
 if __name__ == "__main__":
-    file_path = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"  # Replace with your actual file path
+    file_path = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"  # Replace with your actual file path
     results = calculate_investment_growth(file_path)
 
     print(f"Total Invested: ${results['total_invested']:,.2f}")

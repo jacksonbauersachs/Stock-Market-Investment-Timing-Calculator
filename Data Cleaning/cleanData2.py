@@ -35,8 +35,8 @@ def reverse_sp500_data(input_file, output_file):
 
 if __name__ == "__main__":
     # Define file paths
-    input_file = "S&P 500 Data Sets/S&P 500 Total Data Cleaned.csv"
-    output_file = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
+    input_file = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned.csv"
+    output_file = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
 
     # Process the file
     if reverse_sp500_data(input_file, output_file):

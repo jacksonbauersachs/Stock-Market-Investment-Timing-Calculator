@@ -40,8 +40,8 @@ def adjust_to_today_dollars(input_file, output_file, annual_inflation=0.035):
 
 if __name__ == "__main__":
     # Example usage
-    input_file = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
-    output_file = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 3(Inflation Adjusted).csv"
+    input_file = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
+    output_file = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned 3(Inflation Adjusted).csv"
     adjusted_data = adjust_to_today_dollars(input_file, output_file)
 
     # Show samples

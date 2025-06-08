@@ -100,7 +100,7 @@ def calculate_reserve_strategy(file_path):
 
 # Run the simulation
 if __name__ == "__main__":
-    file_path = "S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
+    file_path = "../S&P 500 Data Sets/S&P 500 Total Data Cleaned 2.csv"
     results = calculate_reserve_strategy(file_path)
 
     print("Reserve Strategy Results:")
