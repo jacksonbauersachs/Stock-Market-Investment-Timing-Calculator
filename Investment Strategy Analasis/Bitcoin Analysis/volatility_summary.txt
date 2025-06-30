@@ -1,0 +1,40 @@
+============================================================
+VOLATILITY METRICS COMPARISON
+============================================================
+
+Volatility_7d:
+  Mean: 90.00%
+  Std: 103.25%
+  Min: 0.80%
+  Max: 728.76%
+
+Volatility_30d:
+  Mean: 98.84%
+  Std: 90.64%
+  Min: 0.39%
+  Max: 551.48%
+
+Volatility_90d:
+  Mean: 103.78%
+  Std: 81.16%
+  Min: 0.65%
+  Max: 411.29%
+
+Volatility_180d:
+  Mean: 101.67%
+  Std: 71.33%
+  Min: 0.46%
+  Max: 313.48%
+
+Volatility_365d:
+  Mean: 92.34%
+  Std: 61.57%
+  Min: 0.32%
+  Max: 268.40%
+
+Trend Lines:
+Volatility_7d Trend: -0.276876x + 1.870315
+Volatility_30d Trend: -0.288293x + 2.001807
+Volatility_90d Trend: -0.294022x + 2.095712
+Volatility_180d Trend: -0.282735x + 2.100750
+Volatility_365d Trend: -0.251948x + 2.027716

@@ -1,0 +1,25 @@
+All-In DCA Strategy Results (S&P 500, Monte Carlo):
+  Mean final value: $303,019.78
+  Median final value: $281,948.79
+  Std final value: $101,981.10
+  Min final value: $119,221.14
+  Max final value: $774,427.64
+  10th percentile: $190,465.45
+  90th percentile: $433,911.90
+  Mean ROI: 16.10%
+  Median ROI: 8.03%
+  Std ROI: 39.07%
+  Min ROI: -54.32%
+  Max ROI: 196.72%
+  10th percentile ROI: -27.02%
+  90th percentile ROI: 66.25%
+
+Frequency of outcomes by ROI band:
+  -100% to     0%: 400 paths (40.0%)
+     0% to    50%: 431 paths (43.1%)
+    50% to   100%: 132 paths (13.2%)
+   100% to   200%: 37 paths (3.7%)
+   200% to   500%: 0 paths (0.0%)
+   500% to  1000%: 0 paths (0.0%)
+  1000% to 10000%: 0 paths (0.0%)
+  >=10000%: 0 paths (0.0%)
