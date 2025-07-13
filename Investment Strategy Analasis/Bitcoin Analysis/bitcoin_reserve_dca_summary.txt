@@ -1,0 +1,26 @@
+Reserve DCA Strategy Results (Bitcoin, Monte Carlo):
+  Mean final value: $5,226,820,706.67
+  Median final value: $567,229.74
+  Std final value: $136,396,565,601.38
+  Min final value: $41,367.08
+  Max final value: $4,293,716,337,117.93
+  10th percentile: $130,007.69
+  90th percentile: $19,873,911.55
+  Mean ROI: 2002513.30%
+  Median ROI: 117.33%
+  Std ROI: 52259220.54%
+  Min ROI: -84.15%
+  Max ROI: 1645101944.87%
+  10th percentile ROI: -50.19%
+  90th percentile ROI: 7514.53%
+  Mean reserve deployments: 249.01
+
+Frequency of outcomes by ROI band:
+  -100% to     0%: 287 paths (28.7%)
+     0% to    50%: 117 paths (11.7%)
+    50% to   100%: 74 paths (7.4%)
+   100% to   200%: 96 paths (9.6%)
+   200% to   500%: 113 paths (11.3%)
+   500% to  1000%: 75 paths (7.5%)
+  1000% to 10000%: 147 paths (14.7%)
+  >=10000%: 91 paths (9.1%)

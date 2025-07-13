@@ -1,0 +1,40 @@
+
+==== 1-Year DCA Results ====
+  Mean final value: $31,863.33
+  Median final value: $30,836.99
+  10th percentile: $22,687.78
+  90th percentile: $42,300.82
+  Mean ROI: 18.01%
+  Median ROI: 14.21%
+  Mean CAGR: 18.01%
+  Median CAGR: 14.21%
+
+==== 3-Year DCA Results ====
+  Mean final value: $125,962.63
+  Median final value: $110,789.24
+  10th percentile: $68,117.40
+  90th percentile: $206,841.59
+  Mean ROI: 59.45%
+  Median ROI: 40.24%
+  Mean CAGR: 14.27%
+  Median CAGR: 11.93%
+
+==== 5-Year DCA Results ====
+  Mean final value: $280,461.28
+  Median final value: $232,081.40
+  10th percentile: $116,611.38
+  90th percentile: $481,280.26
+  Mean ROI: 114.09%
+  Median ROI: 77.16%
+  Mean CAGR: 13.27%
+  Median CAGR: 12.12%
+
+==== 10-Year DCA Results ====
+  Mean final value: $1,208,911.22
+  Median final value: $787,596.83
+  10th percentile: $270,827.53
+  90th percentile: $2,455,152.54
+  Mean ROI: 363.18%
+  Median ROI: 201.76%
+  Mean CAGR: 12.29%
+  Median CAGR: 11.68%

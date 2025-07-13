@@ -1,0 +1,40 @@
+
+==== 1-Year Lump Sum Results ====
+  Mean final value: $110,560.06
+  Median final value: $109,168.32
+  10th percentile: $85,810.19
+  90th percentile: $137,730.47
+  Mean ROI: 10.56%
+  Median ROI: 9.17%
+  Mean CAGR: 10.56%
+  Median CAGR: 9.17%
+
+==== 3-Year Lump Sum Results ====
+  Mean final value: $131,060.15
+  Median final value: $125,512.88
+  10th percentile: $83,080.94
+  90th percentile: $187,463.88
+  Mean ROI: 31.06%
+  Median ROI: 25.51%
+  Mean CAGR: 8.22%
+  Median CAGR: 7.87%
+
+==== 5-Year Lump Sum Results ====
+  Mean final value: $157,929.61
+  Median final value: $145,611.81
+  10th percentile: $87,699.59
+  90th percentile: $243,870.62
+  Mean ROI: 57.93%
+  Median ROI: 45.61%
+  Mean CAGR: 8.23%
+  Median CAGR: 7.80%
+
+==== 10-Year Lump Sum Results ====
+  Mean final value: $250,190.08
+  Median final value: $211,459.66
+  10th percentile: $106,874.68
+  90th percentile: $439,807.74
+  Mean ROI: 150.19%
+  Median ROI: 111.46%
+  Mean CAGR: 8.13%
+  Median CAGR: 7.78%

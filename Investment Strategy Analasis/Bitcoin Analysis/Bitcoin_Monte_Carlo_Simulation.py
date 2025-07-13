@@ -1,14 +1,41 @@
+# === GROWTH MODEL (Excel-style fit) ===
+def growth_model(days):
+    return 10 ** (1.63291352 * np.log(days + 1) - 9.32865)
+
+# === VOLATILITY MODEL (Best-fit inverse decay with floor) ===
+def volatility_model(years):
+    a, b, c = 31.78363704, 22.19236093, 0.3081563
+    vol = (a / (1 + b * years) + c) / 100  # Convert percent to decimal
+    return np.maximum(vol, 0.4)  # Floor at 40% annualized volatility
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
 import warnings
+from scipy.stats import linregress
 warnings.filterwarnings('ignore')
 
+# === DYNAMICALLY FIT GROWTH MODEL COEFFICIENTS (Excel method) ===
+# Load full historical data
+btc_df = pd.read_csv('Data Sets/Bitcoin Data/Bitcoin Historical Data Full.csv')
+btc_df['Price'] = pd.to_numeric(btc_df['Price'].str.replace(',', ''), errors='coerce')
+btc_df['Date'] = pd.to_datetime(btc_df['Date'])
+btc_df['Days'] = (btc_df['Date'] - btc_df['Date'].min()).dt.days
+btc_df = btc_df.dropna(subset=['Price'])
+# Skip first 90 days
+btc_df = btc_df[btc_df['Days'] >= 90].copy()
+btc_df['T'] = np.log(btc_df['Days'])
+btc_df['U'] = np.log10(btc_df['Price'])
+# Linear regression
+growth_a, growth_b, r_value, _, _ = linregress(btc_df['T'], btc_df['U'])
+print(f"Fitted growth model: log10(price) = {growth_a:.8f} * ln(day) + {growth_b:.5f} (R²={r_value**2:.4f})")
+
 # === USER PARAMETERS ===
-# Growth model: price = 10**(a * ln(years) + b)
-growth_a = 1.633
-growth_b = -9.32
+# Growth model: price = 10**(a * ln(day) + b), with day >= 1 corresponding to actual day 90
+# Excel-derived coefficients:
+growth_a = 1.63291352
+growth_b = -9.32865
 
 # Volatility model (30d window): volatility = a / (1 + b * years) + c
 vol_a = 31.78
@@ -19,53 +46,61 @@ vol_c = 0.308
 years = 10
 n_paths = 1000
 steps_per_year = 365  # daily steps
-initial_price = 67000  # or set to latest BTC price
-
-# =======================
-
-def growth_model(years):
-    return 10 ** (growth_a * np.log(years) + growth_b)
-
-def volatility_model(years):
-    return vol_a / (1 + vol_b * years) + vol_c
-
-# Time grid
 total_steps = years * steps_per_year
-all_years = np.linspace(1e-6, years, int(total_steps))  # avoid log(0)
 dt = 1 / steps_per_year
 
-# Precompute expected price and volatility for each step
-expected_prices = growth_model(all_years)
-vols = volatility_model(all_years)
+# Load full historical data to get current price and day
+df = pd.read_csv('Data Sets/Bitcoin Data/Bitcoin Historical Data Full.csv')
+df['Price'] = pd.to_numeric(df['Price'].str.replace(',', ''), errors='coerce')
+df['Date'] = pd.to_datetime(df['Date'])
+df = df.dropna(subset=['Price'])
+df = df.sort_values('Date')
+current_price = df['Price'].iloc[-1]
+current_day = (df['Date'].iloc[-1] - df['Date'].min()).days
 
-# Simulate paths
-print(f"Simulating {n_paths} paths for {years} years...")
-paths = np.zeros((n_paths, len(all_years)))
-paths[:, 0] = initial_price
+# Time grid: simulate 10 years forward from current day
+sim_days = np.arange(1, total_steps + 1)  # 1 to 3650
+sim_years = sim_days / 365.25
+
+# For growth/volatility models, absolute day/year since inception
+abs_days = current_day + sim_days
+abs_years = abs_days / 365.25
+
+# Precompute expected price and volatility for each step
+expected_prices = growth_model(abs_days)
+vols = volatility_model(abs_years)
+
+# Simulate paths using geometric Brownian motion
+print(f"Simulating {n_paths} Bitcoin paths for {years} years from current price ${current_price:.2f}...")
+paths = np.zeros((n_paths, len(sim_days) + 1))
+paths[:, 0] = current_price
 
 for i in range(n_paths):
     if i % max(1, n_paths // 10) == 0:
         print(f"  Path {i+1}/{n_paths}")
-    for t in range(1, len(all_years)):
-        # Annualized volatility to per-step stddev
-        step_vol = vols[t] * np.sqrt(dt)
+    for t in range(1, len(sim_days) + 1):
+        # Drift: expected log-return from growth model minus volatility drag
+        expected_log_return = np.log(expected_prices[t-1] / expected_prices[t-2]) if t > 1 else 0
+        drift = expected_log_return - 0.5 * vols[t-1]**2 * dt
+        # Volatility: annualized, scaled by sqrt(dt)
+        step_vol = vols[t-1] * np.sqrt(dt)
         # Simulate log-return
-        rand_return = np.random.normal(0, step_vol)
-        paths[i, t] = paths[i, t-1] * np.exp(rand_return)
+        rand_return = drift + step_vol * np.random.normal()
+        paths[i, t] = max(paths[i, t-1] * np.exp(rand_return), 1e-8)  # Clamp to positive
 
 # Save to CSV
 out_path = "Investment Strategy Analasis/Bitcoin Analysis/monte_carlo_paths.csv"
-pd.DataFrame(paths, columns=[f"Year_{y:.2f}" for y in all_years]).to_csv(out_path, index=False)
+pd.DataFrame(paths).to_csv(out_path, index=False)
 print(f"Simulated paths saved to {out_path}")
 
 # Plot a sample of the paths
 plt.figure(figsize=(12, 6))
 for i in range(min(50, n_paths)):
-    plt.plot(all_years, paths[i], alpha=0.2, color='blue')
-plt.plot(all_years, expected_prices * initial_price / expected_prices[0], color='red', linewidth=2, label='Growth Model')
-plt.xlabel('Years')
+    plt.plot(np.arange(len(paths[i])), paths[i], alpha=0.2, color='blue')
+plt.plot(np.arange(len(expected_prices)), expected_prices * current_price / expected_prices[0], color='red', linewidth=2, label='Growth Model')
+plt.xlabel('Days from today')
 plt.ylabel('BTC Price')
-plt.title('Monte Carlo Simulated Bitcoin Price Paths')
+plt.title('Monte Carlo Simulated Bitcoin Price Paths (10 Years Forward)')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
@@ -401,7 +436,7 @@ def main():
     """Main execution function"""
     # Initialize simulator
     data_path = "../../Data Sets/Bitcoin Data/Bitcoin_Cleaned_Data.csv"
-    growth_params = {'a': 1.633, 'b': -9.32}
+    growth_params = {'a': 1.63291352, 'b': -9.32865}
     
     simulator = BitcoinMonteCarloSimulator(data_path, growth_params)
     
