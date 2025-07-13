@@ -86,7 +86,7 @@ summary_lines.append("Bitcoin grows faster in early days, slower in later days."
 summary_lines.append("This is why the formula predicts sustainable long-term growth.")
 
 # Save results
-summary_path = "Investment Strategy Analasis/Bitcoin Analysis/bitcoin_lumpsum_formula_summary.txt"
+summary_path = "../Results/bitcoin_lumpsum_formula_summary.txt"
 with open(summary_path, "w") as f:
     for line in summary_lines:
         f.write(line + "\n")
