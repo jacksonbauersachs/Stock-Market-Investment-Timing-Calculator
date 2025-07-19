@@ -1,8 +1,0 @@
-Inverse Decay Model Fits for Volatility Windows
-Formula: volatility = a/(1 + b*years) + c
-
-Volatility_7d: a=15526888.325063, b=10469971.160311, c=0.195121, R^2=0.5312
-Volatility_30d: a=31.781255, b=22.190508, c=0.308153, R^2=0.6049
-Volatility_90d: a=5.480267, b=1.985845, c=0.090531, R^2=0.6935
-Volatility_180d: a=9.610190, b=3.733663, c=0.117852, R^2=0.8371
-Volatility_365d: a=7597739.019473, b=2734608.934483, c=0.045763, R^2=0.8745
