@@ -12,11 +12,12 @@ class BitcoinVolatilityDecayAnalyzer:
         self.data = pd.read_csv(data_path)
         self.data['Date'] = pd.to_datetime(self.data['Date'])
         
-        # Handle price column format
-        if pd.api.types.is_string_dtype(self.data['Close/Last']):
-            self.data['Close/Last'] = pd.to_numeric(self.data['Close/Last'].str.replace(',', ''), errors='coerce')
+        # Handle price column format - use 'Price' column
+        if 'Price' in self.data.columns:
+            self.data['Price'] = pd.to_numeric(self.data['Price'], errors='coerce')
         else:
-            self.data['Close/Last'] = pd.to_numeric(self.data['Close/Last'], errors='coerce')
+            print("Error: 'Price' column not found in data")
+            return
         
         self.data = self.data.sort_values('Date').reset_index(drop=True)
         
@@ -30,7 +31,7 @@ class BitcoinVolatilityDecayAnalyzer:
     def _calculate_volatility_metrics(self):
         """Calculate multiple volatility metrics over time"""
         # Calculate returns
-        self.data['Returns'] = self.data['Close/Last'].pct_change()
+        self.data['Returns'] = self.data['Price'].pct_change()
         
         # Calculate rolling volatilities with different windows
         self.data['Volatility_7d'] = self.data['Returns'].rolling(7).std() * np.sqrt(365)
@@ -360,8 +361,8 @@ class BitcoinVolatilityDecayAnalyzer:
 
 def main():
     """Main execution function"""
-    # Initialize analyzer
-    data_path = "../../Data Sets/Bitcoin Data/Bitcoin_Cleaned_Data.csv"
+    # Initialize analyzer with the complete dataset
+    data_path = "Data Sets/Bitcoin Data/Bitcoin_Final_Complete_Data_20250719.csv"
     analyzer = BitcoinVolatilityDecayAnalyzer(data_path)
     
     print("=== Bitcoin Volatility Decay Analysis ===")

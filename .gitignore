@@ -1,0 +1,40 @@
+# Large data files that exceed GitHub's file size limits
+Data Sets/Bitcoin Data/btcusd_1-min_data.csv
+Data Sets/Bitcoin Data/*_1-min_data.csv
+Data Sets/Bitcoin Data/*_minute_data.csv
+
+# Large simulation output files
+Results/Bitcoin/bitcoin_monte_carlo_simple_paths_*.csv
+Results/Bitcoin/bitcoin_monte_carlo_*_paths_*.csv
+Results/Bitcoin/*_paths_*.csv
+
+# Large data files in general
+*.csv
+!Data Sets/Bitcoin Data/Bitcoin_Final_Complete_Data_20250719.csv
+!Data Sets/Bitcoin Data/Bitcoin_Cleaned_Complete_Data_20250719.csv
+!Data Sets/Bitcoin Data/Bitcoin_Complete_Historical_Data_20250719.csv
+!Data Sets/Bitcoin Data/Bitcoin_Historical_Data_AlphaVantage_20250719.csv
+
+# Keep small CSV files but exclude large ones
+Results/Bitcoin/bitcoin_monte_carlo_simple_summary_*.csv
+Results/Bitcoin/bitcoin_monte_carlo_simple_formula_*.csv
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp 

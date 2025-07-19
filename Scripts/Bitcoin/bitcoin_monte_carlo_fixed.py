@@ -10,11 +10,20 @@ def bitcoin_growth_model(days):
     return 10**(a * np.log(days) + b)
 
 def bitcoin_volatility_model(years):
-    """Better volatility model: σ(t) = 0.4 + 0.6 × e^(-0.15t)"""
-    initial_vol = 1.0  # 100% starting volatility
-    mature_vol = 0.4   # 40% mature volatility floor
-    decay_rate = 0.15  # moderate exponential decay
-    return mature_vol + (initial_vol - mature_vol) * np.exp(-decay_rate * years)
+    """Actual volatility model from data analysis: Polynomial Decay (Volatility_365d)"""
+    # Parameters from our analysis: [0.00839752, -0.24824989, 2.35663838]
+    # Formula: volatility = 0.008398 * years^2 + (-0.248250) * years + 2.356638
+    a = 0.00839752
+    b = -0.24824989
+    c = 2.35663838
+    
+    # Calculate volatility using polynomial decay
+    volatility = a * (years**2) + b * years + c
+    
+    # Ensure volatility is reasonable (not negative, not too high)
+    volatility = max(0.1, min(2.0, volatility))  # Between 10% and 200%
+    
+    return volatility
 
 def generate_bitcoin_price_paths(initial_price, years, n_paths=1000, steps_per_year=252):
     """
@@ -74,7 +83,7 @@ def run_bitcoin_lump_sum_monte_carlo(initial_investment=100000, years=10, n_path
     print(f"Initial Investment: ${initial_investment:,}")
     print(f"Time Horizon: {years} years")
     print(f"Number of Paths: {n_paths:,}")
-    print(f"Using Better Volatility Model: σ(t) = 0.4 + 0.6 × e^(-0.15t)")
+    print(f"Using Actual Volatility Model: σ(t) = 0.008398 × t² + (-0.248250) × t + 2.356638")
     print()
     
     # Use the growth model's predicted price for "today" to match pure growth model

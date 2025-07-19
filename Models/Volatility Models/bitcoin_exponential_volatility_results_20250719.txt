@@ -1,0 +1,39 @@
+============================================================
+BITCOIN 365-DAY VOLATILITY: EXPONENTIAL DECAY MODEL
+============================================================
+Analysis Date: 2025-07-19 16:00:38
+Data Source: Bitcoin_Final_Complete_Data_20250719.csv
+
+----------------------------------------
+MODEL RESULTS
+----------------------------------------
+Model Type: Exponential Decay
+R² = 0.288308
+Formula: volatility = 2.310879 * exp(-0.124138 * years) + 0.077392
+
+Parameters:
+  a (amplitude) = 2.310879
+  b (decay rate) = 0.124138
+  c (asymptote) = 0.077392
+
+Model Interpretation:
+  Initial volatility: 238.8%
+  Long-term volatility: 7.7%
+  Half-life: 5.58 years
+  Decay rate: 0.1241 per year
+
+----------------------------------------
+FUTURE PREDICTIONS
+----------------------------------------
+Year 0.0 from now: 43.6%
+Year 1.0 from now: 39.4%
+Year 2.0 from now: 35.7%
+Year 3.0 from now: 32.4%
+Year 4.0 from now: 29.5%
+Year 5.1 from now: 26.9%
+Year 6.1 from now: 24.6%
+Year 7.1 from now: 22.7%
+Year 8.1 from now: 20.9%
+Year 9.1 from now: 19.3%
+
+============================================================

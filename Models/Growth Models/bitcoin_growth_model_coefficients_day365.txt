@@ -1,0 +1,18 @@
+a = 1.8277429956323488
+b = -10.880943376278237
+R2 = 0.9402752052678194
+# Formula: log10(price) = a * ln(day) + b (day >= 365)
+# Last updated: 2025-07-19 15:55:12
+# Data range: 2011-07-17 to 2025-07-19
+# Total data points: 5,117
+# Current price: $118,075.00
+# All-time high: $119,863.71
+
+# VOLATILITY DECAY MODEL
+# Model type: Polynomial Decay (Volatility_365d)
+# R² = 0.2911
+# Formula: volatility = 0.008398 * years^2 + (-0.248250) * years + 2.356638
+# Parameters: [0.00839752, -0.24824989, 2.35663838]
+# Volatility range: 0.0000 to 764.82%
+# Data points: 5,481
+# Future predictions: 53.4% (1yr), 56.3% (2yr), 60.9% (3yr), 67.2% (4yr), 75.1% (5yr)

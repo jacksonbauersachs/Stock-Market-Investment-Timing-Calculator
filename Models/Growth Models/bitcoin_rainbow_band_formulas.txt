@@ -1,0 +1,11 @@
+# Bitcoin Rainbow Band Formulas
+# Last updated: 2025-07-19 15:45:38
+# Data range: 2011-07-17 to 2025-07-19
+# R² = 0.940275
+
+Lower Envelope: log10(price) = 1.918467 * ln(day) + -12.032292
+Firesale!: log10(price) = 1.844987 * ln(day) + -11.255872
+Buy: log10(price) = 1.771507 * ln(day) + -10.479452
+Hold: log10(price) = 1.698028 * ln(day) + -9.703033
+Sell: log10(price) = 1.624548 * ln(day) + -8.926613
+Upper Envelope: log10(price) = 1.551068 * ln(day) + -8.150193

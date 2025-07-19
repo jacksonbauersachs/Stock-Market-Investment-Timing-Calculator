@@ -1,0 +1,47 @@
+============================================================
+BITCOIN COMPLETE MODELS
+============================================================
+Last updated: 2025-07-19 15:55:12
+Data range: 2011-07-17 to 2025-07-19
+Total data points: 5,117
+
+----------------------------------------
+GROWTH MODEL
+----------------------------------------
+Formula: log10(price) = 1.827743 * ln(day) + -10.880943
+R² = 0.940275
+Data points: 5,117
+Start day: 365 (after first year)
+Date range: 2011-07-17 to 2025-07-19
+
+----------------------------------------
+VOLATILITY DECAY MODEL
+----------------------------------------
+Model type: Polynomial Decay (Volatility_365d)
+R² = 0.2911
+Data points: 5,481
+Volatility range: 0.0000 to 764.82%
+Parameters: [0.00839752, -0.24824989, 2.35663838]
+Formula: volatility = 0.008398 * years^2 + (-0.248250) * years + 2.356638
+
+Future Volatility Predictions:
+  Year 1 from now: 53.4%
+  Year 2 from now: 56.3%
+  Year 3 from now: 60.9%
+  Year 4 from now: 67.2%
+  Year 5 from now: 75.1%
+
+----------------------------------------
+MODEL SUMMARY
+----------------------------------------
+Growth model R²: 0.9403
+Volatility model R²: 0.2911
+Combined analysis quality: Good
+
+Notes:
+- Growth model shows excellent fit for long-term price trends
+- Volatility model shows moderate decay pattern (R² = 0.2911)
+- Volatility predictions suggest increasing volatility over next 5 years
+- Both models ready for Monte Carlo simulations and investment analysis
+
+============================================================
