@@ -1,0 +1,52 @@
+Bitcoin Mean Reversion Backtest Results
+==================================================
+
+Category Statistics:
+------------------------------
+                                  price_return                         ratio_change        
+                                         count    mean     std  median         mean     std
+category                                                                                   
+Fair Value (0.8-1.0x)                      380  0.0379  0.3797 -0.0294      -0.0423  0.3167
+Moderately Overvalued (1.2-1.5x)           203 -0.0488  0.3591 -0.0442      -0.1822  0.4498
+Moderately Undervalued (0.5-0.8x)          969  0.2558  0.7274  0.0395       0.0866  0.4028
+Slightly Overvalued (1.0-1.2x)             280  0.0056  0.3426 -0.0799      -0.0802  0.3482
+Very Overvalued (>1.5x)                    202 -0.3509  0.1467 -0.3684      -0.7321  0.2813
+Very Undervalued (<0.5x)                  3327  0.9937  2.6306  0.2982       0.0688  0.2151
+
+Statistical Significance Tests:
+----------------------------------------
+
+Very Overvalued (>1.5x):
+  Sample size: 202
+  t-statistic: -34.005
+  p-value: 0.000
+  Negative p-value: 0.000
+  Significantly negative: True
+
+Moderately Overvalued (1.2-1.5x):
+  Sample size: 203
+  t-statistic: -1.938
+  p-value: 0.054
+  Negative p-value: 0.027
+  Significantly negative: True
+
+Slightly Overvalued (1.0-1.2x):
+  Sample size: 280
+  t-statistic: 0.274
+  p-value: 0.785
+  Negative p-value: 0.608
+  Significantly negative: False
+
+Very Undervalued (<0.5x):
+  Sample size: 3327
+  t-statistic: 21.788
+  p-value: 0.000
+  Positive p-value: 0.000
+  Significantly positive: True
+
+Moderately Undervalued (0.5-0.8x):
+  Sample size: 969
+  t-statistic: 10.949
+  p-value: 0.000
+  Positive p-value: 0.000
+  Significantly positive: True

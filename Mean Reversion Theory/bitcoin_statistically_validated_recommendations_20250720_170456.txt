@@ -1,0 +1,43 @@
+Bitcoin Statistically Validated Investment Recommendations
+============================================================
+
+Mean Reversion Factors Used:
+----------------------------------------
+1. Very Overvalued (>1.5x): λ = 90, Expected Return = -35.1% (p < 0.001)
+2. Moderately Overvalued (1.2-1.5x): λ = 60, Expected Return = -4.9% (p = 0.027)
+3. Slightly Overvalued (1.0-1.2x): λ = 15, Expected Return = +0.6% (p = 0.785)
+4. Fair Value (0.8-1.0x): λ = 9, Expected Return = +3.8% (p = 0.785)
+5. Moderately Undervalued (0.5-0.8x): λ = 75, Expected Return = +25.6% (p < 0.001)
+6. Very Undervalued (<0.5x): λ = 120, Expected Return = +99.4% (p < 0.001)
+
+Statistical Zone Probabilities:
+------------------------------
+Very Overvalued (>1.5x) - Highly Significant: 0.0%
+Moderately Overvalued (1.2-1.5x) - Significant: 0.0%
+Slightly Overvalued (1.0-1.2x) - Not Significant: 4.1%
+Fair Value (0.8-1.0x) - Not Significant: 95.9%
+Moderately Undervalued (0.5-0.8x) - Highly Significant: 0.0%
+Very Undervalued (<0.5x) - Highly Significant: 0.0%
+
+Return Analysis:
+------------------------------
+Expected return: 205.2%
+Median return: 205.1%
+Volatility: 3.0%
+Sharpe ratio: 67.14
+
+Risk Analysis:
+------------------------------
+95% VaR (worst 5% outcome): 200.4%
+99% VaR (worst 1% outcome): 198.4%
+Final price - 5th percentile: $284,052
+Final price - 95th percentile: $293,342
+
+Statistically Validated Recommendation:
+------------------------------
+Current situation: Bitcoin is 1.1% above fair value
+Probability of significant negative zones: 0.0%
+Probability of significant positive zones: 0.0%
+Risk-adjusted return: Sharpe ratio of 67.14
+Recommendation: CONSIDER BUYING
+

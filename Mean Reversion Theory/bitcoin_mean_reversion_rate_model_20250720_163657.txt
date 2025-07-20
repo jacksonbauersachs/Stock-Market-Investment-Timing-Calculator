@@ -1,0 +1,12 @@
+Mean Reversion Rate of Change Model
+==================================
+
+Model Type: Polynomial
+R-squared: 0.089919
+
+Parameters: [ 0.16901146 -4.32660014 26.02383798]
+
+Interpretation:
+- Model explains 9.0% of rate of change variation
+- Shows how mean reversion speed changes over time
+- Can be used to predict future mean reversion behavior
