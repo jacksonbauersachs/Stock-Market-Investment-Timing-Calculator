@@ -24,7 +24,7 @@ def load_monte_carlo_data():
     print("Loading Monte Carlo simulation data...")
     
     # Load price paths
-    paths_file = 'Results/Bitcoin/bitcoin_monte_carlo_simple_paths_20250719.csv'
+    paths_file = 'Results/Bitcoin/bitcoin_monte_carlo_simple_paths_20250720.csv'
     if os.path.exists(paths_file):
         paths_df = pd.read_csv(paths_file, index_col=0)
         print(f"Loaded {len(paths_df.columns)} price paths")
@@ -72,15 +72,23 @@ def multi_tier_drop_strategy(price_path, initial_investment=1000,
                            drop_levels=[0.1, 0.2, 0.3, 0.4, 0.5],
                            investment_ratios=[0.2, 0.2, 0.2, 0.2, 0.2]):
     """
-    Multi-tier drop strategy: invest portions at different price drops
+    Multi-tier drop strategy: invest portions when price drops below formula's fair value
     
     Args:
         price_path: Price path over time
         initial_investment: Total budget ($1000)
-        drop_levels: List of price drops to trigger investment (e.g., [0.1, 0.2, 0.3])
+        drop_levels: List of drops below fair value to trigger investment (e.g., [0.1, 0.2, 0.3])
         investment_ratios: Portion of budget to invest at each drop level
     """
-    initial_price = price_path.iloc[0]
+    # Get formula's fair value
+    with open('Models/Growth Models/bitcoin_growth_model_coefficients_day365.txt', 'r') as f:
+        lines = f.readlines()
+        a = float(lines[0].split('=')[1].strip())
+        b = float(lines[1].split('=')[1].strip())
+    
+    today_day = 6041
+    fair_value = 10**(a * np.log(today_day) + b)
+    
     bitcoin_owned = 0
     remaining_budget = initial_investment
     
@@ -88,7 +96,11 @@ def multi_tier_drop_strategy(price_path, initial_investment=1000,
     investments_made = []
     
     for i, price in enumerate(price_path):
-        current_drop = (initial_price - price) / initial_price
+        # Calculate how much the price has dropped below fair value
+        if price < fair_value:
+            current_drop = (fair_value - price) / fair_value
+        else:
+            current_drop = 0
         
         # Check if any drop level is triggered
         for drop_level, investment_ratio in zip(drop_levels, investment_ratios):
