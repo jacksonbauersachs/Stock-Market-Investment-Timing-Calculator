@@ -68,19 +68,21 @@ def calculate_dca_strategy(prices, monthly_amount=100, frequency='monthly'):
 def calculate_reserve_strategy(
     prices,
     monthly_amount=100,
-    reserve_ratio=0.05,
-    buy_thresholds=[0.9, 0.8, 0.75],
-    buy_allocations=[0.2, 0.3, 0.5]
+    reserve_ratio=0.4,
+    buy_thresholds=[0.96, 0.94, 0.92],
+    buy_allocations=[0.2, 0.3, 0.5],
+    sell_thresholds=[1.05, 1.10, 1.15],
+    sell_allocations=[0.2, 0.3, 0.5]
 ):
-    # 3-tiered buy logic, no selling
+    # 3-tiered buy/sell logic
     buy_allocations = np.array(buy_allocations) / np.sum(buy_allocations)
+    sell_allocations = np.array(sell_allocations) / np.sum(sell_allocations)
     with open('Models/Growth Models/bitcoin_growth_model_coefficients_day365.txt', 'r') as f:
         lines = f.readlines()
         a = float(lines[0].split('=')[1].strip())
         b = float(lines[1].split('=')[1].strip())
     start_day = 6041
-    buy_days = list(range(0, len(prices), 30))
-    total_invested = monthly_amount * len(buy_days)
+    total_invested = monthly_amount * (len(prices) // 30)
     final_values = []
     total_coins_list = []
     final_cash_list = []
@@ -97,32 +99,26 @@ def calculate_reserve_strategy(
         dca_invested = 0
         reserve_invested = 0
         spent_this_path = [False, False, False]
+        sold_this_path = [False, False, False]
 
-        # Process each day sequentially, accumulating reserve and checking for opportunities
-        monthly_interest_rate = 0.05 / 12  # 5% annual interest compounded monthly
-        
         for day_idx, price in enumerate(path_prices):
             current_day = start_day + day_idx
             fair_value = 10**(a * np.log(current_day) + b)
-            
-            # Add monthly contribution and apply interest if this is a monthly interval
+            price_ratio = price / fair_value
+            # Add monthly contribution
             if day_idx % 30 == 0:
                 dca_amount = monthly_amount * (1 - reserve_ratio)
                 reserve_amount = monthly_amount * reserve_ratio
-                
-                # Apply monthly interest to existing reserve cash
-                if reserve_cash > 0:
-                    interest_earned = reserve_cash * monthly_interest_rate
-                    reserve_cash += interest_earned
-                
-                coins_bought = dca_amount / price
-                current_coins += coins_bought
-                dca_btc += coins_bought
-                dca_invested += dca_amount
+                # Invest DCA portion immediately
+                if dca_amount > 0:
+                    dca_btc_amt = dca_amount / price
+                    current_coins += dca_btc_amt
+                    dca_btc += dca_btc_amt
+                    dca_invested += dca_amount
+                # No interest: just add reserve
                 reserve_cash += reserve_amount
-            
-            # Check thresholds from deepest to shallowest
-            for i in reversed(range(3)):
+            # BUY LOGIC
+            for i in range(3):
                 if not spent_this_path[i] and price < fair_value * buy_thresholds[i] and reserve_cash > 0:
                     buy_amt = reserve_cash * buy_allocations[i]
                     if buy_amt > 0:
@@ -131,6 +127,14 @@ def calculate_reserve_strategy(
                         reserve_invested += buy_amt
                         reserve_cash -= buy_amt
                         spent_this_path[i] = True
+            # SELL LOGIC
+            for j in range(3):
+                if not sold_this_path[j] and price > fair_value * sell_thresholds[j] and current_coins > 0:
+                    sell_btc = current_coins * sell_allocations[j]
+                    proceeds = sell_btc * price
+                    current_coins -= sell_btc
+                    reserve_cash += proceeds
+                    sold_this_path[j] = True
         # At the end, invest any remaining reserve at the final price
         if reserve_cash > 0:
             coins_bought = reserve_cash / path_prices.iloc[-1]
@@ -146,13 +150,13 @@ def calculate_reserve_strategy(
         total_dca_invested_list.append(dca_invested)
         total_reserve_invested_list.append(reserve_invested)
 
-    print(f"[DEBUG] 3-Tier Reserve: rsv={reserve_ratio}, buy_thresholds={buy_thresholds}, buy_allocs={buy_allocations}")
+    print(f"[DEBUG] 3-Tier Reserve: rsv={reserve_ratio}, buy_thresholds={buy_thresholds}, buy_allocs={buy_allocations}, sell_thresholds={sell_thresholds}, sell_allocs={sell_allocations}")
     print(f"  Avg DCA invested: {np.mean(total_dca_invested_list):.2f}")
     print(f"  Avg reserve invested: {np.mean(total_reserve_invested_list):.2f}")
     print(f"  Avg total BTC bought: {np.mean(total_btc_bought_list):.6f}")
     print(f"  Sample (first path): BTC bought={total_btc_bought_list[0]:.6f}, reserve invested={total_reserve_invested_list[0]:.2f}")
     return {
-        'strategy': f'3-Tier Reserve (rsv={int(reserve_ratio*100)}%, buy={[(int(t*100),int(a*100)) for t,a in zip(buy_thresholds,buy_allocations)]})',
+        'strategy': f'3-Tier Reserve (rsv={int(reserve_ratio*100)}%, buy={[(int(t*100),int(a*100)) for t,a in zip(buy_thresholds,buy_allocations)]}, sell={[(int(t*100),int(a*100)) for t,a in zip(sell_thresholds,sell_allocations)]})',
         'total_invested': total_invested,
         'total_coins_mean': np.mean(total_coins_list),
         'final_value_mean': np.mean(final_values),
@@ -177,42 +181,29 @@ def analyze_all_strategies(prices, monthly_amount=100):
     print("\n1. Analyzing DCA strategy...")
     dca_monthly = calculate_dca_strategy(prices, monthly_amount, 'monthly')
     results.append(dca_monthly)
-    print("2. Analyzing sorted 3-tiered Reserve strategies (no selling)...")
-    reserve_ratios = np.array([.1, .05, .01, .2, .3])
-    buy_threshold_sets = [
+    print("2. Analyzing sorted 3-tiered Reserve strategies (with selling)...")
 
-        [.95, .9, .85],
-        [.9, .85, .8],
-        [.85, .8, .75],
-        [.8, .75, .7],
-        [.97, .95, .93],
+    reserve_ratio = 0.4
+    buy_thresholds = [0.96, 0.94, 0.92]
+    buy_allocations = [0.2, 0.3, 0.5]
+    sell_thresholds = [1.05, 1.10, 1.15]
+    sell_allocations = [0.2, 0.3, 0.5]
 
-    ]
-    buy_allocation_sets = [
-        [.2, .3, .5],
-        [.1, .2, .7],
-        [.5, .3, .2],
-        [.7, .2, .1],
-        [.9, .05, .05]
-    ]
-    # For each reserve ratio, select 5 evenly spaced threshold sets and 5 evenly spaced allocation sets
-    combos = []
-    n_thresholds = 5
-    n_allocs = 5
-    threshold_idxs = np.linspace(0, len(buy_threshold_sets)-1, n_thresholds, dtype=int)
-    alloc_idxs = np.linspace(0, len(buy_allocation_sets)-1, n_allocs, dtype=int)
-    for r in reserve_ratios:
-        for ti in threshold_idxs:
-            for ai in alloc_idxs:
-                combos.append((r, buy_threshold_sets[ti], buy_allocation_sets[ai]))
-    # Now combos is 5*5*5=125, but we only want 25 per ratio, so limit to first 25 for each ratio
-    final_combos = []
-    for r in reserve_ratios:
-        r_combos = [c for c in combos if c[0] == r]
-        final_combos.extend(r_combos[:25])
-    for reserve_ratio, buy_thresholds, buy_allocations in final_combos:
-        reserve = calculate_reserve_strategy(prices, monthly_amount, reserve_ratio=reserve_ratio, buy_thresholds=buy_thresholds, buy_allocations=buy_allocations)
-        results.append(reserve)
+    for reserve_ratio in [reserve_ratio]:
+        for buy_thresholds in [buy_thresholds]:
+            for buy_allocations in [buy_allocations]:
+                for sell_thresholds in [sell_thresholds]:
+                    for sell_allocations in [sell_allocations]:
+                        reserve = calculate_reserve_strategy(
+                            prices,
+                            monthly_amount,
+                            reserve_ratio=reserve_ratio,
+                            buy_thresholds=buy_thresholds,
+                            buy_allocations=buy_allocations,
+                            sell_thresholds=sell_thresholds,
+                            sell_allocations=sell_allocations
+                        )
+                        results.append(reserve)
     return results
 
 def create_strategy_comparison(results):
