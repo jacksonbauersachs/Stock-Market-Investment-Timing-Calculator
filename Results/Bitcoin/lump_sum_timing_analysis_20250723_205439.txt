@@ -1,0 +1,21 @@
+BITCOIN LUMP SUM TIMING ANALYSIS
+Immediate vs Waiting for Drops (5% interest on waiting funds)
+============================================================
+Generated: 2025-07-23 20:54:39
+Current Bitcoin Price: $118,000.00
+Current Volatility: 45.0%
+Recent Growth Rate: 25.0%
+Overvaluation: 10.3%
+============================================================
+
+STRATEGY RANKINGS (Weighted by Scenario Probability)
+------------------------------------------------------------
+Invest All Immediately                       59.4%          0.35       High
+70% Immediate + 30% Wait 15%                 54.3%          0.36       High
+50% Immediate + 50% Wait 10%                 52.8%          0.36       High
+Wait for 5% drop                             50.9%          0.33       High
+Wait for 10% drop                            46.2%          0.31       High
+30% Immediate + 70% Wait 20%                 44.3%          0.35       High
+Wait for 15% drop                            42.4%          0.30       High
+Wait for 20% drop                            37.9%          0.29       High
+Wait for 25% drop                            33.2%          0.28       High

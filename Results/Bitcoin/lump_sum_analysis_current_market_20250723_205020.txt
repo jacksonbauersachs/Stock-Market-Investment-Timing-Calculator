@@ -1,0 +1,20 @@
+BITCOIN LUMP SUM INVESTMENT ANALYSIS
+Current Market Conditions Assessment
+============================================================
+Generated: 2025-07-23 20:50:20
+Current Bitcoin Price: $118,000.00
+Current Volatility: 45.0%
+Recent Growth Rate: 25.0%
+Overvaluation: 10.3%
+============================================================
+
+STRATEGY RANKINGS (Weighted by Scenario Probability)
+------------------------------------------------------------
+Invest All Immediately                       55.3%          0.34       High
+70% Immediate + 30% DCA (6mo)                53.5%          0.35       High
+DCA over 3 months                            53.4%          0.34       High
+50% Immediate + 50% DCA (6mo)                52.3%          0.35       High
+DCA over 6 months                            49.3%          0.34       High
+Wait for 10% drop                            45.8%          0.31       High
+DCA over 12 months                           41.1%          0.34       High
+Wait for 20% drop                            36.9%          0.27       High

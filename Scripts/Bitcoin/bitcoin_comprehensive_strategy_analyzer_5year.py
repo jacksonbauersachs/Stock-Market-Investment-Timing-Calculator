@@ -6,10 +6,17 @@ import glob
 import os
 
 def load_gbm_paths():
-    """Load the specified GBM simulation paths file"""
-    gbm_file = r'Results\Bitcoin\bitcoin_gbm_paths_5year_20250723_165635.csv'
+    """Load the specified GBM simulation paths file and truncate to 5 years"""
+    gbm_file = 'Results/Bitcoin/bitcoin_gbm_paths_20250723_165635.csv'
     print(f"Loading GBM paths from: {gbm_file}")
     df = pd.read_csv(gbm_file, index_col=0)
+    
+    # Truncate to first 5 years (1825 days)
+    days_5_years = 1825
+    if len(df) > days_5_years:
+        df = df.iloc[:days_5_years]
+        print(f"Truncated data to first {days_5_years} days (5 years)")
+    
     return df
 
 def calculate_lump_sum_strategy(prices, budget=1000):
@@ -165,10 +172,10 @@ def calculate_reserve_strategy(
     }
 
 def analyze_all_strategies(prices, monthly_amount=100):
-    print("Analyzing Investment Strategies with GBM Simulation")
+    print("Analyzing Investment Strategies with GBM Simulation (5-Year Analysis)")
     print("="*60)
     print(f"Monthly investment: ${monthly_amount:,}")
-    print(f"Total investment over 10 years: ${monthly_amount * 120:,}")
+    print(f"Total investment over 5 years: ${monthly_amount * 60:,}")
     print(f"Number of paths: {len(prices.columns):,}")
     print(f"Time horizon: {len(prices)} days ({len(prices)/365:.1f} years)")
     print(f"Starting price: ${prices.iloc[0, 0]:,.2f}")
@@ -201,205 +208,201 @@ def analyze_all_strategies(prices, monthly_amount=100):
     n_allocs = 5
     threshold_idxs = np.linspace(0, len(buy_threshold_sets)-1, n_thresholds, dtype=int)
     alloc_idxs = np.linspace(0, len(buy_allocation_sets)-1, n_allocs, dtype=int)
-    for r in reserve_ratios:
-        for ti in threshold_idxs:
-            for ai in alloc_idxs:
-                combos.append((r, buy_threshold_sets[ti], buy_allocation_sets[ai]))
-    # Now combos is 5*5*5=125, but we only want 25 per ratio, so limit to first 25 for each ratio
-    final_combos = []
-    for r in reserve_ratios:
-        r_combos = [c for c in combos if c[0] == r]
-        final_combos.extend(r_combos[:25])
-    for reserve_ratio, buy_thresholds, buy_allocations in final_combos:
-        reserve = calculate_reserve_strategy(prices, monthly_amount, reserve_ratio=reserve_ratio, buy_thresholds=buy_thresholds, buy_allocations=buy_allocations)
-        results.append(reserve)
+    for rsv in reserve_ratios:
+        for t_idx in threshold_idxs:
+            for a_idx in alloc_idxs:
+                combos.append((rsv, buy_threshold_sets[t_idx], buy_allocation_sets[a_idx]))
+    print(f"Testing {len(combos)} reserve strategy combinations...")
+    for i, (rsv, thresholds, allocations) in enumerate(combos):
+        if i % 10 == 0:
+            print(f"  Progress: {i}/{len(combos)}")
+        reserve_result = calculate_reserve_strategy(prices, monthly_amount, rsv, thresholds, allocations)
+        results.append(reserve_result)
+    print("3. Analyzing lump sum strategy...")
+    lump_sum = calculate_lump_sum_strategy(prices, monthly_amount * 60)  # 5 years of monthly contributions
+    results.append(lump_sum)
     return results
 
 def create_strategy_comparison(results):
-    """Create comparison table and visualization"""
-    # Create summary DataFrame
-    summary_data = []
+    """Create a comparison table of all strategies"""
+    comparison_data = []
     for result in results:
-        summary_data.append({
+        comparison_data.append({
             'Strategy': result['strategy'],
-            'Final_Value_Mean': result['final_value_mean'],
-            'Final_Value_Median': result['final_value_median'],
-            'Total_Return_Mean': result['total_return_mean'],
-            'Total_Return_Median': result['total_return_median'],
-            'Risk_Std': result['final_value_std'],
-            'P5_Value': result['final_value_p5'],
-            'P95_Value': result['final_value_p95']
+            'Total Invested': f"${result['total_invested']:,.0f}",
+            'Final Value (Mean)': f"${result['final_value_mean']:,.0f}",
+            'Final Value (Median)': f"${result['final_value_median']:,.0f}",
+            'Return (Mean)': f"{result['total_return_mean']:.1f}%",
+            'Return (Median)': f"{result['total_return_median']:.1f}%",
+            '5th Percentile': f"${result['final_value_p5']:,.0f}",
+            '95th Percentile': f"${result['final_value_p95']:,.0f}"
         })
     
-    df = pd.DataFrame(summary_data)
-    
-    # Sort by mean return
-    df = df.sort_values('Total_Return_Mean', ascending=False)
-    
-    # Display results
-    print(f"\n{'Strategy':<50} {'Mean Return':<12} {'Median Return':<14} {'Risk':<10}")
-    print("-" * 90)
-    
-    for _, row in df.iterrows():
-        strategy_short = row['Strategy'][:45] + "..." if len(row['Strategy']) > 45 else row['Strategy']
-        print(f"{strategy_short:<50} {row['Total_Return_Mean']:<12.1f}% {row['Total_Return_Median']:<14.1f}% {row['Risk_Std']:<10.0f}")
-    
+    df = pd.DataFrame(comparison_data)
     return df
 
 def create_visualization(results, monthly_amount=100):
-    """Create visualization of strategy results"""
-    # Prepare data for plotting
+    """Create comprehensive visualization of strategy results"""
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
+    
+    # Extract data
     strategies = [r['strategy'] for r in results]
     mean_returns = [r['total_return_mean'] for r in results]
     median_returns = [r['total_return_median'] for r in results]
-    risk_std = [r['final_value_std'] for r in results]
+    mean_values = [r['final_value_mean'] for r in results]
+    total_invested = [r['total_invested'] for r in results]
     
-    # Create subplots
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-    
-    # 1. Mean Returns
-    bars1 = ax1.bar(range(len(strategies)), mean_returns, color='skyblue', alpha=0.7)
-    ax1.set_title('Mean Total Returns by Strategy')
-    ax1.set_ylabel('Return (%)')
-    ax1.set_xticks(range(len(strategies)))
-    ax1.set_xticklabels([s[:20] + "..." if len(s) > 20 else s for s in strategies], rotation=45, ha='right')
-    ax1.grid(True, alpha=0.3)
-    
-    # Add value labels on bars
-    for bar, value in zip(bars1, mean_returns):
-        ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, 
-                f'{value:.1f}%', ha='center', va='bottom', fontsize=8)
-    
-    # 2. Risk vs Return
-    ax2.scatter(risk_std, mean_returns, s=100, alpha=0.7, c='red')
-    ax2.set_xlabel('Risk (Standard Deviation)')
-    ax2.set_ylabel('Mean Return (%)')
-    ax2.set_title('Risk vs Return')
-    ax2.grid(True, alpha=0.3)
-    
-    # Add strategy labels
-    for i, strategy in enumerate(strategies):
-        ax2.annotate(strategy[:15] + "..." if len(strategy) > 15 else strategy, 
-                    (risk_std[i], mean_returns[i]), xytext=(5, 5), 
-                    textcoords='offset points', fontsize=8)
-    
-    # 3. Final Value Distribution (top 5 strategies)
-    top_5_strategies = sorted(results, key=lambda x: x['total_return_mean'], reverse=True)[:5]
-    top_strategies = [r['strategy'][:20] + "..." if len(r['strategy']) > 20 else r['strategy'] for r in top_5_strategies]
-    top_means = [r['final_value_mean'] for r in top_5_strategies]
-    top_medians = [r['final_value_median'] for r in top_5_strategies]
-    
-    x = np.arange(len(top_strategies))
+    # 1. Mean vs Median Returns
+    x_pos = np.arange(len(strategies))
     width = 0.35
     
-    bars3 = ax3.bar(x - width/2, top_means, width, label='Mean', color='lightgreen', alpha=0.7)
-    bars4 = ax3.bar(x + width/2, top_medians, width, label='Median', color='orange', alpha=0.7)
+    ax1.bar(x_pos - width/2, mean_returns, width, label='Mean Return', alpha=0.8)
+    ax1.bar(x_pos + width/2, median_returns, width, label='Median Return', alpha=0.8)
+    ax1.set_xlabel('Strategy')
+    ax1.set_ylabel('Return (%)')
+    ax1.set_title('Mean vs Median Returns by Strategy')
+    ax1.set_xticks(x_pos)
+    ax1.set_xticklabels([s[:30] + '...' if len(s) > 30 else s for s in strategies], rotation=45, ha='right')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
     
-    ax3.set_title('Top 5 Strategies: Final Value')
-    ax3.set_ylabel('Final Value ($)')
-    ax3.set_xticks(x)
-    ax3.set_xticklabels(top_strategies, rotation=45, ha='right')
-    ax3.legend()
+    # 2. Final Portfolio Values
+    ax2.bar(range(len(strategies)), mean_values, alpha=0.8)
+    ax2.set_xlabel('Strategy')
+    ax2.set_ylabel('Final Portfolio Value ($)')
+    ax2.set_title('Mean Final Portfolio Values')
+    ax2.set_xticks(range(len(strategies)))
+    ax2.set_xticklabels([s[:30] + '...' if len(s) > 30 else s for s in strategies], rotation=45, ha='right')
+    ax2.grid(True, alpha=0.3)
+    
+    # 3. Return vs Risk (using 5th-95th percentile range as risk measure)
+    risk_measures = [(r['final_value_p95'] - r['final_value_p5']) / r['final_value_mean'] * 100 for r in results]
+    ax3.scatter(risk_measures, mean_returns, alpha=0.7, s=100)
+    ax3.set_xlabel('Risk Measure (95th-5th percentile range as % of mean)')
+    ax3.set_ylabel('Mean Return (%)')
+    ax3.set_title('Risk vs Return')
     ax3.grid(True, alpha=0.3)
     
-    # 4. Strategy Categories
-    categories = {
-        'DCA': [],
-        'Reserve': []
-    }
+    # Add strategy labels to scatter plot
+    for i, strategy in enumerate(strategies):
+        ax3.annotate(strategy[:20] + '...' if len(strategy) > 20 else strategy, 
+                    (risk_measures[i], mean_returns[i]), 
+                    xytext=(5, 5), textcoords='offset points', fontsize=8)
     
-    for result in results:
-        if 'DCA' in result['strategy']:
-            categories['DCA'].append(result['total_return_mean'])
-        elif 'Reserve' in result['strategy']:
-            categories['Reserve'].append(result['total_return_mean'])
-    
-    category_means = [np.mean(categories[cat]) if categories[cat] else 0 for cat in categories.keys()]
-    bars5 = ax4.bar(categories.keys(), category_means, color=['blue', 'green', 'red'], alpha=0.7)
-    ax4.set_title('Average Returns by Strategy Category')
-    ax4.set_ylabel('Mean Return (%)')
+    # 4. Investment Efficiency (Return per dollar invested)
+    efficiency = [r['total_return_mean'] / r['total_invested'] * 1000 for r in results]  # Return per $1000 invested
+    ax4.bar(range(len(strategies)), efficiency, alpha=0.8)
+    ax4.set_xlabel('Strategy')
+    ax4.set_ylabel('Return per $1000 Invested (%)')
+    ax4.set_title('Investment Efficiency')
+    ax4.set_xticks(range(len(strategies)))
+    ax4.set_xticklabels([s[:30] + '...' if len(s) > 30 else s for s in strategies], rotation=45, ha='right')
     ax4.grid(True, alpha=0.3)
-    
-    # Add value labels
-    for bar, value in zip(bars5, category_means):
-        ax4.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5, 
-                f'{value:.1f}%', ha='center', va='bottom')
     
     plt.tight_layout()
     
-    # Save plot
-    plot_filename = 'Results/Bitcoin/comprehensive_strategy_analysis_latest.png'
-    plt.savefig(plot_filename, dpi=300, bbox_inches='tight')
-    print(f"\nStrategy analysis plot saved to: {plot_filename}")
-    return plot_filename
+    # Save the plot
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    filename = f'Results/Bitcoin/comprehensive_strategy_analysis_5year_{timestamp}.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f"Visualization saved to: {filename}")
+    
+    return fig
 
 def save_results(results, monthly_amount=100):
-    """Save detailed results to CSV"""
-    # Create detailed results DataFrame
-    detailed_data = []
-    for result in results:
-        detailed_data.append({
-            'Strategy': result['strategy'],
-            'Monthly_Investment': monthly_amount,
-            'Total_Invested': result.get('total_invested', monthly_amount * 120),
-            'Final_Value_Mean': result['final_value_mean'],
-            'Final_Value_Median': result['final_value_median'],
-            'Final_Value_Std': result['final_value_std'],
-            'Final_Value_P5': result['final_value_p5'],
-            'Final_Value_P95': result['final_value_p95'],
-            'Total_Return_Mean_Percent': result['total_return_mean'],
-            'Total_Return_Median_Percent': result['total_return_median'],
-            'Total_Coins_Mean': result.get('total_coins_mean', result.get('initial_coins', 0))
-        })
+    """Save detailed results to a text file"""
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    filename = f'Results/Bitcoin/comprehensive_strategy_findings_5year_{timestamp}.txt'
     
-    df = pd.DataFrame(detailed_data)
+    with open(filename, 'w') as f:
+        f.write("COMPREHENSIVE STRATEGY ANALYSIS RESULTS (5-YEAR ANALYSIS)\n")
+        f.write("="*80 + "\n")
+        f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(f"Monthly investment: ${monthly_amount:,}\n")
+        f.write(f"Total investment over 5 years: ${monthly_amount * 60:,}\n")
+        f.write("="*80 + "\n\n")
+        
+        # Sort results by mean return
+        sorted_results = sorted(results, key=lambda x: x['total_return_mean'], reverse=True)
+        
+        f.write("STRATEGIES RANKED BY MEAN RETURN:\n")
+        f.write("-"*80 + "\n")
+        for i, result in enumerate(sorted_results, 1):
+            f.write(f"{i:2d}. {result['strategy']}\n")
+            f.write(f"    Mean Return: {result['total_return_mean']:.2f}%\n")
+            f.write(f"    Median Return: {result['total_return_median']:.2f}%\n")
+            f.write(f"    Final Value (Mean): ${result['final_value_mean']:,.2f}\n")
+            f.write(f"    Final Value (Median): ${result['final_value_median']:,.2f}\n")
+            f.write(f"    5th Percentile: ${result['final_value_p5']:,.2f}\n")
+            f.write(f"    95th Percentile: ${result['final_value_p95']:,.2f}\n")
+            f.write(f"    Total Invested: ${result['total_invested']:,.2f}\n")
+            f.write("\n")
+        
+        # Find best strategies by category
+        dca_strategies = [r for r in results if 'DCA' in r['strategy']]
+        reserve_strategies = [r for r in results if 'Reserve' in r['strategy']]
+        lump_sum_strategies = [r for r in results if 'Lump Sum' in r['strategy']]
+        
+        f.write("BEST STRATEGIES BY CATEGORY:\n")
+        f.write("-"*80 + "\n")
+        
+        if dca_strategies:
+            best_dca = max(dca_strategies, key=lambda x: x['total_return_mean'])
+            f.write(f"Best DCA Strategy: {best_dca['strategy']}\n")
+            f.write(f"  Mean Return: {best_dca['total_return_mean']:.2f}%\n\n")
+        
+        if reserve_strategies:
+            best_reserve = max(reserve_strategies, key=lambda x: x['total_return_mean'])
+            f.write(f"Best Reserve Strategy: {best_reserve['strategy']}\n")
+            f.write(f"  Mean Return: {best_reserve['total_return_mean']:.2f}%\n\n")
+        
+        if lump_sum_strategies:
+            best_lump = max(lump_sum_strategies, key=lambda x: x['total_return_mean'])
+            f.write(f"Best Lump Sum Strategy: {best_lump['strategy']}\n")
+            f.write(f"  Mean Return: {best_lump['total_return_mean']:.2f}%\n\n")
+        
+        f.write("SUMMARY STATISTICS:\n")
+        f.write("-"*80 + "\n")
+        returns = [r['total_return_mean'] for r in results]
+        f.write(f"Average Return (All Strategies): {np.mean(returns):.2f}%\n")
+        f.write(f"Best Return: {max(returns):.2f}%\n")
+        f.write(f"Worst Return: {min(returns):.2f}%\n")
+        f.write(f"Return Standard Deviation: {np.std(returns):.2f}%\n")
     
-    # Save to CSV with custom filename for this range
-    results_filename = 'Results/Bitcoin/comprehensive_strategy_results_rsv_60-80.csv'
-    df.to_csv(results_filename, index=False)
-    print(f"Detailed results saved to: {results_filename}")
-    return results_filename
+    print(f"Detailed results saved to: {filename}")
 
 def main():
-    """Main function"""
-    print("Bitcoin Comprehensive Investment Strategy Analyzer")
-    print("Using GBM Simulation with Dynamic Growth + Volatility")
-    print("="*70)
-    
-    # Load GBM paths
+    """Main function to run the comprehensive strategy analysis"""
+    print("Loading GBM simulation data...")
     prices = load_gbm_paths()
+    
     if prices is None:
+        print("Failed to load GBM paths!")
         return
+    
+    print(f"Successfully loaded {len(prices.columns)} price paths")
+    print(f"Data spans {len(prices)} days ({len(prices)/365:.1f} years)")
     
     # Analyze all strategies
     results = analyze_all_strategies(prices, monthly_amount=100)
     
-    # Create comparison
+    # Create comparison table
     comparison_df = create_strategy_comparison(results)
+    print("\n" + "="*80)
+    print("STRATEGY COMPARISON TABLE")
+    print("="*80)
+    print(comparison_df.to_string(index=False))
     
     # Create visualization
-    plot_file = create_visualization(results, monthly_amount=100)
+    print("\nCreating visualization...")
+    fig = create_visualization(results, monthly_amount=100)
     
-    # Save results
-    results_file = save_results(results, monthly_amount=100)
+    # Save detailed results
+    print("\nSaving detailed results...")
+    save_results(results, monthly_amount=100)
     
-    # Summary
-    print(f"\n" + "="*60)
-    print("COMPREHENSIVE STRATEGY ANALYSIS SUMMARY")
-    print("="*60)
-    print(f"Monthly investment: $100")
-    print(f"Total investment over 10 years: $12,000")
-    print(f"Time horizon: 10 years")
-    print(f"Number of strategies tested: {len(results)}")
-    print(f"Best strategy: {comparison_df.iloc[0]['Strategy']}")
-    print(f"Best mean return: {comparison_df.iloc[0]['Total_Return_Mean']:.1f}%")
-    print(f"Best median return: {comparison_df.iloc[0]['Total_Return_Median']:.1f}%")
-    
-    print(f"\nFiles created:")
-    print(f"  Strategy comparison: {results_file}")
-    print(f"  Visualization: {plot_file}")
-    
-    print(f"\n✅ Comprehensive strategy analysis completed!")
+    print("\nAnalysis complete!")
+    print("="*80)
 
 if __name__ == "__main__":
     main() 
