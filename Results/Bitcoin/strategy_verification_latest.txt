@@ -1,0 +1,3530 @@
+3-TIER RESERVE STRATEGY VERIFICATION LOG
+Generated: 2025-07-23 20:02:02
+Strategy: 100% Reserve, Buy thresholds: [0.96, 0.94, 0.92], Allocations: [1.0, 0.0, 0.0]
+Strategy: rsv=100%, buy=[(96, 100), (94, 0), (92, 0)]
+Monthly amount: $100
+================================================================================
+
+============================================================
+VERIFYING PATH 1
+============================================================
+
+=== 3-TIER RESERVE STRATEGY VERIFICATION ===
+Monthly amount: $100
+Reserve ratio: 100.0%
+Buy thresholds: [0.96, 0.94, 0.92]
+Buy allocations: [1.0, 0.0, 0.0]
+Price path length: 3654 months
+
+Monthly breakdown:
+  DCA portion: $0.00 (0.0%)
+  Reserve portion: $100.00 (100.0%)
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1 ---
+  Price: $107641.78
+  Fair value: $107641.78
+  Price/Fair ratio: 1.000
+  Total cash: $100.00
+  Reserve cash: $100.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Day 6 ---
+  Price: $100572.92
+  Fair value: $108017.23
+  Price/Fair ratio: 0.931
+  Total cash: $100.00
+  Reserve cash: $0.00
+  Current BTC: 0.000994
+  RESERVE TRADE (Tier 1): $100.00 -> 0.000994 BTC
+
+--- MONTHLY RESERVE ACCUMULATION: Day 31 ---
+  Price: $121717.35
+  Fair value: $109909.47
+  Price/Fair ratio: 1.107
+  Total cash: $200.00
+  Reserve cash: $100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 61 ---
+  Price: $106406.38
+  Fair value: $112213.39
+  Price/Fair ratio: 0.948
+  Total cash: $300.00
+  Reserve cash: $200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 91 ---
+  Price: $100545.71
+  Fair value: $114553.96
+  Price/Fair ratio: 0.878
+  Total cash: $400.00
+  Reserve cash: $300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 121 ---
+  Price: $116766.65
+  Fair value: $116931.56
+  Price/Fair ratio: 0.999
+  Total cash: $500.00
+  Reserve cash: $400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 151 ---
+  Price: $117500.42
+  Fair value: $119346.60
+  Price/Fair ratio: 0.985
+  Total cash: $600.00
+  Reserve cash: $500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 181 ---
+  Price: $135158.75
+  Fair value: $121799.48
+  Price/Fair ratio: 1.110
+  Total cash: $700.00
+  Reserve cash: $600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 211 ---
+  Price: $129379.03
+  Fair value: $124290.60
+  Price/Fair ratio: 1.041
+  Total cash: $800.00
+  Reserve cash: $700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 241 ---
+  Price: $153635.16
+  Fair value: $126820.39
+  Price/Fair ratio: 1.211
+  Total cash: $900.00
+  Reserve cash: $800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 271 ---
+  Price: $150862.74
+  Fair value: $129389.24
+  Price/Fair ratio: 1.166
+  Total cash: $1000.00
+  Reserve cash: $900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 301 ---
+  Price: $160076.71
+  Fair value: $131997.57
+  Price/Fair ratio: 1.213
+  Total cash: $1100.00
+  Reserve cash: $1000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 331 ---
+  Price: $148611.32
+  Fair value: $134645.80
+  Price/Fair ratio: 1.104
+  Total cash: $1200.00
+  Reserve cash: $1100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 361 ---
+  Price: $153518.04
+  Fair value: $137334.35
+  Price/Fair ratio: 1.118
+  Total cash: $1300.00
+  Reserve cash: $1200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 391 ---
+  Price: $155187.10
+  Fair value: $140063.62
+  Price/Fair ratio: 1.108
+  Total cash: $1400.00
+  Reserve cash: $1300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 421 ---
+  Price: $169597.01
+  Fair value: $142834.06
+  Price/Fair ratio: 1.187
+  Total cash: $1500.00
+  Reserve cash: $1400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 451 ---
+  Price: $198698.55
+  Fair value: $145646.08
+  Price/Fair ratio: 1.364
+  Total cash: $1600.00
+  Reserve cash: $1500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 481 ---
+  Price: $193151.58
+  Fair value: $148500.11
+  Price/Fair ratio: 1.301
+  Total cash: $1700.00
+  Reserve cash: $1600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 511 ---
+  Price: $210144.88
+  Fair value: $151396.58
+  Price/Fair ratio: 1.388
+  Total cash: $1800.00
+  Reserve cash: $1700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 541 ---
+  Price: $253872.16
+  Fair value: $154335.92
+  Price/Fair ratio: 1.645
+  Total cash: $1900.00
+  Reserve cash: $1800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 571 ---
+  Price: $249008.18
+  Fair value: $157318.57
+  Price/Fair ratio: 1.583
+  Total cash: $2000.00
+  Reserve cash: $1900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 601 ---
+  Price: $247853.12
+  Fair value: $160344.96
+  Price/Fair ratio: 1.546
+  Total cash: $2100.00
+  Reserve cash: $2000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 631 ---
+  Price: $218751.92
+  Fair value: $163415.54
+  Price/Fair ratio: 1.339
+  Total cash: $2200.00
+  Reserve cash: $2100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 661 ---
+  Price: $250639.34
+  Fair value: $166530.75
+  Price/Fair ratio: 1.505
+  Total cash: $2300.00
+  Reserve cash: $2200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 691 ---
+  Price: $255008.09
+  Fair value: $169691.03
+  Price/Fair ratio: 1.503
+  Total cash: $2400.00
+  Reserve cash: $2300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 721 ---
+  Price: $271669.10
+  Fair value: $172896.82
+  Price/Fair ratio: 1.571
+  Total cash: $2500.00
+  Reserve cash: $2400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 751 ---
+  Price: $322650.68
+  Fair value: $176148.58
+  Price/Fair ratio: 1.832
+  Total cash: $2600.00
+  Reserve cash: $2500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 781 ---
+  Price: $336403.16
+  Fair value: $179446.76
+  Price/Fair ratio: 1.875
+  Total cash: $2700.00
+  Reserve cash: $2600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 811 ---
+  Price: $361917.43
+  Fair value: $182791.82
+  Price/Fair ratio: 1.980
+  Total cash: $2800.00
+  Reserve cash: $2700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 841 ---
+  Price: $369329.03
+  Fair value: $186184.20
+  Price/Fair ratio: 1.984
+  Total cash: $2900.00
+  Reserve cash: $2800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 871 ---
+  Price: $360530.66
+  Fair value: $189624.37
+  Price/Fair ratio: 1.901
+  Total cash: $3000.00
+  Reserve cash: $2900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 901 ---
+  Price: $344042.02
+  Fair value: $193112.79
+  Price/Fair ratio: 1.782
+  Total cash: $3100.00
+  Reserve cash: $3000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 931 ---
+  Price: $329106.99
+  Fair value: $196649.93
+  Price/Fair ratio: 1.674
+  Total cash: $3200.00
+  Reserve cash: $3100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 961 ---
+  Price: $323427.34
+  Fair value: $200236.24
+  Price/Fair ratio: 1.615
+  Total cash: $3300.00
+  Reserve cash: $3200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 991 ---
+  Price: $334492.47
+  Fair value: $203872.20
+  Price/Fair ratio: 1.641
+  Total cash: $3400.00
+  Reserve cash: $3300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1021 ---
+  Price: $334271.25
+  Fair value: $207558.28
+  Price/Fair ratio: 1.610
+  Total cash: $3500.00
+  Reserve cash: $3400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1051 ---
+  Price: $375082.54
+  Fair value: $211294.96
+  Price/Fair ratio: 1.775
+  Total cash: $3600.00
+  Reserve cash: $3500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1081 ---
+  Price: $435221.17
+  Fair value: $215082.70
+  Price/Fair ratio: 2.024
+  Total cash: $3700.00
+  Reserve cash: $3600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1111 ---
+  Price: $484092.63
+  Fair value: $218921.99
+  Price/Fair ratio: 2.211
+  Total cash: $3800.00
+  Reserve cash: $3700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1141 ---
+  Price: $441446.57
+  Fair value: $222813.31
+  Price/Fair ratio: 1.981
+  Total cash: $3900.00
+  Reserve cash: $3800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1171 ---
+  Price: $458511.99
+  Fair value: $226757.14
+  Price/Fair ratio: 2.022
+  Total cash: $4000.00
+  Reserve cash: $3900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1201 ---
+  Price: $430516.39
+  Fair value: $230753.97
+  Price/Fair ratio: 1.866
+  Total cash: $4100.00
+  Reserve cash: $4000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1231 ---
+  Price: $431819.13
+  Fair value: $234804.28
+  Price/Fair ratio: 1.839
+  Total cash: $4200.00
+  Reserve cash: $4100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1261 ---
+  Price: $423821.96
+  Fair value: $238908.57
+  Price/Fair ratio: 1.774
+  Total cash: $4300.00
+  Reserve cash: $4200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1291 ---
+  Price: $455880.91
+  Fair value: $243067.32
+  Price/Fair ratio: 1.876
+  Total cash: $4400.00
+  Reserve cash: $4300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1321 ---
+  Price: $417339.16
+  Fair value: $247281.05
+  Price/Fair ratio: 1.688
+  Total cash: $4500.00
+  Reserve cash: $4400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1351 ---
+  Price: $507985.61
+  Fair value: $251550.23
+  Price/Fair ratio: 2.019
+  Total cash: $4600.00
+  Reserve cash: $4500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1381 ---
+  Price: $482393.11
+  Fair value: $255875.38
+  Price/Fair ratio: 1.885
+  Total cash: $4700.00
+  Reserve cash: $4600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1411 ---
+  Price: $500579.16
+  Fair value: $260256.99
+  Price/Fair ratio: 1.923
+  Total cash: $4800.00
+  Reserve cash: $4700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1441 ---
+  Price: $494601.86
+  Fair value: $264695.57
+  Price/Fair ratio: 1.869
+  Total cash: $4900.00
+  Reserve cash: $4800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1471 ---
+  Price: $476072.25
+  Fair value: $269191.63
+  Price/Fair ratio: 1.769
+  Total cash: $5000.00
+  Reserve cash: $4900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1501 ---
+  Price: $533758.07
+  Fair value: $273745.69
+  Price/Fair ratio: 1.950
+  Total cash: $5100.00
+  Reserve cash: $5000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1531 ---
+  Price: $544387.16
+  Fair value: $278358.24
+  Price/Fair ratio: 1.956
+  Total cash: $5200.00
+  Reserve cash: $5100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1561 ---
+  Price: $593404.94
+  Fair value: $283029.81
+  Price/Fair ratio: 2.097
+  Total cash: $5300.00
+  Reserve cash: $5200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1591 ---
+  Price: $611807.47
+  Fair value: $287760.92
+  Price/Fair ratio: 2.126
+  Total cash: $5400.00
+  Reserve cash: $5300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1621 ---
+  Price: $574936.51
+  Fair value: $292552.08
+  Price/Fair ratio: 1.965
+  Total cash: $5500.00
+  Reserve cash: $5400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1651 ---
+  Price: $652151.88
+  Fair value: $297403.82
+  Price/Fair ratio: 2.193
+  Total cash: $5600.00
+  Reserve cash: $5500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1681 ---
+  Price: $677422.12
+  Fair value: $302316.66
+  Price/Fair ratio: 2.241
+  Total cash: $5700.00
+  Reserve cash: $5600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1711 ---
+  Price: $678567.14
+  Fair value: $307291.13
+  Price/Fair ratio: 2.208
+  Total cash: $5800.00
+  Reserve cash: $5700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1741 ---
+  Price: $746756.31
+  Fair value: $312327.76
+  Price/Fair ratio: 2.391
+  Total cash: $5900.00
+  Reserve cash: $5800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1771 ---
+  Price: $780666.50
+  Fair value: $317427.09
+  Price/Fair ratio: 2.459
+  Total cash: $6000.00
+  Reserve cash: $5900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1801 ---
+  Price: $787156.31
+  Fair value: $322589.64
+  Price/Fair ratio: 2.440
+  Total cash: $6100.00
+  Reserve cash: $6000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1831 ---
+  Price: $828956.96
+  Fair value: $327815.97
+  Price/Fair ratio: 2.529
+  Total cash: $6200.00
+  Reserve cash: $6100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1861 ---
+  Price: $818448.15
+  Fair value: $333106.59
+  Price/Fair ratio: 2.457
+  Total cash: $6300.00
+  Reserve cash: $6200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1891 ---
+  Price: $764108.33
+  Fair value: $338462.07
+  Price/Fair ratio: 2.258
+  Total cash: $6400.00
+  Reserve cash: $6300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1921 ---
+  Price: $783457.57
+  Fair value: $343882.94
+  Price/Fair ratio: 2.278
+  Total cash: $6500.00
+  Reserve cash: $6400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1951 ---
+  Price: $791672.97
+  Fair value: $349369.75
+  Price/Fair ratio: 2.266
+  Total cash: $6600.00
+  Reserve cash: $6500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1981 ---
+  Price: $795817.59
+  Fair value: $354923.05
+  Price/Fair ratio: 2.242
+  Total cash: $6700.00
+  Reserve cash: $6600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2011 ---
+  Price: $818531.27
+  Fair value: $360543.39
+  Price/Fair ratio: 2.270
+  Total cash: $6800.00
+  Reserve cash: $6700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2041 ---
+  Price: $917162.38
+  Fair value: $366231.34
+  Price/Fair ratio: 2.504
+  Total cash: $6900.00
+  Reserve cash: $6800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2071 ---
+  Price: $1092999.46
+  Fair value: $371987.44
+  Price/Fair ratio: 2.938
+  Total cash: $7000.00
+  Reserve cash: $6900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2101 ---
+  Price: $1281300.44
+  Fair value: $377812.25
+  Price/Fair ratio: 3.391
+  Total cash: $7100.00
+  Reserve cash: $7000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2131 ---
+  Price: $1179408.70
+  Fair value: $383706.35
+  Price/Fair ratio: 3.074
+  Total cash: $7200.00
+  Reserve cash: $7100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2161 ---
+  Price: $1179574.48
+  Fair value: $389670.29
+  Price/Fair ratio: 3.027
+  Total cash: $7300.00
+  Reserve cash: $7200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2191 ---
+  Price: $1374406.15
+  Fair value: $395704.64
+  Price/Fair ratio: 3.473
+  Total cash: $7400.00
+  Reserve cash: $7300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2221 ---
+  Price: $1401109.73
+  Fair value: $401809.98
+  Price/Fair ratio: 3.487
+  Total cash: $7500.00
+  Reserve cash: $7400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2251 ---
+  Price: $1316826.31
+  Fair value: $407986.86
+  Price/Fair ratio: 3.228
+  Total cash: $7600.00
+  Reserve cash: $7500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2281 ---
+  Price: $1201523.92
+  Fair value: $414235.88
+  Price/Fair ratio: 2.901
+  Total cash: $7700.00
+  Reserve cash: $7600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2311 ---
+  Price: $1208695.33
+  Fair value: $420557.61
+  Price/Fair ratio: 2.874
+  Total cash: $7800.00
+  Reserve cash: $7700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2341 ---
+  Price: $1213027.18
+  Fair value: $426952.62
+  Price/Fair ratio: 2.841
+  Total cash: $7900.00
+  Reserve cash: $7800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2371 ---
+  Price: $1350515.28
+  Fair value: $433421.50
+  Price/Fair ratio: 3.116
+  Total cash: $8000.00
+  Reserve cash: $7900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2401 ---
+  Price: $1393964.13
+  Fair value: $439964.84
+  Price/Fair ratio: 3.168
+  Total cash: $8100.00
+  Reserve cash: $8000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2431 ---
+  Price: $1402943.12
+  Fair value: $446583.22
+  Price/Fair ratio: 3.142
+  Total cash: $8200.00
+  Reserve cash: $8100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2461 ---
+  Price: $1377476.91
+  Fair value: $453277.23
+  Price/Fair ratio: 3.039
+  Total cash: $8300.00
+  Reserve cash: $8200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2491 ---
+  Price: $1291893.63
+  Fair value: $460047.47
+  Price/Fair ratio: 2.808
+  Total cash: $8400.00
+  Reserve cash: $8300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2521 ---
+  Price: $1383934.77
+  Fair value: $466894.54
+  Price/Fair ratio: 2.964
+  Total cash: $8500.00
+  Reserve cash: $8400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2551 ---
+  Price: $1383774.65
+  Fair value: $473819.02
+  Price/Fair ratio: 2.920
+  Total cash: $8600.00
+  Reserve cash: $8500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2581 ---
+  Price: $1476925.41
+  Fair value: $480821.52
+  Price/Fair ratio: 3.072
+  Total cash: $8700.00
+  Reserve cash: $8600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2611 ---
+  Price: $1558769.88
+  Fair value: $487902.65
+  Price/Fair ratio: 3.195
+  Total cash: $8800.00
+  Reserve cash: $8700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2641 ---
+  Price: $1618454.12
+  Fair value: $495063.00
+  Price/Fair ratio: 3.269
+  Total cash: $8900.00
+  Reserve cash: $8800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2671 ---
+  Price: $1653264.57
+  Fair value: $502303.19
+  Price/Fair ratio: 3.291
+  Total cash: $9000.00
+  Reserve cash: $8900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2701 ---
+  Price: $1762321.84
+  Fair value: $509623.83
+  Price/Fair ratio: 3.458
+  Total cash: $9100.00
+  Reserve cash: $9000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2731 ---
+  Price: $1696369.27
+  Fair value: $517025.53
+  Price/Fair ratio: 3.281
+  Total cash: $9200.00
+  Reserve cash: $9100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2761 ---
+  Price: $1754412.55
+  Fair value: $524508.90
+  Price/Fair ratio: 3.345
+  Total cash: $9300.00
+  Reserve cash: $9200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2791 ---
+  Price: $1871122.84
+  Fair value: $532074.57
+  Price/Fair ratio: 3.517
+  Total cash: $9400.00
+  Reserve cash: $9300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2821 ---
+  Price: $1963792.32
+  Fair value: $539723.15
+  Price/Fair ratio: 3.639
+  Total cash: $9500.00
+  Reserve cash: $9400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2851 ---
+  Price: $1989094.81
+  Fair value: $547455.28
+  Price/Fair ratio: 3.633
+  Total cash: $9600.00
+  Reserve cash: $9500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2881 ---
+  Price: $1989011.00
+  Fair value: $555271.56
+  Price/Fair ratio: 3.582
+  Total cash: $9700.00
+  Reserve cash: $9600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2911 ---
+  Price: $2006216.83
+  Fair value: $563172.64
+  Price/Fair ratio: 3.562
+  Total cash: $9800.00
+  Reserve cash: $9700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2941 ---
+  Price: $2037548.39
+  Fair value: $571159.14
+  Price/Fair ratio: 3.567
+  Total cash: $9900.00
+  Reserve cash: $9800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2971 ---
+  Price: $2005432.22
+  Fair value: $579231.71
+  Price/Fair ratio: 3.462
+  Total cash: $10000.00
+  Reserve cash: $9900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3001 ---
+  Price: $2099786.63
+  Fair value: $587390.96
+  Price/Fair ratio: 3.575
+  Total cash: $10100.00
+  Reserve cash: $10000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3031 ---
+  Price: $2205102.95
+  Fair value: $595637.55
+  Price/Fair ratio: 3.702
+  Total cash: $10200.00
+  Reserve cash: $10100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3061 ---
+  Price: $2190431.02
+  Fair value: $603972.11
+  Price/Fair ratio: 3.627
+  Total cash: $10300.00
+  Reserve cash: $10200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3091 ---
+  Price: $2272423.54
+  Fair value: $612395.28
+  Price/Fair ratio: 3.711
+  Total cash: $10400.00
+  Reserve cash: $10300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3121 ---
+  Price: $2216945.75
+  Fair value: $620907.73
+  Price/Fair ratio: 3.570
+  Total cash: $10500.00
+  Reserve cash: $10400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3151 ---
+  Price: $2265755.66
+  Fair value: $629510.08
+  Price/Fair ratio: 3.599
+  Total cash: $10600.00
+  Reserve cash: $10500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3181 ---
+  Price: $2353762.54
+  Fair value: $638203.00
+  Price/Fair ratio: 3.688
+  Total cash: $10700.00
+  Reserve cash: $10600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3211 ---
+  Price: $2411312.96
+  Fair value: $646987.14
+  Price/Fair ratio: 3.727
+  Total cash: $10800.00
+  Reserve cash: $10700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3241 ---
+  Price: $2591480.97
+  Fair value: $655863.15
+  Price/Fair ratio: 3.951
+  Total cash: $10900.00
+  Reserve cash: $10800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3271 ---
+  Price: $2769958.19
+  Fair value: $664831.70
+  Price/Fair ratio: 4.166
+  Total cash: $11000.00
+  Reserve cash: $10900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3301 ---
+  Price: $3083227.13
+  Fair value: $673893.45
+  Price/Fair ratio: 4.575
+  Total cash: $11100.00
+  Reserve cash: $11000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3331 ---
+  Price: $3030893.09
+  Fair value: $683049.05
+  Price/Fair ratio: 4.437
+  Total cash: $11200.00
+  Reserve cash: $11100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3361 ---
+  Price: $3130075.84
+  Fair value: $692299.19
+  Price/Fair ratio: 4.521
+  Total cash: $11300.00
+  Reserve cash: $11200.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3391 ---
+  Price: $3423713.98
+  Fair value: $701644.52
+  Price/Fair ratio: 4.880
+  Total cash: $11400.00
+  Reserve cash: $11300.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3421 ---
+  Price: $3504415.30
+  Fair value: $711085.72
+  Price/Fair ratio: 4.928
+  Total cash: $11500.00
+  Reserve cash: $11400.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3451 ---
+  Price: $3477779.78
+  Fair value: $720623.47
+  Price/Fair ratio: 4.826
+  Total cash: $11600.00
+  Reserve cash: $11500.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3481 ---
+  Price: $3482627.31
+  Fair value: $730258.43
+  Price/Fair ratio: 4.769
+  Total cash: $11700.00
+  Reserve cash: $11600.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3511 ---
+  Price: $3218015.87
+  Fair value: $739991.30
+  Price/Fair ratio: 4.349
+  Total cash: $11800.00
+  Reserve cash: $11700.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3541 ---
+  Price: $3158635.60
+  Fair value: $749822.76
+  Price/Fair ratio: 4.213
+  Total cash: $11900.00
+  Reserve cash: $11800.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3571 ---
+  Price: $3111590.26
+  Fair value: $759753.49
+  Price/Fair ratio: 4.096
+  Total cash: $12000.00
+  Reserve cash: $11900.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3601 ---
+  Price: $3164711.52
+  Fair value: $769784.17
+  Price/Fair ratio: 4.111
+  Total cash: $12100.00
+  Reserve cash: $12000.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3631 ---
+  Price: $3082854.37
+  Fair value: $779915.50
+  Price/Fair ratio: 3.953
+  Total cash: $12200.00
+  Reserve cash: $12100.00
+  Current BTC: 0.000994
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Final Day (Remaining Reserve) ---
+  Price: $3066759.52
+  Fair value: $788093.50
+  Price/Fair ratio: 3.891
+  Total cash: $12200.00
+  Reserve cash: $12100.00
+  Current BTC: 0.004940
+  FINAL RESERVE TRADE: $12100.00 -> 0.003946 BTC
+
+=== FINAL RESULTS ===
+Total BTC: 0.004940
+Final price: $3066759.52
+Final value: $15149.29
+Total invested: $12200.00
+Return: 24.17%
+Uninvested cash: $0.00
+
+============================================================
+VERIFYING PATH 2
+============================================================
+
+=== 3-TIER RESERVE STRATEGY VERIFICATION ===
+Monthly amount: $100
+Reserve ratio: 100.0%
+Buy thresholds: [0.96, 0.94, 0.92]
+Buy allocations: [1.0, 0.0, 0.0]
+Price path length: 3654 months
+
+Monthly breakdown:
+  DCA portion: $0.00 (0.0%)
+  Reserve portion: $100.00 (100.0%)
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1 ---
+  Price: $107641.78
+  Fair value: $107641.78
+  Price/Fair ratio: 1.000
+  Total cash: $100.00
+  Reserve cash: $100.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Day 13 ---
+  Price: $103160.87
+  Fair value: $108544.53
+  Price/Fair ratio: 0.950
+  Total cash: $100.00
+  Reserve cash: $0.00
+  Current BTC: 0.000969
+  RESERVE TRADE (Tier 1): $100.00 -> 0.000969 BTC
+
+--- MONTHLY RESERVE ACCUMULATION: Day 31 ---
+  Price: $116320.17
+  Fair value: $109909.47
+  Price/Fair ratio: 1.058
+  Total cash: $200.00
+  Reserve cash: $100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 61 ---
+  Price: $93412.23
+  Fair value: $112213.39
+  Price/Fair ratio: 0.832
+  Total cash: $300.00
+  Reserve cash: $200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 91 ---
+  Price: $70955.13
+  Fair value: $114553.96
+  Price/Fair ratio: 0.619
+  Total cash: $400.00
+  Reserve cash: $300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 121 ---
+  Price: $78704.14
+  Fair value: $116931.56
+  Price/Fair ratio: 0.673
+  Total cash: $500.00
+  Reserve cash: $400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 151 ---
+  Price: $71603.91
+  Fair value: $119346.60
+  Price/Fair ratio: 0.600
+  Total cash: $600.00
+  Reserve cash: $500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 181 ---
+  Price: $76085.55
+  Fair value: $121799.48
+  Price/Fair ratio: 0.625
+  Total cash: $700.00
+  Reserve cash: $600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 211 ---
+  Price: $73076.06
+  Fair value: $124290.60
+  Price/Fair ratio: 0.588
+  Total cash: $800.00
+  Reserve cash: $700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 241 ---
+  Price: $69877.85
+  Fair value: $126820.39
+  Price/Fair ratio: 0.551
+  Total cash: $900.00
+  Reserve cash: $800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 271 ---
+  Price: $71821.22
+  Fair value: $129389.24
+  Price/Fair ratio: 0.555
+  Total cash: $1000.00
+  Reserve cash: $900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 301 ---
+  Price: $82018.64
+  Fair value: $131997.57
+  Price/Fair ratio: 0.621
+  Total cash: $1100.00
+  Reserve cash: $1000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 331 ---
+  Price: $89373.86
+  Fair value: $134645.80
+  Price/Fair ratio: 0.664
+  Total cash: $1200.00
+  Reserve cash: $1100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 361 ---
+  Price: $102101.84
+  Fair value: $137334.35
+  Price/Fair ratio: 0.743
+  Total cash: $1300.00
+  Reserve cash: $1200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 391 ---
+  Price: $106225.23
+  Fair value: $140063.62
+  Price/Fair ratio: 0.758
+  Total cash: $1400.00
+  Reserve cash: $1300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 421 ---
+  Price: $124466.78
+  Fair value: $142834.06
+  Price/Fair ratio: 0.871
+  Total cash: $1500.00
+  Reserve cash: $1400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 451 ---
+  Price: $143866.76
+  Fair value: $145646.08
+  Price/Fair ratio: 0.988
+  Total cash: $1600.00
+  Reserve cash: $1500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 481 ---
+  Price: $130904.60
+  Fair value: $148500.11
+  Price/Fair ratio: 0.882
+  Total cash: $1700.00
+  Reserve cash: $1600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 511 ---
+  Price: $119915.92
+  Fair value: $151396.58
+  Price/Fair ratio: 0.792
+  Total cash: $1800.00
+  Reserve cash: $1700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 541 ---
+  Price: $99581.31
+  Fair value: $154335.92
+  Price/Fair ratio: 0.645
+  Total cash: $1900.00
+  Reserve cash: $1800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 571 ---
+  Price: $97468.03
+  Fair value: $157318.57
+  Price/Fair ratio: 0.620
+  Total cash: $2000.00
+  Reserve cash: $1900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 601 ---
+  Price: $89436.83
+  Fair value: $160344.96
+  Price/Fair ratio: 0.558
+  Total cash: $2100.00
+  Reserve cash: $2000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 631 ---
+  Price: $93084.91
+  Fair value: $163415.54
+  Price/Fair ratio: 0.570
+  Total cash: $2200.00
+  Reserve cash: $2100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 661 ---
+  Price: $104574.60
+  Fair value: $166530.75
+  Price/Fair ratio: 0.628
+  Total cash: $2300.00
+  Reserve cash: $2200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 691 ---
+  Price: $102107.95
+  Fair value: $169691.03
+  Price/Fair ratio: 0.602
+  Total cash: $2400.00
+  Reserve cash: $2300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 721 ---
+  Price: $94707.44
+  Fair value: $172896.82
+  Price/Fair ratio: 0.548
+  Total cash: $2500.00
+  Reserve cash: $2400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 751 ---
+  Price: $95524.12
+  Fair value: $176148.58
+  Price/Fair ratio: 0.542
+  Total cash: $2600.00
+  Reserve cash: $2500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 781 ---
+  Price: $99615.61
+  Fair value: $179446.76
+  Price/Fair ratio: 0.555
+  Total cash: $2700.00
+  Reserve cash: $2600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 811 ---
+  Price: $100124.01
+  Fair value: $182791.82
+  Price/Fair ratio: 0.548
+  Total cash: $2800.00
+  Reserve cash: $2700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 841 ---
+  Price: $98653.19
+  Fair value: $186184.20
+  Price/Fair ratio: 0.530
+  Total cash: $2900.00
+  Reserve cash: $2800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 871 ---
+  Price: $93774.02
+  Fair value: $189624.37
+  Price/Fair ratio: 0.495
+  Total cash: $3000.00
+  Reserve cash: $2900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 901 ---
+  Price: $94634.24
+  Fair value: $193112.79
+  Price/Fair ratio: 0.490
+  Total cash: $3100.00
+  Reserve cash: $3000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 931 ---
+  Price: $100958.13
+  Fair value: $196649.93
+  Price/Fair ratio: 0.513
+  Total cash: $3200.00
+  Reserve cash: $3100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 961 ---
+  Price: $87755.70
+  Fair value: $200236.24
+  Price/Fair ratio: 0.438
+  Total cash: $3300.00
+  Reserve cash: $3200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 991 ---
+  Price: $84204.39
+  Fair value: $203872.20
+  Price/Fair ratio: 0.413
+  Total cash: $3400.00
+  Reserve cash: $3300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1021 ---
+  Price: $79015.79
+  Fair value: $207558.28
+  Price/Fair ratio: 0.381
+  Total cash: $3500.00
+  Reserve cash: $3400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1051 ---
+  Price: $75539.98
+  Fair value: $211294.96
+  Price/Fair ratio: 0.358
+  Total cash: $3600.00
+  Reserve cash: $3500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1081 ---
+  Price: $82693.60
+  Fair value: $215082.70
+  Price/Fair ratio: 0.384
+  Total cash: $3700.00
+  Reserve cash: $3600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1111 ---
+  Price: $81033.90
+  Fair value: $218921.99
+  Price/Fair ratio: 0.370
+  Total cash: $3800.00
+  Reserve cash: $3700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1141 ---
+  Price: $85218.08
+  Fair value: $222813.31
+  Price/Fair ratio: 0.382
+  Total cash: $3900.00
+  Reserve cash: $3800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1171 ---
+  Price: $77521.05
+  Fair value: $226757.14
+  Price/Fair ratio: 0.342
+  Total cash: $4000.00
+  Reserve cash: $3900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1201 ---
+  Price: $83897.22
+  Fair value: $230753.97
+  Price/Fair ratio: 0.364
+  Total cash: $4100.00
+  Reserve cash: $4000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1231 ---
+  Price: $85940.46
+  Fair value: $234804.28
+  Price/Fair ratio: 0.366
+  Total cash: $4200.00
+  Reserve cash: $4100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1261 ---
+  Price: $91001.91
+  Fair value: $238908.57
+  Price/Fair ratio: 0.381
+  Total cash: $4300.00
+  Reserve cash: $4200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1291 ---
+  Price: $76745.50
+  Fair value: $243067.32
+  Price/Fair ratio: 0.316
+  Total cash: $4400.00
+  Reserve cash: $4300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1321 ---
+  Price: $80085.70
+  Fair value: $247281.05
+  Price/Fair ratio: 0.324
+  Total cash: $4500.00
+  Reserve cash: $4400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1351 ---
+  Price: $77006.27
+  Fair value: $251550.23
+  Price/Fair ratio: 0.306
+  Total cash: $4600.00
+  Reserve cash: $4500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1381 ---
+  Price: $81882.37
+  Fair value: $255875.38
+  Price/Fair ratio: 0.320
+  Total cash: $4700.00
+  Reserve cash: $4600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1411 ---
+  Price: $81230.67
+  Fair value: $260256.99
+  Price/Fair ratio: 0.312
+  Total cash: $4800.00
+  Reserve cash: $4700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1441 ---
+  Price: $84119.56
+  Fair value: $264695.57
+  Price/Fair ratio: 0.318
+  Total cash: $4900.00
+  Reserve cash: $4800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1471 ---
+  Price: $85286.05
+  Fair value: $269191.63
+  Price/Fair ratio: 0.317
+  Total cash: $5000.00
+  Reserve cash: $4900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1501 ---
+  Price: $75130.26
+  Fair value: $273745.69
+  Price/Fair ratio: 0.274
+  Total cash: $5100.00
+  Reserve cash: $5000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1531 ---
+  Price: $72276.48
+  Fair value: $278358.24
+  Price/Fair ratio: 0.260
+  Total cash: $5200.00
+  Reserve cash: $5100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1561 ---
+  Price: $84036.65
+  Fair value: $283029.81
+  Price/Fair ratio: 0.297
+  Total cash: $5300.00
+  Reserve cash: $5200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1591 ---
+  Price: $91278.66
+  Fair value: $287760.92
+  Price/Fair ratio: 0.317
+  Total cash: $5400.00
+  Reserve cash: $5300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1621 ---
+  Price: $98456.93
+  Fair value: $292552.08
+  Price/Fair ratio: 0.337
+  Total cash: $5500.00
+  Reserve cash: $5400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1651 ---
+  Price: $84674.14
+  Fair value: $297403.82
+  Price/Fair ratio: 0.285
+  Total cash: $5600.00
+  Reserve cash: $5500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1681 ---
+  Price: $81258.24
+  Fair value: $302316.66
+  Price/Fair ratio: 0.269
+  Total cash: $5700.00
+  Reserve cash: $5600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1711 ---
+  Price: $90359.27
+  Fair value: $307291.13
+  Price/Fair ratio: 0.294
+  Total cash: $5800.00
+  Reserve cash: $5700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1741 ---
+  Price: $93908.25
+  Fair value: $312327.76
+  Price/Fair ratio: 0.301
+  Total cash: $5900.00
+  Reserve cash: $5800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1771 ---
+  Price: $104685.60
+  Fair value: $317427.09
+  Price/Fair ratio: 0.330
+  Total cash: $6000.00
+  Reserve cash: $5900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1801 ---
+  Price: $111675.35
+  Fair value: $322589.64
+  Price/Fair ratio: 0.346
+  Total cash: $6100.00
+  Reserve cash: $6000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1831 ---
+  Price: $104634.23
+  Fair value: $327815.97
+  Price/Fair ratio: 0.319
+  Total cash: $6200.00
+  Reserve cash: $6100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1861 ---
+  Price: $95529.83
+  Fair value: $333106.59
+  Price/Fair ratio: 0.287
+  Total cash: $6300.00
+  Reserve cash: $6200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1891 ---
+  Price: $90413.08
+  Fair value: $338462.07
+  Price/Fair ratio: 0.267
+  Total cash: $6400.00
+  Reserve cash: $6300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1921 ---
+  Price: $107313.11
+  Fair value: $343882.94
+  Price/Fair ratio: 0.312
+  Total cash: $6500.00
+  Reserve cash: $6400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1951 ---
+  Price: $114794.70
+  Fair value: $349369.75
+  Price/Fair ratio: 0.329
+  Total cash: $6600.00
+  Reserve cash: $6500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1981 ---
+  Price: $123843.38
+  Fair value: $354923.05
+  Price/Fair ratio: 0.349
+  Total cash: $6700.00
+  Reserve cash: $6600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2011 ---
+  Price: $125555.79
+  Fair value: $360543.39
+  Price/Fair ratio: 0.348
+  Total cash: $6800.00
+  Reserve cash: $6700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2041 ---
+  Price: $127670.28
+  Fair value: $366231.34
+  Price/Fair ratio: 0.349
+  Total cash: $6900.00
+  Reserve cash: $6800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2071 ---
+  Price: $129545.11
+  Fair value: $371987.44
+  Price/Fair ratio: 0.348
+  Total cash: $7000.00
+  Reserve cash: $6900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2101 ---
+  Price: $132209.89
+  Fair value: $377812.25
+  Price/Fair ratio: 0.350
+  Total cash: $7100.00
+  Reserve cash: $7000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2131 ---
+  Price: $132572.88
+  Fair value: $383706.35
+  Price/Fair ratio: 0.346
+  Total cash: $7200.00
+  Reserve cash: $7100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2161 ---
+  Price: $112144.64
+  Fair value: $389670.29
+  Price/Fair ratio: 0.288
+  Total cash: $7300.00
+  Reserve cash: $7200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2191 ---
+  Price: $102791.37
+  Fair value: $395704.64
+  Price/Fair ratio: 0.260
+  Total cash: $7400.00
+  Reserve cash: $7300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2221 ---
+  Price: $109228.89
+  Fair value: $401809.98
+  Price/Fair ratio: 0.272
+  Total cash: $7500.00
+  Reserve cash: $7400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2251 ---
+  Price: $98847.20
+  Fair value: $407986.86
+  Price/Fair ratio: 0.242
+  Total cash: $7600.00
+  Reserve cash: $7500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2281 ---
+  Price: $96628.69
+  Fair value: $414235.88
+  Price/Fair ratio: 0.233
+  Total cash: $7700.00
+  Reserve cash: $7600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2311 ---
+  Price: $99149.11
+  Fair value: $420557.61
+  Price/Fair ratio: 0.236
+  Total cash: $7800.00
+  Reserve cash: $7700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2341 ---
+  Price: $98266.21
+  Fair value: $426952.62
+  Price/Fair ratio: 0.230
+  Total cash: $7900.00
+  Reserve cash: $7800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2371 ---
+  Price: $105364.23
+  Fair value: $433421.50
+  Price/Fair ratio: 0.243
+  Total cash: $8000.00
+  Reserve cash: $7900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2401 ---
+  Price: $106361.40
+  Fair value: $439964.84
+  Price/Fair ratio: 0.242
+  Total cash: $8100.00
+  Reserve cash: $8000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2431 ---
+  Price: $98813.62
+  Fair value: $446583.22
+  Price/Fair ratio: 0.221
+  Total cash: $8200.00
+  Reserve cash: $8100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2461 ---
+  Price: $103342.71
+  Fair value: $453277.23
+  Price/Fair ratio: 0.228
+  Total cash: $8300.00
+  Reserve cash: $8200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2491 ---
+  Price: $101312.18
+  Fair value: $460047.47
+  Price/Fair ratio: 0.220
+  Total cash: $8400.00
+  Reserve cash: $8300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2521 ---
+  Price: $97808.41
+  Fair value: $466894.54
+  Price/Fair ratio: 0.209
+  Total cash: $8500.00
+  Reserve cash: $8400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2551 ---
+  Price: $109959.71
+  Fair value: $473819.02
+  Price/Fair ratio: 0.232
+  Total cash: $8600.00
+  Reserve cash: $8500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2581 ---
+  Price: $116670.42
+  Fair value: $480821.52
+  Price/Fair ratio: 0.243
+  Total cash: $8700.00
+  Reserve cash: $8600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2611 ---
+  Price: $134326.27
+  Fair value: $487902.65
+  Price/Fair ratio: 0.275
+  Total cash: $8800.00
+  Reserve cash: $8700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2641 ---
+  Price: $128220.81
+  Fair value: $495063.00
+  Price/Fair ratio: 0.259
+  Total cash: $8900.00
+  Reserve cash: $8800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2671 ---
+  Price: $130458.84
+  Fair value: $502303.19
+  Price/Fair ratio: 0.260
+  Total cash: $9000.00
+  Reserve cash: $8900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2701 ---
+  Price: $136439.59
+  Fair value: $509623.83
+  Price/Fair ratio: 0.268
+  Total cash: $9100.00
+  Reserve cash: $9000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2731 ---
+  Price: $139254.39
+  Fair value: $517025.53
+  Price/Fair ratio: 0.269
+  Total cash: $9200.00
+  Reserve cash: $9100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2761 ---
+  Price: $133347.63
+  Fair value: $524508.90
+  Price/Fair ratio: 0.254
+  Total cash: $9300.00
+  Reserve cash: $9200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2791 ---
+  Price: $132278.56
+  Fair value: $532074.57
+  Price/Fair ratio: 0.249
+  Total cash: $9400.00
+  Reserve cash: $9300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2821 ---
+  Price: $127014.95
+  Fair value: $539723.15
+  Price/Fair ratio: 0.235
+  Total cash: $9500.00
+  Reserve cash: $9400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2851 ---
+  Price: $122002.58
+  Fair value: $547455.28
+  Price/Fair ratio: 0.223
+  Total cash: $9600.00
+  Reserve cash: $9500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2881 ---
+  Price: $122423.13
+  Fair value: $555271.56
+  Price/Fair ratio: 0.220
+  Total cash: $9700.00
+  Reserve cash: $9600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2911 ---
+  Price: $123517.18
+  Fair value: $563172.64
+  Price/Fair ratio: 0.219
+  Total cash: $9800.00
+  Reserve cash: $9700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2941 ---
+  Price: $107724.14
+  Fair value: $571159.14
+  Price/Fair ratio: 0.189
+  Total cash: $9900.00
+  Reserve cash: $9800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2971 ---
+  Price: $118650.76
+  Fair value: $579231.71
+  Price/Fair ratio: 0.205
+  Total cash: $10000.00
+  Reserve cash: $9900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3001 ---
+  Price: $133152.81
+  Fair value: $587390.96
+  Price/Fair ratio: 0.227
+  Total cash: $10100.00
+  Reserve cash: $10000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3031 ---
+  Price: $131650.28
+  Fair value: $595637.55
+  Price/Fair ratio: 0.221
+  Total cash: $10200.00
+  Reserve cash: $10100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3061 ---
+  Price: $127787.11
+  Fair value: $603972.11
+  Price/Fair ratio: 0.212
+  Total cash: $10300.00
+  Reserve cash: $10200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3091 ---
+  Price: $142727.60
+  Fair value: $612395.28
+  Price/Fair ratio: 0.233
+  Total cash: $10400.00
+  Reserve cash: $10300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3121 ---
+  Price: $139088.79
+  Fair value: $620907.73
+  Price/Fair ratio: 0.224
+  Total cash: $10500.00
+  Reserve cash: $10400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3151 ---
+  Price: $145036.28
+  Fair value: $629510.08
+  Price/Fair ratio: 0.230
+  Total cash: $10600.00
+  Reserve cash: $10500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3181 ---
+  Price: $140475.35
+  Fair value: $638203.00
+  Price/Fair ratio: 0.220
+  Total cash: $10700.00
+  Reserve cash: $10600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3211 ---
+  Price: $139779.28
+  Fair value: $646987.14
+  Price/Fair ratio: 0.216
+  Total cash: $10800.00
+  Reserve cash: $10700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3241 ---
+  Price: $141141.56
+  Fair value: $655863.15
+  Price/Fair ratio: 0.215
+  Total cash: $10900.00
+  Reserve cash: $10800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3271 ---
+  Price: $139303.37
+  Fair value: $664831.70
+  Price/Fair ratio: 0.210
+  Total cash: $11000.00
+  Reserve cash: $10900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3301 ---
+  Price: $143756.40
+  Fair value: $673893.45
+  Price/Fair ratio: 0.213
+  Total cash: $11100.00
+  Reserve cash: $11000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3331 ---
+  Price: $139883.45
+  Fair value: $683049.05
+  Price/Fair ratio: 0.205
+  Total cash: $11200.00
+  Reserve cash: $11100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3361 ---
+  Price: $134129.61
+  Fair value: $692299.19
+  Price/Fair ratio: 0.194
+  Total cash: $11300.00
+  Reserve cash: $11200.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3391 ---
+  Price: $123681.63
+  Fair value: $701644.52
+  Price/Fair ratio: 0.176
+  Total cash: $11400.00
+  Reserve cash: $11300.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3421 ---
+  Price: $127714.55
+  Fair value: $711085.72
+  Price/Fair ratio: 0.180
+  Total cash: $11500.00
+  Reserve cash: $11400.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3451 ---
+  Price: $119430.77
+  Fair value: $720623.47
+  Price/Fair ratio: 0.166
+  Total cash: $11600.00
+  Reserve cash: $11500.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3481 ---
+  Price: $118450.03
+  Fair value: $730258.43
+  Price/Fair ratio: 0.162
+  Total cash: $11700.00
+  Reserve cash: $11600.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3511 ---
+  Price: $119812.98
+  Fair value: $739991.30
+  Price/Fair ratio: 0.162
+  Total cash: $11800.00
+  Reserve cash: $11700.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3541 ---
+  Price: $117861.91
+  Fair value: $749822.76
+  Price/Fair ratio: 0.157
+  Total cash: $11900.00
+  Reserve cash: $11800.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3571 ---
+  Price: $125880.02
+  Fair value: $759753.49
+  Price/Fair ratio: 0.166
+  Total cash: $12000.00
+  Reserve cash: $11900.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3601 ---
+  Price: $122348.79
+  Fair value: $769784.17
+  Price/Fair ratio: 0.159
+  Total cash: $12100.00
+  Reserve cash: $12000.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3631 ---
+  Price: $122932.22
+  Fair value: $779915.50
+  Price/Fair ratio: 0.158
+  Total cash: $12200.00
+  Reserve cash: $12100.00
+  Current BTC: 0.000969
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Final Day (Remaining Reserve) ---
+  Price: $140112.61
+  Fair value: $788093.50
+  Price/Fair ratio: 0.178
+  Total cash: $12200.00
+  Reserve cash: $12100.00
+  Current BTC: 0.087328
+  FINAL RESERVE TRADE: $12100.00 -> 0.086359 BTC
+
+=== FINAL RESULTS ===
+Total BTC: 0.087328
+Final price: $140112.61
+Final value: $12235.82
+Total invested: $12200.00
+Return: 0.29%
+Uninvested cash: $0.00
+
+============================================================
+VERIFYING PATH 3
+============================================================
+
+=== 3-TIER RESERVE STRATEGY VERIFICATION ===
+Monthly amount: $100
+Reserve ratio: 100.0%
+Buy thresholds: [0.96, 0.94, 0.92]
+Buy allocations: [1.0, 0.0, 0.0]
+Price path length: 3654 months
+
+Monthly breakdown:
+  DCA portion: $0.00 (0.0%)
+  Reserve portion: $100.00 (100.0%)
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1 ---
+  Price: $107641.78
+  Fair value: $107641.78
+  Price/Fair ratio: 1.000
+  Total cash: $100.00
+  Reserve cash: $100.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 31 ---
+  Price: $116369.05
+  Fair value: $109909.47
+  Price/Fair ratio: 1.059
+  Total cash: $200.00
+  Reserve cash: $200.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 61 ---
+  Price: $117596.53
+  Fair value: $112213.39
+  Price/Fair ratio: 1.048
+  Total cash: $300.00
+  Reserve cash: $300.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 91 ---
+  Price: $120848.28
+  Fair value: $114553.96
+  Price/Fair ratio: 1.055
+  Total cash: $400.00
+  Reserve cash: $400.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 121 ---
+  Price: $107898.29
+  Fair value: $116931.56
+  Price/Fair ratio: 0.923
+  Total cash: $500.00
+  Reserve cash: $500.00
+  Current BTC: 0.000000
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Day 121 ---
+  Price: $107898.29
+  Fair value: $116931.56
+  Price/Fair ratio: 0.923
+  Total cash: $500.00
+  Reserve cash: $0.00
+  Current BTC: 0.004634
+  RESERVE TRADE (Tier 1): $500.00 -> 0.004634 BTC
+
+--- MONTHLY RESERVE ACCUMULATION: Day 151 ---
+  Price: $116162.53
+  Fair value: $119346.60
+  Price/Fair ratio: 0.973
+  Total cash: $600.00
+  Reserve cash: $100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 181 ---
+  Price: $124622.37
+  Fair value: $121799.48
+  Price/Fair ratio: 1.023
+  Total cash: $700.00
+  Reserve cash: $200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 211 ---
+  Price: $113622.64
+  Fair value: $124290.60
+  Price/Fair ratio: 0.914
+  Total cash: $800.00
+  Reserve cash: $300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 241 ---
+  Price: $133527.27
+  Fair value: $126820.39
+  Price/Fair ratio: 1.053
+  Total cash: $900.00
+  Reserve cash: $400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 271 ---
+  Price: $146932.95
+  Fair value: $129389.24
+  Price/Fair ratio: 1.136
+  Total cash: $1000.00
+  Reserve cash: $500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 301 ---
+  Price: $144209.12
+  Fair value: $131997.57
+  Price/Fair ratio: 1.093
+  Total cash: $1100.00
+  Reserve cash: $600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 331 ---
+  Price: $137568.62
+  Fair value: $134645.80
+  Price/Fair ratio: 1.022
+  Total cash: $1200.00
+  Reserve cash: $700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 361 ---
+  Price: $138023.81
+  Fair value: $137334.35
+  Price/Fair ratio: 1.005
+  Total cash: $1300.00
+  Reserve cash: $800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 391 ---
+  Price: $123950.46
+  Fair value: $140063.62
+  Price/Fair ratio: 0.885
+  Total cash: $1400.00
+  Reserve cash: $900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 421 ---
+  Price: $120022.08
+  Fair value: $142834.06
+  Price/Fair ratio: 0.840
+  Total cash: $1500.00
+  Reserve cash: $1000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 451 ---
+  Price: $120916.12
+  Fair value: $145646.08
+  Price/Fair ratio: 0.830
+  Total cash: $1600.00
+  Reserve cash: $1100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 481 ---
+  Price: $148062.20
+  Fair value: $148500.11
+  Price/Fair ratio: 0.997
+  Total cash: $1700.00
+  Reserve cash: $1200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 511 ---
+  Price: $166151.37
+  Fair value: $151396.58
+  Price/Fair ratio: 1.097
+  Total cash: $1800.00
+  Reserve cash: $1300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 541 ---
+  Price: $133701.53
+  Fair value: $154335.92
+  Price/Fair ratio: 0.866
+  Total cash: $1900.00
+  Reserve cash: $1400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 571 ---
+  Price: $106335.88
+  Fair value: $157318.57
+  Price/Fair ratio: 0.676
+  Total cash: $2000.00
+  Reserve cash: $1500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 601 ---
+  Price: $127197.71
+  Fair value: $160344.96
+  Price/Fair ratio: 0.793
+  Total cash: $2100.00
+  Reserve cash: $1600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 631 ---
+  Price: $126045.61
+  Fair value: $163415.54
+  Price/Fair ratio: 0.771
+  Total cash: $2200.00
+  Reserve cash: $1700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 661 ---
+  Price: $121160.93
+  Fair value: $166530.75
+  Price/Fair ratio: 0.728
+  Total cash: $2300.00
+  Reserve cash: $1800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 691 ---
+  Price: $139581.46
+  Fair value: $169691.03
+  Price/Fair ratio: 0.823
+  Total cash: $2400.00
+  Reserve cash: $1900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 721 ---
+  Price: $144990.69
+  Fair value: $172896.82
+  Price/Fair ratio: 0.839
+  Total cash: $2500.00
+  Reserve cash: $2000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 751 ---
+  Price: $176060.64
+  Fair value: $176148.58
+  Price/Fair ratio: 1.000
+  Total cash: $2600.00
+  Reserve cash: $2100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 781 ---
+  Price: $180032.85
+  Fair value: $179446.76
+  Price/Fair ratio: 1.003
+  Total cash: $2700.00
+  Reserve cash: $2200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 811 ---
+  Price: $173165.41
+  Fair value: $182791.82
+  Price/Fair ratio: 0.947
+  Total cash: $2800.00
+  Reserve cash: $2300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 841 ---
+  Price: $153720.70
+  Fair value: $186184.20
+  Price/Fair ratio: 0.826
+  Total cash: $2900.00
+  Reserve cash: $2400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 871 ---
+  Price: $138832.64
+  Fair value: $189624.37
+  Price/Fair ratio: 0.732
+  Total cash: $3000.00
+  Reserve cash: $2500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 901 ---
+  Price: $124914.83
+  Fair value: $193112.79
+  Price/Fair ratio: 0.647
+  Total cash: $3100.00
+  Reserve cash: $2600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 931 ---
+  Price: $123926.95
+  Fair value: $196649.93
+  Price/Fair ratio: 0.630
+  Total cash: $3200.00
+  Reserve cash: $2700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 961 ---
+  Price: $109421.30
+  Fair value: $200236.24
+  Price/Fair ratio: 0.546
+  Total cash: $3300.00
+  Reserve cash: $2800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 991 ---
+  Price: $118942.98
+  Fair value: $203872.20
+  Price/Fair ratio: 0.583
+  Total cash: $3400.00
+  Reserve cash: $2900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1021 ---
+  Price: $124710.75
+  Fair value: $207558.28
+  Price/Fair ratio: 0.601
+  Total cash: $3500.00
+  Reserve cash: $3000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1051 ---
+  Price: $139903.61
+  Fair value: $211294.96
+  Price/Fair ratio: 0.662
+  Total cash: $3600.00
+  Reserve cash: $3100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1081 ---
+  Price: $139829.40
+  Fair value: $215082.70
+  Price/Fair ratio: 0.650
+  Total cash: $3700.00
+  Reserve cash: $3200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1111 ---
+  Price: $144594.18
+  Fair value: $218921.99
+  Price/Fair ratio: 0.660
+  Total cash: $3800.00
+  Reserve cash: $3300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1141 ---
+  Price: $154802.58
+  Fair value: $222813.31
+  Price/Fair ratio: 0.695
+  Total cash: $3900.00
+  Reserve cash: $3400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1171 ---
+  Price: $154580.87
+  Fair value: $226757.14
+  Price/Fair ratio: 0.682
+  Total cash: $4000.00
+  Reserve cash: $3500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1201 ---
+  Price: $132688.59
+  Fair value: $230753.97
+  Price/Fair ratio: 0.575
+  Total cash: $4100.00
+  Reserve cash: $3600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1231 ---
+  Price: $135571.79
+  Fair value: $234804.28
+  Price/Fair ratio: 0.577
+  Total cash: $4200.00
+  Reserve cash: $3700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1261 ---
+  Price: $123507.66
+  Fair value: $238908.57
+  Price/Fair ratio: 0.517
+  Total cash: $4300.00
+  Reserve cash: $3800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1291 ---
+  Price: $129489.42
+  Fair value: $243067.32
+  Price/Fair ratio: 0.533
+  Total cash: $4400.00
+  Reserve cash: $3900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1321 ---
+  Price: $123923.07
+  Fair value: $247281.05
+  Price/Fair ratio: 0.501
+  Total cash: $4500.00
+  Reserve cash: $4000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1351 ---
+  Price: $129662.24
+  Fair value: $251550.23
+  Price/Fair ratio: 0.515
+  Total cash: $4600.00
+  Reserve cash: $4100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1381 ---
+  Price: $137684.98
+  Fair value: $255875.38
+  Price/Fair ratio: 0.538
+  Total cash: $4700.00
+  Reserve cash: $4200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1411 ---
+  Price: $131676.83
+  Fair value: $260256.99
+  Price/Fair ratio: 0.506
+  Total cash: $4800.00
+  Reserve cash: $4300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1441 ---
+  Price: $132775.73
+  Fair value: $264695.57
+  Price/Fair ratio: 0.502
+  Total cash: $4900.00
+  Reserve cash: $4400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1471 ---
+  Price: $131577.96
+  Fair value: $269191.63
+  Price/Fair ratio: 0.489
+  Total cash: $5000.00
+  Reserve cash: $4500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1501 ---
+  Price: $133001.48
+  Fair value: $273745.69
+  Price/Fair ratio: 0.486
+  Total cash: $5100.00
+  Reserve cash: $4600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1531 ---
+  Price: $117482.58
+  Fair value: $278358.24
+  Price/Fair ratio: 0.422
+  Total cash: $5200.00
+  Reserve cash: $4700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1561 ---
+  Price: $136761.70
+  Fair value: $283029.81
+  Price/Fair ratio: 0.483
+  Total cash: $5300.00
+  Reserve cash: $4800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1591 ---
+  Price: $142835.09
+  Fair value: $287760.92
+  Price/Fair ratio: 0.496
+  Total cash: $5400.00
+  Reserve cash: $4900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1621 ---
+  Price: $145650.26
+  Fair value: $292552.08
+  Price/Fair ratio: 0.498
+  Total cash: $5500.00
+  Reserve cash: $5000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1651 ---
+  Price: $147170.44
+  Fair value: $297403.82
+  Price/Fair ratio: 0.495
+  Total cash: $5600.00
+  Reserve cash: $5100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1681 ---
+  Price: $146042.27
+  Fair value: $302316.66
+  Price/Fair ratio: 0.483
+  Total cash: $5700.00
+  Reserve cash: $5200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1711 ---
+  Price: $147752.81
+  Fair value: $307291.13
+  Price/Fair ratio: 0.481
+  Total cash: $5800.00
+  Reserve cash: $5300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1741 ---
+  Price: $163432.24
+  Fair value: $312327.76
+  Price/Fair ratio: 0.523
+  Total cash: $5900.00
+  Reserve cash: $5400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1771 ---
+  Price: $172245.43
+  Fair value: $317427.09
+  Price/Fair ratio: 0.543
+  Total cash: $6000.00
+  Reserve cash: $5500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1801 ---
+  Price: $162835.83
+  Fair value: $322589.64
+  Price/Fair ratio: 0.505
+  Total cash: $6100.00
+  Reserve cash: $5600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1831 ---
+  Price: $159339.49
+  Fair value: $327815.97
+  Price/Fair ratio: 0.486
+  Total cash: $6200.00
+  Reserve cash: $5700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1861 ---
+  Price: $137643.16
+  Fair value: $333106.59
+  Price/Fair ratio: 0.413
+  Total cash: $6300.00
+  Reserve cash: $5800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1891 ---
+  Price: $138153.08
+  Fair value: $338462.07
+  Price/Fair ratio: 0.408
+  Total cash: $6400.00
+  Reserve cash: $5900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1921 ---
+  Price: $130948.54
+  Fair value: $343882.94
+  Price/Fair ratio: 0.381
+  Total cash: $6500.00
+  Reserve cash: $6000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1951 ---
+  Price: $141106.57
+  Fair value: $349369.75
+  Price/Fair ratio: 0.404
+  Total cash: $6600.00
+  Reserve cash: $6100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 1981 ---
+  Price: $138559.22
+  Fair value: $354923.05
+  Price/Fair ratio: 0.390
+  Total cash: $6700.00
+  Reserve cash: $6200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2011 ---
+  Price: $133011.79
+  Fair value: $360543.39
+  Price/Fair ratio: 0.369
+  Total cash: $6800.00
+  Reserve cash: $6300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2041 ---
+  Price: $130534.58
+  Fair value: $366231.34
+  Price/Fair ratio: 0.356
+  Total cash: $6900.00
+  Reserve cash: $6400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2071 ---
+  Price: $112770.87
+  Fair value: $371987.44
+  Price/Fair ratio: 0.303
+  Total cash: $7000.00
+  Reserve cash: $6500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2101 ---
+  Price: $117440.02
+  Fair value: $377812.25
+  Price/Fair ratio: 0.311
+  Total cash: $7100.00
+  Reserve cash: $6600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2131 ---
+  Price: $121132.68
+  Fair value: $383706.35
+  Price/Fair ratio: 0.316
+  Total cash: $7200.00
+  Reserve cash: $6700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2161 ---
+  Price: $120924.98
+  Fair value: $389670.29
+  Price/Fair ratio: 0.310
+  Total cash: $7300.00
+  Reserve cash: $6800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2191 ---
+  Price: $120842.50
+  Fair value: $395704.64
+  Price/Fair ratio: 0.305
+  Total cash: $7400.00
+  Reserve cash: $6900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2221 ---
+  Price: $118571.03
+  Fair value: $401809.98
+  Price/Fair ratio: 0.295
+  Total cash: $7500.00
+  Reserve cash: $7000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2251 ---
+  Price: $115819.35
+  Fair value: $407986.86
+  Price/Fair ratio: 0.284
+  Total cash: $7600.00
+  Reserve cash: $7100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2281 ---
+  Price: $127766.10
+  Fair value: $414235.88
+  Price/Fair ratio: 0.308
+  Total cash: $7700.00
+  Reserve cash: $7200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2311 ---
+  Price: $128221.89
+  Fair value: $420557.61
+  Price/Fair ratio: 0.305
+  Total cash: $7800.00
+  Reserve cash: $7300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2341 ---
+  Price: $133299.45
+  Fair value: $426952.62
+  Price/Fair ratio: 0.312
+  Total cash: $7900.00
+  Reserve cash: $7400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2371 ---
+  Price: $127565.75
+  Fair value: $433421.50
+  Price/Fair ratio: 0.294
+  Total cash: $8000.00
+  Reserve cash: $7500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2401 ---
+  Price: $138095.81
+  Fair value: $439964.84
+  Price/Fair ratio: 0.314
+  Total cash: $8100.00
+  Reserve cash: $7600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2431 ---
+  Price: $142871.49
+  Fair value: $446583.22
+  Price/Fair ratio: 0.320
+  Total cash: $8200.00
+  Reserve cash: $7700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2461 ---
+  Price: $139469.59
+  Fair value: $453277.23
+  Price/Fair ratio: 0.308
+  Total cash: $8300.00
+  Reserve cash: $7800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2491 ---
+  Price: $137805.44
+  Fair value: $460047.47
+  Price/Fair ratio: 0.300
+  Total cash: $8400.00
+  Reserve cash: $7900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2521 ---
+  Price: $140270.65
+  Fair value: $466894.54
+  Price/Fair ratio: 0.300
+  Total cash: $8500.00
+  Reserve cash: $8000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2551 ---
+  Price: $140756.77
+  Fair value: $473819.02
+  Price/Fair ratio: 0.297
+  Total cash: $8600.00
+  Reserve cash: $8100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2581 ---
+  Price: $133873.76
+  Fair value: $480821.52
+  Price/Fair ratio: 0.278
+  Total cash: $8700.00
+  Reserve cash: $8200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2611 ---
+  Price: $140282.71
+  Fair value: $487902.65
+  Price/Fair ratio: 0.288
+  Total cash: $8800.00
+  Reserve cash: $8300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2641 ---
+  Price: $124916.21
+  Fair value: $495063.00
+  Price/Fair ratio: 0.252
+  Total cash: $8900.00
+  Reserve cash: $8400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2671 ---
+  Price: $133030.81
+  Fair value: $502303.19
+  Price/Fair ratio: 0.265
+  Total cash: $9000.00
+  Reserve cash: $8500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2701 ---
+  Price: $130531.38
+  Fair value: $509623.83
+  Price/Fair ratio: 0.256
+  Total cash: $9100.00
+  Reserve cash: $8600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2731 ---
+  Price: $135555.88
+  Fair value: $517025.53
+  Price/Fair ratio: 0.262
+  Total cash: $9200.00
+  Reserve cash: $8700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2761 ---
+  Price: $135522.03
+  Fair value: $524508.90
+  Price/Fair ratio: 0.258
+  Total cash: $9300.00
+  Reserve cash: $8800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2791 ---
+  Price: $140186.95
+  Fair value: $532074.57
+  Price/Fair ratio: 0.263
+  Total cash: $9400.00
+  Reserve cash: $8900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2821 ---
+  Price: $142480.80
+  Fair value: $539723.15
+  Price/Fair ratio: 0.264
+  Total cash: $9500.00
+  Reserve cash: $9000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2851 ---
+  Price: $151460.91
+  Fair value: $547455.28
+  Price/Fair ratio: 0.277
+  Total cash: $9600.00
+  Reserve cash: $9100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2881 ---
+  Price: $152330.46
+  Fair value: $555271.56
+  Price/Fair ratio: 0.274
+  Total cash: $9700.00
+  Reserve cash: $9200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2911 ---
+  Price: $149002.65
+  Fair value: $563172.64
+  Price/Fair ratio: 0.265
+  Total cash: $9800.00
+  Reserve cash: $9300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2941 ---
+  Price: $148771.69
+  Fair value: $571159.14
+  Price/Fair ratio: 0.260
+  Total cash: $9900.00
+  Reserve cash: $9400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 2971 ---
+  Price: $164998.12
+  Fair value: $579231.71
+  Price/Fair ratio: 0.285
+  Total cash: $10000.00
+  Reserve cash: $9500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3001 ---
+  Price: $159856.85
+  Fair value: $587390.96
+  Price/Fair ratio: 0.272
+  Total cash: $10100.00
+  Reserve cash: $9600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3031 ---
+  Price: $173764.78
+  Fair value: $595637.55
+  Price/Fair ratio: 0.292
+  Total cash: $10200.00
+  Reserve cash: $9700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3061 ---
+  Price: $182168.98
+  Fair value: $603972.11
+  Price/Fair ratio: 0.302
+  Total cash: $10300.00
+  Reserve cash: $9800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3091 ---
+  Price: $195765.40
+  Fair value: $612395.28
+  Price/Fair ratio: 0.320
+  Total cash: $10400.00
+  Reserve cash: $9900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3121 ---
+  Price: $191922.66
+  Fair value: $620907.73
+  Price/Fair ratio: 0.309
+  Total cash: $10500.00
+  Reserve cash: $10000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3151 ---
+  Price: $174820.72
+  Fair value: $629510.08
+  Price/Fair ratio: 0.278
+  Total cash: $10600.00
+  Reserve cash: $10100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3181 ---
+  Price: $186009.89
+  Fair value: $638203.00
+  Price/Fair ratio: 0.291
+  Total cash: $10700.00
+  Reserve cash: $10200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3211 ---
+  Price: $192894.34
+  Fair value: $646987.14
+  Price/Fair ratio: 0.298
+  Total cash: $10800.00
+  Reserve cash: $10300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3241 ---
+  Price: $207546.30
+  Fair value: $655863.15
+  Price/Fair ratio: 0.316
+  Total cash: $10900.00
+  Reserve cash: $10400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3271 ---
+  Price: $182870.75
+  Fair value: $664831.70
+  Price/Fair ratio: 0.275
+  Total cash: $11000.00
+  Reserve cash: $10500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3301 ---
+  Price: $175018.50
+  Fair value: $673893.45
+  Price/Fair ratio: 0.260
+  Total cash: $11100.00
+  Reserve cash: $10600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3331 ---
+  Price: $187926.75
+  Fair value: $683049.05
+  Price/Fair ratio: 0.275
+  Total cash: $11200.00
+  Reserve cash: $10700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3361 ---
+  Price: $200371.13
+  Fair value: $692299.19
+  Price/Fair ratio: 0.289
+  Total cash: $11300.00
+  Reserve cash: $10800.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3391 ---
+  Price: $205879.70
+  Fair value: $701644.52
+  Price/Fair ratio: 0.293
+  Total cash: $11400.00
+  Reserve cash: $10900.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3421 ---
+  Price: $199866.03
+  Fair value: $711085.72
+  Price/Fair ratio: 0.281
+  Total cash: $11500.00
+  Reserve cash: $11000.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3451 ---
+  Price: $211033.05
+  Fair value: $720623.47
+  Price/Fair ratio: 0.293
+  Total cash: $11600.00
+  Reserve cash: $11100.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3481 ---
+  Price: $208096.00
+  Fair value: $730258.43
+  Price/Fair ratio: 0.285
+  Total cash: $11700.00
+  Reserve cash: $11200.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3511 ---
+  Price: $208577.54
+  Fair value: $739991.30
+  Price/Fair ratio: 0.282
+  Total cash: $11800.00
+  Reserve cash: $11300.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3541 ---
+  Price: $214769.44
+  Fair value: $749822.76
+  Price/Fair ratio: 0.286
+  Total cash: $11900.00
+  Reserve cash: $11400.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3571 ---
+  Price: $221366.77
+  Fair value: $759753.49
+  Price/Fair ratio: 0.291
+  Total cash: $12000.00
+  Reserve cash: $11500.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3601 ---
+  Price: $239800.20
+  Fair value: $769784.17
+  Price/Fair ratio: 0.312
+  Total cash: $12100.00
+  Reserve cash: $11600.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- MONTHLY RESERVE ACCUMULATION: Day 3631 ---
+  Price: $245719.67
+  Fair value: $779915.50
+  Price/Fair ratio: 0.315
+  Total cash: $12200.00
+  Reserve cash: $11700.00
+  Current BTC: 0.004634
+  RESERVE ACCUMULATED: $100.00
+
+--- TRADE: Final Day (Remaining Reserve) ---
+  Price: $255770.80
+  Fair value: $788093.50
+  Price/Fair ratio: 0.325
+  Total cash: $12200.00
+  Reserve cash: $11700.00
+  Current BTC: 0.050378
+  FINAL RESERVE TRADE: $11700.00 -> 0.045744 BTC
+
+=== FINAL RESULTS ===
+Total BTC: 0.050378
+Final price: $255770.80
+Final value: $12885.24
+Total invested: $12200.00
+Return: 5.62%
+Uninvested cash: $0.00
+
+============================================================
+SUMMARY OF ALL 100 PATHS:
+============================================================
+Path 1: $15149.29 (24.17%)
+Path 2: $12235.82 (0.29%)
+Path 3: $12885.24 (5.62%)
+Path 4: $15022.30 (23.13%)
+Path 5: $13244.50 (8.56%)
+Path 6: $12665.57 (3.82%)
+Path 7: $13866.13 (13.66%)
+Path 8: $13566.42 (11.20%)
+Path 9: $13935.52 (14.23%)
+Path 10: $29816.60 (144.40%)
+Path 11: $13223.66 (8.39%)
+Path 12: $15386.79 (26.12%)
+Path 13: $12200.00 (0.00%)
+Path 14: $12244.87 (0.37%)
+Path 15: $13751.32 (12.72%)
+Path 16: $14264.85 (16.92%)
+Path 17: $16425.56 (34.64%)
+Path 18: $12142.87 (-0.47%)
+Path 19: $12740.44 (4.43%)
+Path 20: $13156.24 (7.84%)
+Path 21: $12200.00 (0.00%)
+Path 22: $15198.32 (24.58%)
+Path 23: $15208.10 (24.66%)
+Path 24: $12577.77 (3.10%)
+Path 25: $16784.55 (37.58%)
+Path 26: $13915.56 (14.06%)
+Path 27: $12904.38 (5.77%)
+Path 28: $12889.23 (5.65%)
+Path 29: $14894.15 (22.08%)
+Path 30: $12387.78 (1.54%)
+Path 31: $13938.59 (14.25%)
+Path 32: $14189.68 (16.31%)
+Path 33: $12690.77 (4.02%)
+Path 34: $12248.65 (0.40%)
+Path 35: $18488.88 (51.55%)
+Path 36: $12930.28 (5.99%)
+Path 37: $13793.91 (13.06%)
+Path 38: $14762.90 (21.01%)
+Path 39: $16248.05 (33.18%)
+Path 40: $13560.75 (11.15%)
+Path 41: $12253.11 (0.44%)
+Path 42: $16616.20 (36.20%)
+Path 43: $12592.71 (3.22%)
+Path 44: $12413.97 (1.75%)
+Path 45: $19905.51 (63.16%)
+Path 46: $12285.92 (0.70%)
+Path 47: $15585.99 (27.75%)
+Path 48: $12585.06 (3.16%)
+Path 49: $12580.31 (3.12%)
+Path 50: $12554.59 (2.91%)
+Path 51: $13344.31 (9.38%)
+Path 52: $31132.54 (155.18%)
+Path 53: $12683.18 (3.96%)
+Path 54: $15282.73 (25.27%)
+Path 55: $13365.05 (9.55%)
+Path 56: $13890.59 (13.86%)
+Path 57: $12779.05 (4.75%)
+Path 58: $12867.12 (5.47%)
+Path 59: $13176.71 (8.01%)
+Path 60: $21743.73 (78.23%)
+Path 61: $14742.27 (20.84%)
+Path 62: $30852.73 (152.89%)
+Path 63: $12792.57 (4.86%)
+Path 64: $12264.69 (0.53%)
+Path 65: $20389.72 (67.13%)
+Path 66: $12933.42 (6.01%)
+Path 67: $12970.49 (6.32%)
+Path 68: $19498.00 (59.82%)
+Path 69: $12508.66 (2.53%)
+Path 70: $13084.29 (7.25%)
+Path 71: $13457.17 (10.30%)
+Path 72: $13286.81 (8.91%)
+Path 73: $12698.90 (4.09%)
+Path 74: $12231.68 (0.26%)
+Path 75: $12492.17 (2.39%)
+Path 76: $13059.81 (7.05%)
+Path 77: $12299.23 (0.81%)
+Path 78: $16134.60 (32.25%)
+Path 79: $14604.75 (19.71%)
+Path 80: $13862.38 (13.63%)
+Path 81: $13892.96 (13.88%)
+Path 82: $13493.74 (10.60%)
+Path 83: $13367.35 (9.57%)
+Path 84: $18544.91 (52.01%)
+Path 85: $14855.57 (21.77%)
+Path 86: $12832.00 (5.18%)
+Path 87: $12797.38 (4.90%)
+Path 88: $13256.23 (8.66%)
+Path 89: $12298.10 (0.80%)
+Path 90: $12615.54 (3.41%)
+Path 91: $12306.67 (0.87%)
+Path 92: $15504.24 (27.08%)
+Path 93: $12702.29 (4.12%)
+Path 94: $13101.67 (7.39%)
+Path 95: $14228.86 (16.63%)
+Path 96: $12458.01 (2.11%)
+Path 97: $14167.85 (16.13%)
+Path 98: $12484.39 (2.33%)
+Path 99: $15862.55 (30.02%)
+Path 100: $14286.76 (17.10%)
+Average return: 18.08%
+
+Trade details saved to: Results/Bitcoin/strategy_trades_latest.csv

@@ -1,132 +1,99 @@
 # Stock Market Investment Timing Calculator
 
-A comprehensive analysis tool for Bitcoin and S&P 500 investment strategies using Kelly Criterion optimization and Monte Carlo simulations.
+A comprehensive analysis tool for Bitcoin and S&P 500 investment timing strategies using mathematical models and Monte Carlo simulations.
 
-## 📁 Project Structure
+## 🎯 **Current GBM Simulation (Latest)**
 
+### **Bitcoin GBM - Fair Value Start**
+- **Script**: `Scripts/Bitcoin/bitcoin_gbm_fair_value_start.py`
+- **Starting Point**: Formula fair value (~$107k on 7/20/2025)
+- **Components**: Dynamic growth + Dynamic volatility (NO mean reversion)
+- **Validation**: 13.3% average difference from growth formula (GOOD)
+- **Results**: 
+  - 1 year: $141,848 (90% CI: $65,544 - $255,999)
+  - 5 years: $392,084 (90% CI: $80,652 - $1,043,893)
+  - 10 years: $1,302,917 (90% CI: $170,441 - $4,075,492)
+
+### **Key Features:**
+- ✅ **Dynamic Growth**: Uses growth formula to calculate future fair values
+- ✅ **Dynamic Volatility**: Uses exponential decay volatility formula
+- ✅ **No Mean Reversion**: Pure GBM with growth + volatility only
+- ✅ **Validated**: Closely follows growth formula predictions
+- ✅ **Realistic**: Shows proper volatility drag and uncertainty
+
+### **Files:**
+- **Paths**: `Results/Bitcoin/bitcoin_gbm_fair_value_start_20250720_172506.csv` (35MB)
+- **Summary**: `Results/Bitcoin/bitcoin_gbm_fair_value_start_20250720_172506_summary.csv`
+- **Validation**: `Results/Bitcoin/gbm_formula_validation_20250720_172611.png`
+- **Comparison**: `Results/Bitcoin/gbm_formula_comparison_20250720_172612.csv`
+
+## 📁 **Project Structure**
+
+### **Scripts/**
+- **Bitcoin/**: Investment strategies and GBM simulations
+- **SP500/**: S&P 500 analysis and simulations
+- **Portfolio/**: Multi-asset portfolio optimization
+- **Data_Cleaning/**: Data preprocessing scripts
+
+### **Models/**
+- **Growth Models/**: Bitcoin and S&P 500 growth formulas
+- **Volatility Models/**: Dynamic volatility decay models
+
+### **Results/**
+- **Bitcoin/**: Current GBM results and investment strategies
+- **SP500/**: S&P 500 analysis results
+- **Portfolio/**: Portfolio optimization results
+
+### **Mean Reversion Theory/**
+- **All theoretical mean reversion analysis** (separated from practical strategies)
+
+## 🔬 **Key Models**
+
+### **Bitcoin Growth Formula**
 ```
-Stock-Market-Investment-Timing-Calculator/
-├── Data Sets/                     # Raw and cleaned data files
-│   ├── Bitcoin Data/             # Bitcoin historical price data
-│   └── S&P 500 Data Sets/        # S&P 500 historical price data
-│
-├── Scripts/                      # All analysis and simulation scripts
-│   ├── Bitcoin/                  # Bitcoin-specific analysis scripts
-│   │   ├── bitcoin_lumpsum_growth_model_simulation.py
-│   │   ├── bitcoin_monte_carlo_fixed.py
-│   │   ├── bitcoin_monte_carlo_price_paths.py
-│   │   └── bitcoin_lump_sum_summary.py
-│   │
-│   ├── SP500/                    # S&P 500 analysis scripts
-│   │   ├── sp500_lumpsum_simulation.py
-│   │   └── sp500_monte_carlo_simulation.py
-│   │
-│   ├── Portfolio/                # Portfolio optimization scripts
-│   │   ├── kelly_criterion_portfolio.py
-│   │   ├── no_leverage_kelly.py
-│   │   └── three_asset_kelly.py
-│   │
-│   └── Data_Cleaning/            # Data preprocessing scripts
-│       ├── Bitcoin Data cleaning/
-│       └── Stock Market Data Cleaning/
-│
-├── Results/                      # Analysis results and outputs
-│   ├── Bitcoin/                  # Bitcoin analysis results
-│   │   ├── bitcoin_lumpsum_formula_summary.txt
-│   │   ├── bitcoin_monte_carlo_lump_sum_results.csv
-│   │   ├── bitcoin_volatility_analysis.pdf
-│   │   └── *.png (charts and visualizations)
-│   │
-│   ├── SP500/                    # S&P 500 analysis results
-│   │   ├── sp500_lumpsum_horizon_summary.txt
-│   │   ├── sp500_monte_carlo_paths.csv
-│   │   └── *.png (volatility charts)
-│   │
-│   └── Portfolio/                # Portfolio optimization results
-│       ├── no_leverage_kelly_results.txt
-│       └── three_asset_kelly_results.txt
-│
-├── Models/                       # Growth and volatility models
-│   ├── Growth Models/            # Asset growth model coefficients
-│   │   ├── bitcoin_growth_model_coefficients.txt
-│   │   ├── bitcoin_growth_model_fit.py
-│   │   ├── sp500_growth_model_coefficients.txt
-│   │   └── sp500_growth_model_fit.py
-│   │
-│   └── Volatility Models/        # Volatility model coefficients
-│       ├── bitcoin_volatility_model_coefficients.txt
-│       ├── bitcoin_volatility_model_fit.py
-│       └── bitcoin_volatility_inverse_model_coefficients.txt
-│
-├── Analysis/                     # Additional analysis scripts
-│   └── analyze_bitcoin_volatility.py
-│
-├── Visualizations/               # Visualization scripts
-│   └── bitcoin_rainbow_chart.py
-│
-└── README.md                     # This file
+log10(price) = 1.827743 * ln(day) + -10.880943
 ```
 
-## 🚀 Key Features
+### **Bitcoin Volatility Formula**
+```
+volatility = a * exp(-b * years) + c
+```
 
-### Growth Models
-- **Bitcoin**: Logarithmic growth model with 94% R² fit
-- **S&P 500**: Exponential growth model with 94% R² fit
+### **GBM Simulation**
+- **Starting Price**: Formula fair value ($107,641 on 7/20/2025)
+- **Time Horizon**: 10 years
+- **Paths**: 1,000 Monte Carlo paths
+- **Updates**: Daily parameter updates
+- **Components**: Dynamic growth + Dynamic volatility
 
-### Investment Strategies
-- **Lump Sum Analysis**: Pure growth model projections
-- **Monte Carlo Simulations**: Risk-adjusted return projections
-- **Kelly Criterion Optimization**: Optimal portfolio allocation
+## 📊 **Recent Results**
 
-### Portfolio Optimization
-- **No-Leverage Kelly**: Conservative allocation without borrowing
-- **Three-Asset Kelly**: Bitcoin, S&P 500, and High-Yield Savings optimization
-- **Risk-Adjusted Returns**: Sharpe ratio optimization
+### **GBM Validation (7/20/2025)**
+- **Formula vs GBM Mean**: 13.3% average difference
+- **Formula vs GBM Median**: 5.4% average difference
+- **Assessment**: GOOD - GBM properly follows growth formula
+- **Volatility Effect**: Properly models uncertainty around trend
 
-## 📊 Key Results
+### **Investment Implications**
+- **Short-term (1-2 years)**: Very close to formula predictions
+- **Medium-term (3-5 years)**: Reasonable uncertainty range
+- **Long-term (10 years)**: Higher uncertainty, but trend maintained
 
-### Optimal Portfolio Allocation (No Leverage)
-- **Bitcoin**: 40.3%
-- **S&P 500**: 59.7%
-- **Expected Return**: 13.23%
-- **Volatility**: 28.53%
+## 🚀 **Quick Start**
 
-### Growth Projections (10-Year)
-- **Bitcoin**: 21.31% CAGR (decreasing over time)
-- **S&P 500**: 7.78% CAGR (steady)
-
-## 🔧 Usage
-
-### Running Simulations
+### **Run Current GBM Simulation:**
 ```bash
-# Bitcoin lump sum analysis
-python Scripts/Bitcoin/bitcoin_lumpsum_growth_model_simulation.py
-
-# Portfolio optimization
-python Scripts/Portfolio/no_leverage_kelly.py
-
-# Monte Carlo simulations
-python Scripts/Bitcoin/bitcoin_monte_carlo_fixed.py
+python Scripts/Bitcoin/bitcoin_gbm_fair_value_start.py
 ```
 
-### Key Files
-- **Growth Models**: `Models/Growth Models/`
-- **Portfolio Results**: `Results/Portfolio/no_leverage_kelly_results.txt`
-- **Simulation Results**: `Results/Bitcoin/` and `Results/SP500/`
+### **Validate Against Growth Formula:**
+```bash
+python Scripts/Bitcoin/validate_gbm_against_growth_formula.py
+```
 
-## 📈 Investment Insights
+## 📝 **Notes**
 
-1. **Optimal allocation balances Bitcoin's high returns with S&P 500's stability**
-2. **Kelly Criterion suggests 40/60 Bitcoin/S&P 500 split for maximum risk-adjusted returns**
-3. **No leverage strategy provides 13.23% expected returns with managed risk**
-4. **Monte Carlo simulations show realistic return distributions with volatility**
-
-## 🛠️ Dependencies
-- Python 3.x
-- NumPy
-- Pandas
-- SciPy
-- Matplotlib
-
----
-*Last updated: [Current Date]* 
+- **Mean Reversion Analysis**: Moved to dedicated "Mean Reversion Theory" folder
+- **Current Focus**: Dynamic growth + volatility GBM (no mean reversion)
+- **Validation**: All simulations validated against historical data and formulas
+- **Documentation**: Updated to reflect current working models only 

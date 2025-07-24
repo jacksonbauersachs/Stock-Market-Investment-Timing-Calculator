@@ -188,10 +188,19 @@ def main():
     
     # Load data
     df = load_bitcoin_data()
-    S0 = df['Price'].iloc[-1]
+    current_price = df['Price'].iloc[-1]
+    # Load growth model coefficients
+    with open('Models/Growth Models/bitcoin_growth_model_coefficients_day365.txt', 'r') as f:
+        lines = f.readlines()
+        a = float(lines[0].split('=')[1].strip())
+        b = float(lines[1].split('=')[1].strip())
+    today_day = 6041
+    S0 = 10**(a * np.log(today_day) + b)
+    print(f"Fair value (formula): ${S0:,.2f}")
+    print(f"Current price: ${current_price:,.2f}")
     
-    # Run simulation with immediate save
-    paths_file = dynamic_gbm_monte_carlo_with_save(S0, T=10, num_paths=1000, num_steps=3653)
+    # For quick exploratory runs, use fewer paths (e.g., 100 instead of 1000)
+    paths_file = dynamic_gbm_monte_carlo_with_save(S0, T=10, num_paths=100, num_steps=3653)
     
     # Analyze results
     results = analyze_gbm_results_from_file(paths_file)
@@ -202,9 +211,9 @@ def main():
     print(f"\n" + "="*50)
     print("DYNAMIC GBM SIMULATION SUMMARY")
     print("="*50)
-    print(f"Starting price: ${S0:,.2f}")
+    print(f"Starting price (fair value): ${S0:,.2f}")
     print(f"Simulation period: 10 years")
-    print(f"Number of paths: 1,000")
+    print(f"Number of paths: 100 (quick test)")
     print(f"Parameter update frequency: Every day (365 times per year)")
     print(f"Growth rate: Dynamic based on formula fair value")
     print(f"Volatility: Dynamic based on exponential decay formula")

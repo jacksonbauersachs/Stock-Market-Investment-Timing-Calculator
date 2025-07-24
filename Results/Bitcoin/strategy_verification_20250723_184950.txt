@@ -1,0 +1,29 @@
+STRATEGY VERIFICATION LOG
+Generated: 2025-07-23 18:49:50
+Strategy: 75% Reserve, Buy thresholds: [0.97, 0.95, 0.93], Allocations: [0.9, 0.05, 0.05]
+Monthly amount: $100
+================================================================================
+
+============================================================
+VERIFYING PATH 1
+============================================================
+
+=== STRATEGY VERIFICATION ===
+Monthly amount: $100
+Reserve ratio: 75.0%
+Buy thresholds: [0.97, 0.95, 0.93]
+Buy allocations: [0.9, 0.05, 0.05]
+Price path length: 3654 months
+
+Monthly breakdown:
+  DCA portion: $25.00 (25.0%)
+  Reserve portion: $75.00 (75.0%)
+
+--- Month 1 ---
+  Price: $107641.78
+  Fair value: $17.26
+  Price/Fair ratio: 6236.981
+  Total cash: $100.00
+  DCA cash: $25.00
+  Reserve cash: $75.00
+  Current BTC: 0.000000
