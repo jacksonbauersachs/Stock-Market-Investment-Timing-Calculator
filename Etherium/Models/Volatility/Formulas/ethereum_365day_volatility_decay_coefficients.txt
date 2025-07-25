@@ -1,0 +1,34 @@
+# Ethereum 365-Day Volatility Decay Model Coefficients
+# Last updated: 2025-07-25 16:59:50
+# Data range: 2017-03-10 to 2025-07-24
+# Age range: 1.0 to 9.4 years
+# Total data points: 3,059
+
+Linear Model:
+  R² = 0.735001
+  Slope = -8.492547
+  Intercept = 136.243807
+  Formula: volatility = -8.492547 * age + 136.243807
+  Best Model: Yes
+
+Exponential Model:
+  R² = 0.698309
+  Slope = -0.097430
+  Intercept = 4.991914
+  Formula: log(volatility) = -0.097430 * age + 4.991914
+  Best Model: No
+
+Power Law Model:
+  R² = 0.618758
+  Slope = -0.385435
+  Intercept = 5.066669
+  Formula: log(volatility) = -0.385435 * log(age) + 5.066669
+  Best Model: No
+
+Inverse Model:
+  R² = 0.532463
+  Slope = 92.908358
+  Intercept = 67.357728
+  Formula: volatility = 92.908358 / age + 67.357728
+  Best Model: No
+
