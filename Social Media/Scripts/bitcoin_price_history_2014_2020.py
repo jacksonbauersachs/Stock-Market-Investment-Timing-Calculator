@@ -3,24 +3,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-def load_ethereum_data():
-    """Load Ethereum data for entire history"""
-    print("Loading Ethereum dataset...")
-    df = pd.read_csv('Etherium/Data/Ethereum Historical Data.csv')
+def load_bitcoin_data():
+    """Load Bitcoin data filtered to 2014-2020"""
+    print("Loading Bitcoin dataset (2014-2020)...")
+    df = pd.read_csv('Bitcoin/Data/2010_2025_Daily_Data_(BTC).csv')
     df['Date'] = pd.to_datetime(df['Date'])
     
-    # Convert Price to numeric if needed
-    if df['Price'].dtype == 'object':
-        df['Price'] = pd.to_numeric(df['Price'].str.replace(',', '').str.replace('$', ''), errors='coerce')
+    # Filter to 2014-2020 (matches zoom animation end)
+    start_date = '2014-01-01'
+    end_date = '2020-10-20'
+    df = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)].copy()
     
-    print(f"Loaded {len(df)} days of Ethereum data")
+    print(f"Loaded {len(df)} days of Bitcoin data")
     print(f"Date range: {df['Date'].min().strftime('%Y-%m-%d')} to {df['Date'].max().strftime('%Y-%m-%d')}")
     print(f"Price range: ${df['Price'].min():.2f} to ${df['Price'].max():.2f}")
     
     return df
 
-def create_ethereum_chart(df):
-    """Create Ethereum price history chart"""
+def create_bitcoin_chart(df):
+    """Create Bitcoin price history chart (2014-2020)"""
     plt.style.use('default')
     fig, ax = plt.subplots(figsize=(16, 9))
     
@@ -28,13 +29,13 @@ def create_ethereum_chart(df):
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
     
-    # Plot Ethereum price with enhanced styling
-    ax.plot(df['Date'], df['Price'], color='#627EEA', linewidth=2.5, label='Ethereum (ETH)', alpha=0.9)
+    # Plot Bitcoin price with enhanced styling
+    ax.plot(df['Date'], df['Price'], color='#F7931A', linewidth=2.5, label='Bitcoin (BTC)', alpha=0.9)
     
-    # Customize the plot with professional styling
-    ax.set_xlabel('Date', fontsize=14, fontweight='bold', color='#333333')
-    ax.set_ylabel('Price (USD)', fontsize=14, fontweight='bold', color='#333333')
-    ax.set_title('Ethereum Price History', fontsize=20, fontweight='bold', color='#333333', pad=20)
+    # Customize the plot with professional styling - match the zoom end exactly
+    ax.set_xlabel('')  # Remove x-axis label
+    ax.set_ylabel('')  # Remove y-axis label
+    ax.set_title('Bitcoin (2014-2020)', fontsize=16, fontweight='normal', color='#333333', pad=15)
     
     # Enhanced grid
     ax.grid(True, alpha=0.2, color='#CCCCCC', linewidth=0.5)
@@ -57,7 +58,7 @@ def create_ethereum_chart(df):
     plt.xticks(rotation=45)
     
     # Add subtle grid lines for key price levels (no labels)
-    key_prices = [100, 1000, 5000, 10000, 20000, 50000]
+    key_prices = [100, 1000, 10000, 20000, 50000, 100000]
     for price in key_prices:
         if price <= df['Price'].max():
             ax.axhline(y=price, color='lightgray', alpha=0.2, linestyle='-', linewidth=0.5)
@@ -67,7 +68,7 @@ def create_ethereum_chart(df):
     plt.tight_layout()
     
     # Save the plot
-    save_path = 'Etherium/Visualizations/Images/ethereum_price_history_blue.png'
+    save_path = 'Bitcoin/Visualizations/Images/bitcoin_price_history_2014_2020.png'
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
     plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
     print(f"Chart saved to: {save_path}")
@@ -75,14 +76,14 @@ def create_ethereum_chart(df):
 
 def main():
     """Main function"""
-    print("Ethereum Price History Chart")
+    print("Bitcoin Price History Chart (2014-2020)")
     print("="*50)
     
     # Load data
-    df = load_ethereum_data()
+    df = load_bitcoin_data()
     
     # Create chart
-    create_ethereum_chart(df)
+    create_bitcoin_chart(df)
     
     print("\n✅ Chart creation completed!")
 

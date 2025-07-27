@@ -91,9 +91,25 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
     ax.spines['left'].set_color('#CCCCCC')
     ax.spines['bottom'].set_color('#CCCCCC')
     
-    # Set labels
-    ax.set_xlabel('Date', fontsize=14, fontweight='bold', color='#333333')
-    ax.set_ylabel('Price (USD)', fontsize=14, fontweight='bold', color='#333333')
+    # Set labels - remove for clean look
+    ax.set_xlabel('')  # Remove x-axis label
+    ax.set_ylabel('')  # Remove y-axis label
+    
+    # Format y-axis to show prices nicely
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+    
+    # Rotate x-axis labels
+    plt.xticks(rotation=45)
+    
+    # Add subtle grid lines for key price levels (no labels) - match zoom animation
+    key_prices = [100, 1000, 10000, 20000, 50000, 100000, 150000]
+    price_lines = []
+    for price in key_prices:
+        if price <= max(btc_prices.max(), eth_prices.max()):
+            line_h = ax.axhline(y=price, color='lightgray', alpha=0.2, linestyle='-', linewidth=0.5)
+            price_lines.append(line_h)
+    
+    plt.tight_layout()
     
     # Animation parameters
     frames = 120  # 6 seconds at 20 FPS
@@ -107,18 +123,25 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
         ax.grid(True, alpha=0.2, color='#CCCCCC', linewidth=0.5)
         ax.set_axisbelow(True)
         
-        # Style the axes
+        # Style the axes - match zoom animation exactly
         ax.tick_params(axis='both', which='major', labelsize=11, color='#666666')
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
         ax.spines['left'].set_color('#CCCCCC')
         ax.spines['bottom'].set_color('#CCCCCC')
         
+        # Format y-axis to show prices nicely
+        ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
+        
+        # Rotate x-axis labels
+        plt.xticks(rotation=45)
+        
         # Calculate morphing progress (0 to 1)
         progress = frame / (frames - 1)
         
-        # Smooth easing function
-        ease_progress = 0.5 * (1 - np.cos(progress * np.pi))
+        # Better easing function for more proportional morphing
+        # This creates a smoother, more proportional transition
+        ease_progress = progress ** 2 * (3 - 2 * progress)  # Smoothstep function
         
         # Interpolate between Bitcoin and Ethereum prices
         # We need to handle different array lengths by resampling to same length
@@ -140,11 +163,14 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
         # Now interpolate between the resampled prices
         morphed_prices = (1 - ease_progress) * btc_resampled + ease_progress * eth_resampled
         
-        # Interpolate between price ranges for y-axis scaling
+        # Interpolate between price ranges for y-axis scaling with slower morphing
         btc_min, btc_max = btc_prices.min(), btc_prices.max()
         eth_min, eth_max = eth_prices.min(), eth_prices.max()
-        morphed_min = (1 - ease_progress) * btc_min + ease_progress * eth_min
-        morphed_max = (1 - ease_progress) * btc_max + ease_progress * eth_max
+        
+        # Use a slower easing for y-axis to prevent rapid changes
+        y_ease_progress = ease_progress ** 1.5  # Slower morphing for y-axis
+        morphed_min = (1 - y_ease_progress) * btc_min + y_ease_progress * eth_min
+        morphed_max = (1 - y_ease_progress) * btc_max + y_ease_progress * eth_max
         
         # Determine color based on progress - change at 75% (delayed switch)
         if ease_progress < 0.75:
@@ -181,8 +207,8 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
         # Update title with smooth fade transition using consistent text positioning
         if ease_progress < 0.75:
             # Bitcoin title (full opacity)
-            btc_title = "Bitcoin Price History: 2014-2020"
-            ax.text(0.5, 1.02, btc_title, transform=ax.transAxes, fontsize=20, fontweight='bold', 
+            btc_title = "Bitcoin (2014-2020)"
+            ax.text(0.5, 1.02, btc_title, transform=ax.transAxes, fontsize=16, fontweight='normal', 
                    color='#333333', ha='center', va='bottom', alpha=1.0)
         elif ease_progress < 0.85:
             # Fade transition period (75% to 85%)
@@ -190,19 +216,19 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
             
             # Fade out Bitcoin title
             btc_alpha = 1.0 - fade_progress
-            btc_title = "Bitcoin Price History: 2014-2020"
-            ax.text(0.5, 1.02, btc_title, transform=ax.transAxes, fontsize=20, fontweight='bold', 
+            btc_title = "Bitcoin (2014-2020)"
+            ax.text(0.5, 1.02, btc_title, transform=ax.transAxes, fontsize=16, fontweight='normal', 
                    color='#333333', ha='center', va='bottom', alpha=btc_alpha)
             
             # Fade in Ethereum title (same positioning)
             eth_alpha = fade_progress
-            eth_title = "Ethereum Price History: 2016-2025"
-            ax.text(0.5, 1.02, eth_title, transform=ax.transAxes, fontsize=20, fontweight='bold', 
+            eth_title = "Ethereum (2016-2025)"
+            ax.text(0.5, 1.02, eth_title, transform=ax.transAxes, fontsize=16, fontweight='normal', 
                    color='#333333', ha='center', va='bottom', alpha=eth_alpha)
         else:
             # Ethereum title (full opacity)
-            eth_title = "Ethereum Price History: 2016-2025"
-            ax.text(0.5, 1.02, eth_title, transform=ax.transAxes, fontsize=20, fontweight='bold', 
+            eth_title = "Ethereum (2016-2025)"
+            ax.text(0.5, 1.02, eth_title, transform=ax.transAxes, fontsize=16, fontweight='normal', 
                    color='#333333', ha='center', va='bottom', alpha=1.0)
         
         # Set axis limits that morph between the two time periods and price ranges
@@ -239,8 +265,8 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
         ax.set_xticks(actual_tick_positions)
         ax.set_xticklabels([str(year) for year in years], rotation=45)
         
-        # Simple x-axis label
-        ax.set_xlabel('Date', fontsize=14, fontweight='bold', color='#333333')
+        # Simple x-axis label - remove for clean look
+        ax.set_xlabel('')
         
         # Format y-axis to show prices nicely
         ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
@@ -256,7 +282,7 @@ def create_morphing_animation(btc_dates, eth_dates, btc_prices, eth_prices, btc_
         else:
             ax.legend(['Bitcoin → Ethereum'], fontsize=12, framealpha=0.9, fancybox=True, shadow=True, loc='upper left')
         
-        return line,
+        return [line] + price_lines
     
     # Create animation
     print(f"Creating animation with {frames} frames...")

@@ -30,20 +30,28 @@ def create_zoom_animation(df):
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
     
-    # Plot the full Bitcoin price line with enhanced styling
-    line, = ax.plot(df['Date'], df['Price'], color='#F7931A', linewidth=2.5, label='Bitcoin (BTC)', alpha=0.9)
+    # Plot the Bitcoin price line from 2014 onwards with enhanced styling
+    df_filtered = df[df['Date'] >= '2014-01-01'].copy()
+    line, = ax.plot(df_filtered['Date'], df_filtered['Price'], color='#F7931A', linewidth=2.5, label='Bitcoin (BTC)', alpha=0.9)
     
-    # Customize the plot with professional styling
-    ax.set_xlabel('Date', fontsize=14, fontweight='bold', color='#333333')
-    ax.set_ylabel('Price (USD)', fontsize=14, fontweight='bold', color='#333333')
-    ax.set_title('Bitcoin Price History (Zoom Animation)', fontsize=20, fontweight='bold', color='#333333', pad=20)
+    # Customize the plot with professional styling - match the morph animation exactly
+    ax.set_xlabel('')  # Remove x-axis label
+    ax.set_ylabel('')  # Remove y-axis label
+    ax.set_title('Bitcoin (2014-2025)', fontsize=16, fontweight='normal', color='#333333', pad=15)
     
     # Enhanced grid
     ax.grid(True, alpha=0.2, color='#CCCCCC', linewidth=0.5)
     ax.set_axisbelow(True)  # Put grid behind data
     
+    # Style the axes - match morph animation exactly
+    ax.tick_params(axis='both', which='major', labelsize=11, color='#666666')
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_color('#CCCCCC')
+    ax.spines['bottom'].set_color('#CCCCCC')
+    
     # Legend styling
-    ax.legend(fontsize=12, framealpha=0.9, fancybox=True, shadow=True)
+    legend = ax.legend(fontsize=12, framealpha=0.9, fancybox=True, shadow=True, loc='upper left')
     
     # Format y-axis to show prices nicely
     ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:,.0f}'))
@@ -51,24 +59,15 @@ def create_zoom_animation(df):
     # Rotate x-axis labels
     plt.xticks(rotation=45)
     
-    # Add key price levels
-    key_prices = [100, 1000, 10000, 20000, 50000, 100000]
+    # Add subtle grid lines for key price levels (no labels) - match static chart
+    key_prices = [100, 1000, 10000, 20000, 50000, 100000, 150000]
     price_lines = []
-    price_texts = []
     for price in key_prices:
         if price <= df['Price'].max():
-            line_h = ax.axhline(y=price, color='gray', alpha=0.3, linestyle='--', linewidth=1)
-            text_h = ax.text(df['Date'].iloc[-1], price, f'${price:,}', 
-                           verticalalignment='bottom', horizontalalignment='right', 
-                           color='black', alpha=0.7, fontsize=10)
+            line_h = ax.axhline(y=price, color='lightgray', alpha=0.2, linestyle='-', linewidth=0.5)
             price_lines.append(line_h)
-            price_texts.append(text_h)
     
-    # Add data info
-    data_text = f'Data: {df["Date"].min().strftime("%b %Y")} - {df["Date"].max().strftime("%b %Y")}\nPoints: {len(df):,}'
-    info_text = ax.text(0.98, 0.02, data_text, transform=ax.transAxes, fontsize=10, color='black', 
-                       bbox=dict(facecolor='white', alpha=0.8, boxstyle='round,pad=0.5'),
-                       horizontalalignment='right', verticalalignment='bottom')
+    # Remove data info box for cleaner look - match static chart
     
     plt.tight_layout()
     
@@ -76,16 +75,17 @@ def create_zoom_animation(df):
     frames = 80  # Number of animation frames (80 ÷ 20 = 4 seconds)
     zoom_factor = 0.95  # How much to zoom per frame (closer to 1 = slower)
     
-    # Initial view (full range)
-    x_start = df['Date'].min()
-    x_end = df['Date'].max()
+    # Initial view (2014-2025 range - matches the static chart)
+    x_start = pd.to_datetime('2014-01-01')
+    x_end = df['Date'].max()  # End at today
     y_start = df['Price'].min() * 0.8  # Start with some padding
     y_end = df['Price'].max() * 1.2
     
-    # Target zoom area (focus on 2010-2020)
-    target_x_start = pd.to_datetime('2010-07-18')
+    # Target zoom area (focus on 2014-2020) - match morph animation exactly
+    target_x_start = pd.to_datetime('2014-01-01')
     target_x_end = pd.to_datetime('2020-10-20')
-    target_y_start = df['Price'].min() * 0.8
+    # Use the exact same price range as the morph animation
+    target_y_start = df[df['Date'] <= '2020-10-20']['Price'].min() * 0.8
     target_y_end = df[df['Date'] <= '2020-10-20']['Price'].max() * 1.2
     
     def update(frame):
@@ -97,6 +97,13 @@ def create_zoom_animation(df):
         # Smooth easing function (ease-in-out)
         ease_progress = 0.5 * (1 - np.cos(progress * np.pi))
         
+        # Apply the same clean styling in each frame
+        ax.tick_params(axis='both', which='major', labelsize=11, color='#666666')
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['left'].set_color('#CCCCCC')
+        ax.spines['bottom'].set_color('#CCCCCC')
+        
         # Interpolate between initial and target view
         x_start_new = x_start + (target_x_start - x_start) * ease_progress
         x_end_new = x_end + (target_x_end - x_end) * ease_progress
@@ -107,21 +114,13 @@ def create_zoom_animation(df):
         ax.set_xlim(x_start_new, x_end_new)
         ax.set_ylim(y_start_new, y_end_new)
         
-        # Update title to show current zoom level
-        if progress < 0.95:
-            ax.set_title(f'Bitcoin Price History', fontsize=16, fontweight='bold')
+        # Update title to show current zoom level - match morph animation exactly
+        if progress < 0.75:
+            ax.set_title(f'Bitcoin (2014-2025)', fontsize=16, fontweight='normal', color='#333333')
         else:
-            ax.set_title(f'Bitcoin Price History: 2010-2020', fontsize=16, fontweight='bold')
+            ax.set_title(f'Bitcoin (2014-2020)', fontsize=16, fontweight='normal', color='#333333')
         
-        # Update price level text positions
-        for i, text in enumerate(price_texts):
-            if key_prices[i] >= y_start_new and key_prices[i] <= y_end_new:
-                text.set_position((x_end_new, key_prices[i]))
-                text.set_alpha(0.7)
-            else:
-                text.set_alpha(0.0)
-        
-        return [line] + price_lines + price_texts + [info_text]
+        return [line] + price_lines + [legend]
     
     # Create animation
     print(f"Creating animation with {frames} frames...")
