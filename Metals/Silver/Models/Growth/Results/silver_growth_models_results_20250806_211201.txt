@@ -1,0 +1,55 @@
+SILVER PRICE GROWTH MODEL ANALYSIS
+==================================================
+
+Data Summary:
+- Date Range: 1970-02-04 to 2025-08-06
+- Total Days: 20272 days
+- Price Range: $1.29 to $48.60
+- Total Records: 14,061
+
+MODEL COMPARISON RESULTS
+------------------------------
+
+1. POLYNOMIAL MODEL
+   R² Score: 0.598827
+   RMSE: 5.57
+   Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
+   Parameters: [ 4.52003134e-12 -4.93494717e-08  3.79030526e-04  4.70870046e+00]
+
+2. POWER MODEL
+   R² Score: 0.597907
+   RMSE: 5.57
+   Formula: Price = 0.00 * Days^3.0239 + 5.28
+   Parameters: [2.25768941e-12 3.02388164e+00 5.28162279e+00]
+
+3. EXPONENTIAL MODEL
+   R² Score: 0.590908
+   RMSE: 5.62
+   Formula: Price = 1.05 * exp(0.000158 * Days) + 3.41
+   Parameters: [1.05052122e+00 1.58451087e-04 3.41124318e+00]
+
+4. LINEAR MODEL
+   R² Score: 0.497426
+   RMSE: 6.23
+   Formula: Price = 0.001057 * Days + 0.50
+   Parameters: [0.00105715 0.50306468]
+
+BEST MODEL ANALYSIS
+--------------------
+Best Model: Polynomial
+R² Score: 0.598827
+RMSE: 5.57
+Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
+
+FUTURE PREDICTIONS (Next 10 Years)
+-----------------------------------
+Year 1: 2025 - $29.77
+Year 2: 2026 - $31.24
+Year 3: 2027 - $32.78
+Year 4: 2028 - $34.37
+Year 5: 2029 - $36.04
+Year 6: 2030 - $37.76
+Year 7: 2031 - $39.55
+Year 8: 2032 - $41.41
+Year 9: 2033 - $43.35
+Year 10: 2034 - $45.35
