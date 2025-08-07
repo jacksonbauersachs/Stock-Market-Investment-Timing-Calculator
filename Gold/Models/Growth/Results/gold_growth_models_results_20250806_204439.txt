@@ -1,0 +1,55 @@
+GOLD PRICE GROWTH MODEL ANALYSIS
+==================================================
+
+Data Summary:
+- Date Range: 1975-01-03 to 2025-08-06
+- Total Days: 18478 days
+- Price Range: $102.80 to $3501.80
+- Total Records: 12,780
+
+MODEL COMPARISON RESULTS
+------------------------------
+
+1. POLYNOMIAL MODEL
+   R² Score: 0.880112
+   RMSE: 220.15
+   Formula: Price = 6.99e-10*Days³ + -8.77e-06*Days² + 0.0451*Days + 250.60
+   Parameters: [ 6.98640181e-10 -8.77065360e-06  4.51331265e-02  2.50596640e+02]
+
+2. POWER MODEL
+   R² Score: 0.878126
+   RMSE: 221.96
+   Formula: Price = 0.00 * Days^3.6731 + 305.54
+   Parameters: [4.63543757e-13 3.67307311e+00 3.05538585e+02]
+
+3. EXPONENTIAL MODEL
+   R² Score: 0.875975
+   RMSE: 223.91
+   Formula: Price = 33.32 * exp(0.000230 * Days) + 228.63
+   Parameters: [3.33248672e+01 2.30119430e-04 2.28632958e+02]
+
+4. LINEAR MODEL
+   R² Score: 0.682181
+   RMSE: 358.44
+   Formula: Price = 0.098218 * Days + -134.44
+   Parameters: [ 9.82180119e-02 -1.34436233e+02]
+
+BEST MODEL ANALYSIS
+--------------------
+Best Model: Polynomial
+R² Score: 0.880112
+RMSE: 220.15
+Formula: Price = 6.99e-10*Days³ + -8.77e-06*Days² + 0.0451*Days + 250.60
+
+FUTURE PREDICTIONS (Next 10 Years)
+-----------------------------------
+Year 1: 2025 - $2498.15
+Year 2: 2026 - $2661.56
+Year 3: 2027 - $2833.17
+Year 4: 2028 - $3013.16
+Year 5: 2029 - $3201.75
+Year 6: 2030 - $3399.14
+Year 7: 2031 - $3605.52
+Year 8: 2032 - $3821.12
+Year 9: 2033 - $4046.12
+Year 10: 2034 - $4280.74
