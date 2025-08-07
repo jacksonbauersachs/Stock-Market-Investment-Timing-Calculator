@@ -1,0 +1,34 @@
+ASSET OVERVALUATION ANALYSIS
+==================================================
+
+Analysis Date: 2025-08-06 22:02:05
+
+BITCOIN ANALYSIS
+--------------------
+Model Type: Rainbow Chart
+Formula: log10(price) = 1.828876 * ln(day) + -10.888322
+Fair Value: $72,869.56
+Current Price: $115,028.83
+Overvaluation: +57.86%
+
+GOLD ANALYSIS
+--------------------
+Model Type: Polynomial
+Formula: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
+Fair Value: $2,496.74
+Current Price: $3,430.00
+Overvaluation: +37.38%
+
+SILVER ANALYSIS
+--------------------
+Model Type: Polynomial
+Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
+Fair Value: $30.21
+Current Price: $41.00
+Overvaluation: +35.70%
+
+SUMMARY
+----------
+Bitcoin: +57.86% (OVERVALUED)
+Gold: +37.38% (OVERVALUED)
+Silver: +35.70% (OVERVALUED)
