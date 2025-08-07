@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def get_last_date_from_file(file_path):
-    """Get the last date from the existing gold data file."""
+    """Get the last date from the existing silver data file."""
     try:
         df = pd.read_csv(file_path)
         df['Date'] = pd.to_datetime(df['Date'])
@@ -19,9 +19,9 @@ def get_last_date_from_file(file_path):
         print(f"Error reading file {file_path}: {e}")
         return None
 
-def fetch_gold_data_for_period(start_date, end_date, api_key):
+def fetch_silver_data_for_period(start_date, end_date, api_key):
     """
-    Fetch gold data for a specific date range using GoldAPI.io
+    Fetch silver data for a specific date range using GoldAPI.io
     """
     headers = {
         'x-access-token': api_key,
@@ -29,7 +29,7 @@ def fetch_gold_data_for_period(start_date, end_date, api_key):
     }
     
     try:
-        print(f"Fetching gold data from {start_date} to {end_date}...")
+        print(f"Fetching silver data from {start_date} to {end_date}...")
         
         # Convert dates to YYYYMMDD format for API
         start_dt = datetime.strptime(start_date, '%Y-%m-%d')
@@ -40,7 +40,7 @@ def fetch_gold_data_for_period(start_date, end_date, api_key):
         
         while current_dt <= end_dt:
             date_str = current_dt.strftime('%Y%m%d')
-            url = f"https://www.goldapi.io/api/XAU/USD/{date_str}"
+            url = f"https://www.goldapi.io/api/XAG/USD/{date_str}"
             
             print(f"  Fetching data for {current_dt.strftime('%Y-%m-%d')}...")
             
@@ -91,9 +91,9 @@ def fetch_gold_data_for_period(start_date, end_date, api_key):
         print(f"Error fetching data for {start_date} to {end_date}: {e}")
         return None
 
-def update_gold_prices():
+def update_silver_prices():
     """
-    Update gold price data from the last available date to today
+    Update silver price data from the last available date to today
     """
     # Get API key
     api_key = os.getenv('precious_metals_api_key')
@@ -101,15 +101,15 @@ def update_gold_prices():
         raise ValueError("API key not found. Please check your .env file.")
     
     # Define file paths
-    gold_data_file = "Portfolio/Data/Gold_all_time_price.csv"
+    silver_data_file = "Portfolio/Data/Silver_all_time_price.csv"
     
     # Check if the file exists
-    if not os.path.exists(gold_data_file):
-        print(f"Error: Gold data file not found at {gold_data_file}")
+    if not os.path.exists(silver_data_file):
+        print(f"Error: Silver data file not found at {silver_data_file}")
         return
     
     # Get the last date from the existing file
-    last_date = get_last_date_from_file(gold_data_file)
+    last_date = get_last_date_from_file(silver_data_file)
     if not last_date:
         print("Could not determine last date from file.")
         return
@@ -132,7 +132,7 @@ def update_gold_prices():
     print(f"Fetching new data from {start_date} to {today}...")
     
     # Fetch new data
-    new_data = fetch_gold_data_for_period(start_date, today, api_key)
+    new_data = fetch_silver_data_for_period(start_date, today, api_key)
     
     if not new_data:
         print("No new data was fetched.")
@@ -141,7 +141,7 @@ def update_gold_prices():
     # Convert new data to DataFrame
     records = []
     for date, values in new_data.items():
-        # Format price values to match existing format (with quotes and commas)
+        # Format price values to match existing format (no quotes, simple comma separation)
         price = float(values['4. close'])
         open_price = float(values['1. open'])
         high_price = float(values['2. high'])
@@ -150,11 +150,11 @@ def update_gold_prices():
         
         record = {
             'Date': date,
-            'Price': f'{price:,.2f}',
-            'Open': f'{open_price:,.2f}',
-            'High': f'{high_price:,.2f}',
-            'Low': f'{low_price:,.2f}',
-            'Vol.': f'{volume:,.2f}',
+            'Price': f'{price:.3f}',
+            'Open': f'{open_price:.3f}',
+            'High': f'{high_price:.3f}',
+            'Low': f'{low_price:.3f}',
+            'Vol.': f'{volume:.2f}',
             'Change %': ''
         }
         records.append(record)
@@ -175,14 +175,14 @@ def update_gold_prices():
     # Extract numeric values for price range display
     price_values = []
     for price_str in new_df['Price']:
-        # Remove quotes and convert to float
-        price_float = float(price_str.replace('"', '').replace(',', ''))
+        # Convert to float
+        price_float = float(price_str)
         price_values.append(price_float)
     
-    print(f"Price range: ${min(price_values):.2f} to ${max(price_values):.2f}")
+    print(f"Price range: ${min(price_values):.3f} to ${max(price_values):.3f}")
     
     # Read existing data
-    existing_df = pd.read_csv(gold_data_file)
+    existing_df = pd.read_csv(silver_data_file)
     existing_df['Date'] = pd.to_datetime(existing_df['Date'])
     
     # Combine existing and new data
@@ -197,10 +197,10 @@ def update_gold_prices():
     # Convert Date back to string format for consistency
     combined_df['Date'] = combined_df['Date'].dt.strftime('%m/%d/%Y')
     
-    # Save updated data with proper quoting
-    combined_df.to_csv(gold_data_file, index=False, quoting=1)  # QUOTE_ALL
+    # Save updated data with no quoting to match existing format
+    combined_df.to_csv(silver_data_file, index=False, quoting=3)  # QUOTE_NONE
     
-    print(f"\nSuccessfully updated gold data!")
+    print(f"\nSuccessfully updated silver data!")
     print(f"Total records: {len(combined_df)}")
     print(f"Updated date range: {combined_df['Date'].iloc[0]} to {combined_df['Date'].iloc[-1]}")
     print(f"Added {len(new_df)} new records")
@@ -208,13 +208,13 @@ def update_gold_prices():
     return combined_df
 
 def main():
-    """Main function to run the gold price update."""
+    """Main function to run the silver price update."""
     
-    print("Gold Price Data Update")
+    print("Silver Price Data Update")
     print("=" * 30)
     
     try:
-        updated_df = update_gold_prices()
+        updated_df = update_silver_prices()
         if updated_df is not None:
             print("\n✅ Update completed successfully!")
         else:
