@@ -1,0 +1,38 @@
+ASSET ALLOCATION CALCULATOR RESULTS
+==================================================
+
+Analysis Date: 2025-08-06 22:40:06
+
+OVERVALUATION DATA:
+--------------------
+Bitcoin: +57.9% overvalued
+Gold: +37.4% overvalued
+Silver: +35.7% overvalued
+
+ALLOCATION COMPARISON:
+-------------------------
+Asset                Base     Adjusted   Change  
+--------------------------------------------------
+Bitcoin              30.0     20.9       -9.1    
+Gold                 22.0     19.1       -2.9    
+Silver               12.0     10.6       -1.4    
+Roth IRA             20.0     28.9       +8.9    
+High-Yield Savings   10.0     14.5       +4.5    
+Cash                 6.0      6.0        0.0     
+
+RECOMMENDATIONS:
+---------------
+• Decrease Bitcoin allocation by 9.1%
+• Increase Roth IRA allocation by 8.9%
+• Increase High-Yield Savings allocation by 4.5%
+• Decrease Gold allocation by 2.9%
+• Decrease Silver allocation by 1.4%
+
+RATIONALE:
+----------
+• More overvalued assets get reduced allocation
+• Less overvalued assets get increased allocation
+• Cash stays fixed at 6% (never changes)
+• Roth IRA & HYS have dynamic stress indicators based on total overvaluation
+• All assets move independently based on relative overvaluation
+• Drawdown-aware safeguards prevent overshooting into crashing assets

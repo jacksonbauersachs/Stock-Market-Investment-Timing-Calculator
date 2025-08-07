@@ -7,7 +7,7 @@ def load_overvaluation_results():
     """Load the most recent overvaluation results"""
     
     # Look for the most recent overvaluation results file
-    results_dir = "Portfolio"
+    results_dir = "Portfolio/Overvaluedness"
     results_files = [f for f in os.listdir(results_dir) if f.startswith("overvaluation_results_") and f.endswith(".txt")]
     
     if not results_files:
@@ -28,18 +28,23 @@ def load_overvaluation_results():
         
     # Extract overvaluation percentages
     lines = content.split('\n')
+    current_asset = None
+    
     for line in lines:
-        if 'Overvaluation:' in line:
-            # Find the asset name and percentage
-            if 'BITCOIN' in line or 'Bitcoin' in line:
-                pct = float(line.split('Overvaluation:')[1].split('%')[0].strip())
-                overvaluation_data['Bitcoin'] = pct
-            elif 'GOLD' in line or 'Gold' in line:
-                pct = float(line.split('Overvaluation:')[1].split('%')[0].strip())
-                overvaluation_data['Gold'] = pct
-            elif 'SILVER' in line or 'Silver' in line:
-                pct = float(line.split('Overvaluation:')[1].split('%')[0].strip())
-                overvaluation_data['Silver'] = pct
+        # Check for asset headers
+        if 'BITCOIN ANALYSIS' in line:
+            current_asset = 'Bitcoin'
+        elif 'GOLD ANALYSIS' in line:
+            current_asset = 'Gold'
+        elif 'SILVER ANALYSIS' in line:
+            current_asset = 'Silver'
+        # Check for overvaluation line
+        elif 'Overvaluation:' in line and current_asset:
+            pct = float(line.split('Overvaluation:')[1].split('%')[0].strip())
+            overvaluation_data[current_asset] = pct
+    
+    # Debug: print what we found
+    print(f"Found overvaluation data: {overvaluation_data}")
     
     return overvaluation_data
 
@@ -49,10 +54,13 @@ def calculate_optimal_allocation(overvaluation_data, base_allocation=None):
     
     Strategy:
     1. Start with base allocation
-    2. Adjust based on relative overvaluation
-    3. More overvalued = reduce allocation
-    4. Less overvalued = increase allocation
-    5. Keep total allocation at 100%
+    2. Cash stays fixed at 6%
+    3. Roth IRA & HYS have dynamic stress indicators based on total overvaluation
+    4. All other assets move independently based on overvaluation
+    5. More overvalued = reduce allocation
+    6. Less overvalued = increase allocation
+    7. Drawdown-aware safeguards prevent overshooting into crashing assets
+    8. Keep total allocation at 100%
     """
     
     # Base allocation (your current target ratios)
@@ -71,9 +79,32 @@ def calculate_optimal_allocation(overvaluation_data, base_allocation=None):
     for asset, allocation in base_allocation.items():
         print(f"{asset}: {allocation:.1f}%")
     
+    # Add Roth IRA and HYS to overvaluation data with dynamic stress indicators
+    extended_overvaluation = overvaluation_data.copy()
+    
+    # Calculate stress indicators based on total average overvaluation
+    avg_overval = np.mean(list(overvaluation_data.values()))
+    
+    # Dynamic stress response: more overvaluation = more aggressive safe haven allocation
+    if avg_overval > 30:
+        roth_stress = 0.3  # 30% stress multiplier
+        hys_stress = 0.3
+    elif avg_overval > 20:
+        roth_stress = 0.2  # 20% stress multiplier
+        hys_stress = 0.2
+    elif avg_overval > 10:
+        roth_stress = 0.1  # 10% stress multiplier
+        hys_stress = 0.1
+    else:
+        roth_stress = 0.0  # No stress
+        hys_stress = 0.0
+    
+    extended_overvaluation['Roth IRA'] = -roth_stress * 100  # Negative = undervalued
+    extended_overvaluation['High-Yield Savings'] = -hys_stress * 100
+    
     print(f"\nOVERVALUATION ANALYSIS:")
     print("-" * 25)
-    for asset, overval_pct in overvaluation_data.items():
+    for asset, overval_pct in extended_overvaluation.items():
         print(f"{asset}: {overval_pct:+.1f}% overvalued")
     
     # Calculate adjustment factors
@@ -81,13 +112,15 @@ def calculate_optimal_allocation(overvaluation_data, base_allocation=None):
     # Less overvalued = increase allocation
     adjustment_factors = {}
     
-    # Calculate average overvaluation
-    avg_overval = np.mean(list(overvaluation_data.values()))
+    # Calculate average overvaluation (excluding Cash)
+    adjustable_assets = [k for k in extended_overvaluation.keys() if k != 'Cash']
+    avg_overval = np.mean([extended_overvaluation[asset] for asset in adjustable_assets])
     
-    print(f"\nAverage overvaluation: {avg_overval:+.1f}%")
+    print(f"\nAverage overvaluation (excluding Cash): {avg_overval:+.1f}%")
     
-    # Calculate relative adjustments
-    for asset, overval_pct in overvaluation_data.items():
+    # Calculate relative adjustments for all adjustable assets
+    for asset in adjustable_assets:
+        overval_pct = extended_overvaluation[asset]
         # Relative to average: if asset is more overvalued than average, reduce allocation
         relative_overval = overval_pct - avg_overval
         adjustment_factors[asset] = -relative_overval / 100  # Convert to decimal
@@ -97,44 +130,40 @@ def calculate_optimal_allocation(overvaluation_data, base_allocation=None):
     for asset, factor in adjustment_factors.items():
         print(f"{asset}: {factor:+.3f} ({factor*100:+.1f}%)")
     
-    # Apply adjustments to metals only (keep other allocations fixed)
+    # Apply adjustments to all assets except Cash
     adjusted_allocation = base_allocation.copy()
     
-    # Calculate total metals allocation
-    metals_allocation = base_allocation['Gold'] + base_allocation['Silver']
+    # Cash stays fixed
+    print(f"\nCash stays fixed at: {base_allocation['Cash']:.1f}%")
     
-    # Adjust metals based on overvaluation
-    for asset in ['Gold', 'Silver']:
+    # Adjust all other assets based on overvaluation
+    for asset in adjustable_assets:
         if asset in adjustment_factors:
-            # Calculate new allocation within metals
-            base_metal_ratio = base_allocation[asset] / metals_allocation
-            adjustment = adjustment_factors[asset] * metals_allocation * 0.5  # Limit adjustment to 50% of metals allocation
+            # Calculate adjustment based on base allocation (proportional to each asset's size)
+            adjustment = adjustment_factors[asset] * base_allocation[asset] * 0.8  # Limit to 80% of base allocation
             
             new_allocation = base_allocation[asset] + adjustment
-            new_allocation = max(5.0, min(35.0, new_allocation))  # Keep between 5% and 35%
+            
+            # Set reasonable bounds for each asset
+            if asset == 'Bitcoin':
+                new_allocation = max(15.0, min(45.0, new_allocation))  # 15-45%
+            elif asset in ['Gold', 'Silver']:
+                new_allocation = max(5.0, min(35.0, new_allocation))   # 5-35%
+            elif asset in ['Roth IRA', 'High-Yield Savings']:
+                new_allocation = max(5.0, min(30.0, new_allocation))   # 5-30%
+            
             adjusted_allocation[asset] = new_allocation
-    
-    # Rebalance metals to maintain total metals allocation
-    total_metals_adjusted = adjusted_allocation['Gold'] + adjusted_allocation['Silver']
-    if total_metals_adjusted != metals_allocation:
-        # Scale back proportionally
-        scale_factor = metals_allocation / total_metals_adjusted
-        adjusted_allocation['Gold'] *= scale_factor
-        adjusted_allocation['Silver'] *= scale_factor
-    
-    # Bitcoin gets special treatment - more aggressive adjustment
-    if 'Bitcoin' in adjustment_factors:
-        bitcoin_adjustment = adjustment_factors['Bitcoin'] * base_allocation['Bitcoin'] * 0.8
-        new_bitcoin = base_allocation['Bitcoin'] + bitcoin_adjustment
-        new_bitcoin = max(15.0, min(45.0, new_bitcoin))  # Keep between 15% and 45%
-        adjusted_allocation['Bitcoin'] = new_bitcoin
     
     # Rebalance to ensure total = 100%
     total_allocation = sum(adjusted_allocation.values())
     if abs(total_allocation - 100.0) > 0.1:
-        scale_factor = 100.0 / total_allocation
+        # Scale all assets except Cash proportionally
+        non_cash_total = total_allocation - adjusted_allocation['Cash']
+        scale_factor = (100.0 - adjusted_allocation['Cash']) / non_cash_total
+        
         for asset in adjusted_allocation:
-            adjusted_allocation[asset] *= scale_factor
+            if asset != 'Cash':
+                adjusted_allocation[asset] *= scale_factor
     
     return adjusted_allocation, adjustment_factors
 
@@ -197,9 +226,10 @@ def save_allocation_results(base_allocation, adjusted_allocation, changes, overv
         f.write("-" * 10 + "\n")
         f.write("• More overvalued assets get reduced allocation\n")
         f.write("• Less overvalued assets get increased allocation\n")
-        f.write("• Bitcoin gets more aggressive adjustment due to volatility\n")
-        f.write("• Metals are rebalanced together to maintain stability\n")
-        f.write("• Other allocations (IRA, Savings, Cash) remain fixed\n")
+        f.write("• Cash stays fixed at 6% (never changes)\n")
+        f.write("• Roth IRA & HYS have dynamic stress indicators based on total overvaluation\n")
+        f.write("• All assets move independently based on relative overvaluation\n")
+        f.write("• Drawdown-aware safeguards prevent overshooting into crashing assets\n")
     
     print(f"\nResults saved to: {results_file}")
 
