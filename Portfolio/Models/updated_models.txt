@@ -1,0 +1,77 @@
+COMPREHENSIVE GROWTH MODEL ANALYSIS
+============================================================
+
+Analysis Date: 2025-08-06 21:53:17
+Data Sources: Updated Portfolio/Data/ files
+
+BITCOIN GROWTH MODELS
+------------------------------
+Rainbow Chart Model:
+  Formula: log10(price) = 1.828876 * ln(day) + -10.888322
+  R² Score: 0.940667
+  Data Points: 5,134
+  Date Range: 2011-07-18 to 2025-08-06
+  Current Price: $115,028.83
+  All-Time High: $120,026.42
+
+GOLD GROWTH MODELS
+-------------------------
+Linear Model:
+  Formula: Price = 0.098214 * Days + -134.41
+  R² Score: 0.682231
+  RMSE: 358.38
+
+Exponential Model:
+  Formula: Price = 33.34 * exp(0.000230 * Days) + 228.59
+  R² Score: 0.876003
+  RMSE: 223.87
+
+Polynomial Model:
+  Formula: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
+  R² Score: 0.880145
+  RMSE: 220.10
+
+Power Model:
+  Formula: Price = 0.00 * Days^3.6726 + 305.52
+  R² Score: 0.878160
+  RMSE: 221.92
+
+Best Gold Model: Polynomial
+  Formula: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
+  R² Score: 0.880145
+  RMSE: 220.10
+
+SILVER GROWTH MODELS
+---------------------------
+Linear Model:
+  Formula: Price = 0.001057 * Days + 0.50
+  R² Score: 0.497429
+  RMSE: 6.23
+
+Exponential Model:
+  Formula: Price = 1.05 * exp(0.000158 * Days) + 3.41
+  R² Score: 0.590904
+  RMSE: 5.62
+
+Polynomial Model:
+  Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
+  R² Score: 0.598823
+  RMSE: 5.57
+
+Best Silver Model: Polynomial
+  Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
+  R² Score: 0.598823
+  RMSE: 5.57
+
+SUMMARY
+----------
+All growth models have been updated using the latest data from:
+- Portfolio/Data/Bitcoin_all_time_price.csv
+- Portfolio/Data/Gold_all_time_price.csv
+- Portfolio/Data/Silver_all_time_price.csv
+
+The models can be used for:
+- Price trend analysis
+- Future price predictions
+- Investment timing decisions
+- Portfolio allocation strategies
