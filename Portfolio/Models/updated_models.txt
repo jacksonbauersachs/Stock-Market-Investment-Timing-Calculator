@@ -1,66 +1,71 @@
 COMPREHENSIVE GROWTH MODEL ANALYSIS
 ============================================================
 
-Analysis Date: 2025-08-06 21:53:17
+Analysis Date: 2025-08-19 20:15:40
 Data Sources: Updated Portfolio/Data/ files
 
 BITCOIN GROWTH MODELS
 ------------------------------
 Rainbow Chart Model:
-  Formula: log10(price) = 1.828876 * ln(day) + -10.888322
-  R² Score: 0.940667
-  Data Points: 5,134
-  Date Range: 2011-07-18 to 2025-08-06
-  Current Price: $115,028.83
-  All-Time High: $120,026.42
+  Formula: log10(price) = 1.829836 * ln(day) + -10.895294
+  R² Score: 0.940869
+  Data Points: 5,147
+  Date Range: 2011-07-18 to 2025-08-19
+  Current Price: $116,122.23
+  All-Time High: $123,365.63
 
 GOLD GROWTH MODELS
 -------------------------
 Linear Model:
-  Formula: Price = 0.098214 * Days + -134.41
-  R² Score: 0.682231
-  RMSE: 358.38
+  Formula: Price = 0.098763 * Days + -137.80
+  R² Score: 0.680517
+  RMSE: 362.17
 
 Exponential Model:
-  Formula: Price = 33.34 * exp(0.000230 * Days) + 228.59
-  R² Score: 0.876003
-  RMSE: 223.87
+  Formula: Price = 32.07 * exp(0.000232 * Days) + 231.74
+  R² Score: 0.876542
+  RMSE: 225.14
 
 Polynomial Model:
-  Formula: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
-  R² Score: 0.880145
-  RMSE: 220.10
+  Formula: Price = 7.17e-10*Days³ + -9.22e-06*Days² + 0.0479*Days + 247.19
+  R² Score: 0.880317
+  RMSE: 221.67
 
 Power Model:
-  Formula: Price = 0.00 * Days^3.6726 + 305.52
-  R² Score: 0.878160
-  RMSE: 221.92
+  Formula: Price = 0.00 * Days^3.7065 + 306.81
+  R² Score: 0.878302
+  RMSE: 223.53
 
 Best Gold Model: Polynomial
-  Formula: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
-  R² Score: 0.880145
-  RMSE: 220.10
+  Formula: Price = 7.17e-10*Days³ + -9.22e-06*Days² + 0.0479*Days + 247.19
+  R² Score: 0.880317
+  RMSE: 221.67
 
 SILVER GROWTH MODELS
 ---------------------------
 Linear Model:
-  Formula: Price = 0.001057 * Days + 0.50
-  R² Score: 0.497429
-  RMSE: 6.23
+  Formula: Price = 0.001061 * Days + 0.47
+  R² Score: 0.498623
+  RMSE: 6.25
 
 Exponential Model:
-  Formula: Price = 1.05 * exp(0.000158 * Days) + 3.41
-  R² Score: 0.590904
+  Formula: Price = 1.03 * exp(0.000160 * Days) + 3.45
+  R² Score: 0.593526
   RMSE: 5.62
 
 Polynomial Model:
-  Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
-  R² Score: 0.598823
+  Formula: Price = 4.64e-12*Days³ + -5.26e-08*Days² + 0.0004*Days + 4.68
+  R² Score: 0.601431
   RMSE: 5.57
 
+Power Model:
+  Formula: Price = 0.00 * Days^3.0408 + 5.29
+  R² Score: 0.600386
+  RMSE: 5.58
+
 Best Silver Model: Polynomial
-  Formula: Price = 4.52e-12*Days³ + -4.93e-08*Days² + 0.0004*Days + 4.71
-  R² Score: 0.598823
+  Formula: Price = 4.64e-12*Days³ + -5.26e-08*Days² + 0.0004*Days + 4.68
+  R² Score: 0.601431
   RMSE: 5.57
 
 SUMMARY

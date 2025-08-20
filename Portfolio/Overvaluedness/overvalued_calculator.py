@@ -193,7 +193,9 @@ def get_premium_adjusted_price(asset):
         return None
     
     while True:
-        if asset == 'Gold':
+        if asset == 'Bitcoin':
+            user_input = input(f"Input custom price for Bitcoin? (current: ${current_price:,.2f}) or type 'no': ").strip()
+        elif asset == 'Gold':
             user_input = input(f"Input premium adjusted price for Gold? (current: ${current_price:,.2f}) or type 'no': ").strip()
         elif asset == 'Silver':
             user_input = input(f"Input premium adjusted price for Silver? (current: ${current_price:.3f}) or type 'no': ").strip()
@@ -254,11 +256,8 @@ def calculate_overvaluation():
             print(f"Could not calculate fair value for {asset}")
             continue
         
-        # Get current price (with premium adjustment for metals)
-        if asset in ['Gold', 'Silver']:
-            current_price = get_premium_adjusted_price(asset)
-        else:
-            current_price = current_prices[asset]
+        # Get current price (with custom price input for all assets)
+        current_price = get_premium_adjusted_price(asset)
         
         if current_price is None:
             print(f"Could not get current price for {asset}")
@@ -287,8 +286,8 @@ def calculate_overvaluation():
 def save_results(results):
     """Save results to a file."""
     
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    results_file = f"Portfolio/overvaluation_results_{timestamp}.txt"
+    # Use a fixed filename to replace the old results each time
+    results_file = "Portfolio/Overvaluedness/overvaluation_results_latest.txt"
     
     with open(results_file, 'w') as f:
         f.write("ASSET OVERVALUATION ANALYSIS\n")
@@ -312,6 +311,7 @@ def save_results(results):
             f.write(f"{asset}: {data['overvaluation_pct']:+.2f}% ({status})\n")
     
     print(f"\nResults saved to: {results_file}")
+    print("Note: This file replaces the previous overvaluation results each time you run the calculator.")
     
     # Print summary
     print("\n" + "=" * 50)
