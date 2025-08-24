@@ -1,3 +1,39 @@
+"""
+OVERVALUED CALCULATOR - Updated Version
+
+CHANGES MADE IN THIS VERSION:
+================================
+
+1. BITCOIN CUSTOM PRICE INPUT:
+   - Added custom price input for Bitcoin (previously only Gold/Silver had this)
+   - All assets now support custom price scenarios for "what-if" analysis
+   - Bitcoin: Test different price scenarios (e.g., if BTC drops to $50k)
+   - Metals: Adjust for premium/discount vs. spot price
+
+2. INPUT FORMAT CLARIFICATION:
+   - Clear instructions: Use raw numbers only (no $, no commas)
+   - Examples: 50000, 150000.50, 200000 (not $50,000 or $150,000.50)
+   - Better error messages with format examples
+   - Input help displayed for Bitcoin analysis
+
+3. FILE SAVING FIXES:
+   - Fixed save location: Now saves to Portfolio/Overvaluedness/ folder
+   - Fixed filename: Uses overvaluation_results_latest.txt
+   - File replacement: Each run overwrites previous results (no more timestamped files)
+
+4. USER EXPERIENCE IMPROVEMENTS:
+   - Clear input format guidance
+   - Better error messages
+   - Consistent behavior across all assets
+   - Clean file organization
+
+USAGE:
+- Run calculator to get current overvaluation analysis
+- Input custom prices for any asset to test scenarios
+- Results always saved to: Portfolio/Overvaluedness/overvaluation_results_latest.txt
+- Each run replaces previous results for clean organization
+"""
+
 import pandas as pd
 import numpy as np
 import os
@@ -183,7 +219,21 @@ def get_days_since_start(asset):
     return days
 
 def get_premium_adjusted_price(asset):
-    """Get premium adjusted price from user input or use current price."""
+    """
+    Get custom price from user input or use current market price.
+    
+    CHANGES MADE:
+    - Added custom price input for Bitcoin (previously only Gold/Silver had this feature)
+    - All assets now support custom price scenarios for "what-if" analysis
+    - Bitcoin: Test different price scenarios (e.g., if BTC drops to $50k, what's overvaluation?)
+    - Metals: Adjust for premium/discount vs. spot price
+    
+    INPUT FORMAT:
+    - Type 'no' to use current market price from CSV files
+    - Type raw number (no $, no commas): 50000, 150000.50, 200000
+    - DO NOT include: $, commas, or currency formatting
+    - Examples: 113034.04 (not $113,034.04), 150000 (not $150,000)
+    """
     
     current_prices = get_current_prices()
     current_price = current_prices.get(asset)
@@ -191,6 +241,13 @@ def get_premium_adjusted_price(asset):
     if current_price is None:
         print(f"Could not get current {asset} price from file.")
         return None
+    
+    # Show input format help for first asset
+    if asset == 'Bitcoin':
+        print(f"\n💡 BITCOIN CUSTOM PRICE INPUT:")
+        print(f"   • Type 'no' to use current market price: ${current_price:,.2f}")
+        print(f"   • Type raw number (no $, no commas): 50000, 150000.50, 200000")
+        print(f"   • Examples: 113034.04, 150000, 200000.50")
     
     while True:
         if asset == 'Bitcoin':
@@ -209,7 +266,10 @@ def get_premium_adjusted_price(asset):
                 premium_price = float(user_input)
                 return premium_price
             except ValueError:
-                print("Invalid input. Please enter a valid number or 'no'.")
+                print("❌ Invalid input format!")
+                print("   • Use raw numbers only: 50000, 150000.50")
+                print("   • NO dollar signs ($), NO commas (,), NO currency formatting")
+                print("   • Examples: 113034.04, 150000, 200000.50")
 
 def calculate_overvaluation():
     """Main function to calculate overvaluation for all assets."""
@@ -284,7 +344,17 @@ def calculate_overvaluation():
     return results
 
 def save_results(results):
-    """Save results to a file."""
+    """
+    Save results to a file.
+    
+    CHANGES MADE:
+    - Fixed save location: Now saves to Portfolio/Overvaluedness/ folder (was saving to wrong location)
+    - Fixed filename: Now uses overvaluation_results_latest.txt (was creating timestamped files)
+    - File replacement: Each run overwrites previous results (was accumulating multiple files)
+    
+    FILE LOCATION: Portfolio/Overvaluedness/overvaluation_results_latest.txt
+    BEHAVIOR: Replaces previous file each time calculator runs
+    """
     
     # Use a fixed filename to replace the old results each time
     results_file = "Portfolio/Overvaluedness/overvaluation_results_latest.txt"
