@@ -1,0 +1,36 @@
+BITCOIN RAINBOW CHART ANALYSIS
+==================================================
+
+Analysis Date: 2025-08-25 18:26:36
+
+MODEL INFORMATION:
+--------------------
+Formula: log10(price) = 1.827743 * ln(day) + -10.880943
+R² = 0.940275
+Data Range: 2011-07-17 to 2025-07-19
+Start Day: 365
+
+CURRENT STATUS:
+---------------
+Date: 2025-08-25
+Current Price: $112,929.71
+Days Since Genesis: 6,078
+Model Price: $110,443.79
+Overvaluation: +2.3%
+Rainbow Band: Hold
+
+RAINBOW BANDS:
+---------------
+Firesale!: Maximum undervaluation
+Buy: Undervaluation
+Hold: Fair value range
+Sell: Overvaluation
+Danger!: Maximum overvaluation
+
+INTERPRETATION:
+---------------
+HOLD: Bitcoin is near fair value
+   Maintain current allocation
+
+This analysis is consistent with the asset allocation calculator
+and can be used to inform portfolio rebalancing decisions.

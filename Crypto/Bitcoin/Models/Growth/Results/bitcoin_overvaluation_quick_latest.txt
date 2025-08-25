@@ -1,0 +1,29 @@
+BITCOIN OVERVALUATION QUICK ANALYSIS
+==================================================
+
+Analysis Date: 2025-08-25 18:23:28
+
+MODEL INFORMATION:
+--------------------
+Formula: log10(price) = 2.464300 * ln(day) + -16.448768
+R² = 0.959960
+Data Range: 2010-07-18 to 2025-08-25
+Start Day: 365
+
+CURRENT STATUS:
+---------------
+Date: 2025-08-25
+Current Price: $112,929.71
+Days Since Genesis: 6,078
+Model Price: $105,020.88
+Overvaluation: +7.5%
+Rainbow Band: Hold
+Price Ratio: 1.08x model price
+
+INTERPRETATION:
+---------------
+HOLD: Bitcoin is near fair value
+   Maintain current allocation
+
+This analysis is consistent with the asset allocation calculator
+and can be used to inform portfolio rebalancing decisions.
