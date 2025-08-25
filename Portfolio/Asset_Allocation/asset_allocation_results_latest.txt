@@ -1,0 +1,37 @@
+ASSET ALLOCATION CALCULATOR RESULTS
+==================================================
+
+Analysis Date: 2025-08-25 14:15:00
+
+OVERVALUATION DATA:
+--------------------
+Bitcoin: +5.1% overvalued
+Gold: +28.1% overvalued
+Silver: +28.1% overvalued
+
+ALLOCATION COMPARISON:
+-------------------------
+Asset                Base     Adjusted   Change  
+--------------------------------------------------
+Bitcoin              35.00    37.26      +2.26   
+Gold                 28.00    24.57      -3.43   
+Silver               12.00    10.53      -1.47   
+Stocks               25.00    27.64      +2.64   
+--------------------------------------------------
+TOTAL                100.00   100.00     0.00    
+
+RECOMMENDATIONS:
+---------------
+• Increase Bitcoin allocation by 2.26%
+• Decrease Gold allocation by 3.43%
+• Decrease Silver allocation by 1.47%
+• Increase Stocks allocation by 2.64%
+
+RATIONALE:
+----------
+• More overvalued assets get reduced allocation
+• Less overvalued assets get increased allocation
+• Metals are treated as a unified asset class for portfolio rebalancing
+• Within metals, aggressive rebalancing between Gold and Silver based on relative overvaluation
+• Stocks are treated as neutral and can absorb rebalancing
+• Conservative bounds prevent extreme allocation swings

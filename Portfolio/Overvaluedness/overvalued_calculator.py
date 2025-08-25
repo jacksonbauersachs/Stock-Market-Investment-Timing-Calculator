@@ -4,30 +4,37 @@ OVERVALUED CALCULATOR - Updated Version
 CHANGES MADE IN THIS VERSION:
 ================================
 
-1. BITCOIN CUSTOM PRICE INPUT:
+1. UPDATED MODEL INTEGRATION:
+   - Now uses the latest growth models from Portfolio/Models/updated_models.txt
+   - Bitcoin: Uses correct Rainbow Chart model with days since genesis (Jan 3, 2009)
+   - Gold/Silver: Supports all model types (Linear, Exponential, Polynomial, Power)
+   - Automatically extracts parameters for each model type
+
+2. BITCOIN CUSTOM PRICE INPUT:
    - Added custom price input for Bitcoin (previously only Gold/Silver had this)
    - All assets now support custom price scenarios for "what-if" analysis
    - Bitcoin: Test different price scenarios (e.g., if BTC drops to $50k)
    - Metals: Adjust for premium/discount vs. spot price
 
-2. INPUT FORMAT CLARIFICATION:
+3. INPUT FORMAT CLARIFICATION:
    - Clear instructions: Use raw numbers only (no $, no commas)
    - Examples: 50000, 150000.50, 200000 (not $50,000 or $150,000.50)
    - Better error messages with format examples
    - Input help displayed for Bitcoin analysis
 
-3. FILE SAVING FIXES:
+4. FILE SAVING FIXES:
    - Fixed save location: Now saves to Portfolio/Overvaluedness/ folder
    - Fixed filename: Uses overvaluation_results_latest.txt
    - File replacement: Each run overwrites previous results (no more timestamped files)
 
-4. USER EXPERIENCE IMPROVEMENTS:
+5. USER EXPERIENCE IMPROVEMENTS:
    - Clear input format guidance
    - Better error messages
    - Consistent behavior across all assets
    - Clean file organization
 
 USAGE:
+- Run Portfolio/Models/update_all_growth_models.py first to generate latest models
 - Run calculator to get current overvaluation analysis
 - Input custom prices for any asset to test scenarios
 - Results always saved to: Portfolio/Overvaluedness/overvaluation_results_latest.txt
@@ -47,6 +54,8 @@ def load_models_from_file():
     
     if not os.path.exists(models_file):
         print(f"Error: Models file not found - {models_file}")
+        print("Please run Portfolio/Models/update_all_growth_models.py first to generate the models.")
+        print("This will create the latest growth models and save them to updated_models.txt")
         return None
     
     models = {}
@@ -54,30 +63,20 @@ def load_models_from_file():
     with open(models_file, 'r') as f:
         content = f.read()
     
-    # For Bitcoin, use the original model parameters from bitcoin_growth_model_coefficients_day365.txt
-    # This gives us the $107k fair value that matches the GBM simulation
-    try:
-        with open("Crypto/Bitcoin/Models/Growth/Results/bitcoin_growth_model_coefficients_day365.txt", 'r') as f:
-            lines = f.readlines()
-            a = float(lines[0].split('=')[1].strip())
-            b = float(lines[1].split('=')[1].strip())
-        
+    # Extract Bitcoin Rainbow Chart model from updated_models.txt
+    bitcoin_match = re.search(r'Rainbow Chart Model:\s*\n\s*Formula: log10\(price\) = ([\d.-]+) \* ln\(day\) \+ ([\d.-]+)', content)
+    if bitcoin_match:
+        slope = float(bitcoin_match.group(1))
+        intercept = float(bitcoin_match.group(2))
         models['Bitcoin'] = {
             'type': 'Rainbow Chart',
-            'slope': a,
-            'intercept': b,
-            'formula': f"log10(price) = {a} * ln(day) + {b}"
+            'slope': slope,
+            'intercept': intercept,
+            'formula': f"log10(price) = {slope:.6f} * ln(day) + {intercept:.6f}"
         }
-    except:
-        # Fallback to updated models if original file not found
-        bitcoin_match = re.search(r'Rainbow Chart Model:\s*\n\s*Formula: log10\(price\) = ([\d.-]+) \* ln\(day\) \+ ([\d.-]+)', content)
-        if bitcoin_match:
-            models['Bitcoin'] = {
-                'type': 'Rainbow Chart',
-                'slope': float(bitcoin_match.group(1)),
-                'intercept': float(bitcoin_match.group(2)),
-                'formula': f"log10(price) = {bitcoin_match.group(1)} * ln(day) + {bitcoin_match.group(2)}"
-            }
+        print(f"Bitcoin model loaded: {models['Bitcoin']['formula']}")
+    else:
+        print("Warning: Bitcoin Rainbow Chart model not found in updated_models.txt")
     
     # Extract Gold best model
     gold_match = re.search(r'Best Gold Model: (\w+)\s*\n\s*Formula: (.+?)\s*\n', content)
@@ -87,8 +86,11 @@ def load_models_from_file():
         models['Gold'] = {
             'type': model_type,
             'formula': formula,
-            'params': extract_polynomial_params(formula) if model_type == 'Polynomial' else None
+            'params': extract_model_params(formula, model_type)
         }
+        print(f"Gold model loaded: {model_type} - {formula}")
+    else:
+        print("Warning: Gold best model not found in updated_models.txt")
     
     # Extract Silver best model
     silver_match = re.search(r'Best Silver Model: (\w+)\s*\n\s*Formula: (.+?)\s*\n', content)
@@ -98,22 +100,54 @@ def load_models_from_file():
         models['Silver'] = {
             'type': model_type,
             'formula': formula,
-            'params': extract_polynomial_params(formula) if model_type == 'Polynomial' else None
+            'params': extract_model_params(formula, model_type)
         }
+        print(f"Silver model loaded: {model_type} - {formula}")
+    else:
+        print("Warning: Silver best model not found in updated_models.txt")
     
     return models
 
-def extract_polynomial_params(formula):
-    """Extract polynomial parameters from formula string."""
-    # Handle scientific notation and extract coefficients
-    # Format: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
-    try:
-        # Extract coefficients using regex
-        coeffs = re.findall(r'([\d.-]+e?[\d.-]*)', formula)
-        if len(coeffs) >= 4:
-            return [float(coeffs[0]), float(coeffs[1]), float(coeffs[2]), float(coeffs[3])]
-    except:
-        pass
+def extract_model_params(formula, model_type):
+    """Extract model parameters from formula string based on model type."""
+    
+    if model_type == 'Polynomial':
+        # Handle scientific notation and extract coefficients
+        # Format: Price = 6.98e-10*Days³ + -8.76e-06*Days² + 0.0451*Days + 250.64
+        try:
+            coeffs = re.findall(r'([\d.-]+e?[\d.-]*)', formula)
+            if len(coeffs) >= 4:
+                return [float(coeffs[0]), float(coeffs[1]), float(coeffs[2]), float(coeffs[3])]
+        except:
+            pass
+    
+    elif model_type == 'Linear':
+        # Format: Price = 0.0451 * Days + 250.64
+        try:
+            match = re.search(r'Price = ([\d.-]+) \* Days \+ ([\d.-]+)', formula)
+            if match:
+                return [float(match.group(1)), float(match.group(2))]
+        except:
+            pass
+    
+    elif model_type == 'Exponential':
+        # Format: Price = 100.00 * exp(0.001 * Days) + 100.00
+        try:
+            match = re.search(r'Price = ([\d.-]+) \* exp\(([\d.-]+) \* Days\) \+ ([\d.-]+)', formula)
+            if match:
+                return [float(match.group(1)), float(match.group(2)), float(match.group(3))]
+        except:
+            pass
+    
+    elif model_type == 'Power':
+        # Format: Price = 1.00 * Days^0.500 + 100.00
+        try:
+            match = re.search(r'Price = ([\d.-]+) \* Days\^([\d.-]+) \+ ([\d.-]+)', formula)
+            if match:
+                return [float(match.group(1)), float(match.group(2)), float(match.group(3))]
+        except:
+            pass
+    
     return None
 
 def get_current_prices():
@@ -169,54 +203,59 @@ def calculate_fair_value(asset, model, days_since_start):
             return fair_value
     
     elif asset in ['Gold', 'Silver']:
-        if model['type'] == 'Polynomial' and model['params']:
+        if not model['params']:
+            print(f"Warning: No parameters found for {asset} {model['type']} model")
+            return None
+        
+        if model['type'] == 'Polynomial':
             # Polynomial model: ax³ + bx² + cx + d
             a, b, c, d = model['params']
             fair_value = a * (days_since_start ** 3) + b * (days_since_start ** 2) + c * days_since_start + d
             return fair_value
         elif model['type'] == 'Linear':
-            # Extract linear parameters from formula
-            match = re.search(r'Price = ([\d.-]+) \* Days \+ ([\d.-]+)', model['formula'])
-            if match:
-                slope = float(match.group(1))
-                intercept = float(match.group(2))
-                fair_value = slope * days_since_start + intercept
-                return fair_value
+            # Linear model: ax + b
+            a, b = model['params']
+            fair_value = a * days_since_start + b
+            return fair_value
         elif model['type'] == 'Exponential':
-            # Extract exponential parameters from formula
-            match = re.search(r'Price = ([\d.-]+) \* exp\(([\d.-]+) \* Days\) \+ ([\d.-]+)', model['formula'])
-            if match:
-                a = float(match.group(1))
-                b = float(match.group(2))
-                c = float(match.group(3))
-                fair_value = a * np.exp(b * days_since_start) + c
-                return fair_value
+            # Exponential model: a * exp(b * x) + c
+            a, b, c = model['params']
+            fair_value = a * np.exp(b * days_since_start) + c
+            return fair_value
+        elif model['type'] == 'Power':
+            # Power model: a * x^b + c
+            a, b, c = model['params']
+            fair_value = a * (days_since_start ** b) + c
+            return fair_value
+        else:
+            print(f"Warning: Unsupported model type '{model['type']}' for {asset}")
+            return None
     
     return None
 
 def get_days_since_start(asset):
     """Get the number of days since the start date for each asset."""
     
-    start_dates = {
-        'Bitcoin': '2010-07-18',
-        'Gold': '1975-01-03',
-        'Silver': '1970-02-04'
-    }
-    
-    start_date = datetime.strptime(start_dates[asset], '%Y-%m-%d')
-    today = datetime.now()
-    
     if asset == 'Bitcoin':
-        # Bitcoin Rainbow Chart model: days start at 1, skip first 364 days
-        # Formula: (current_date - start_date).days + 1
-        days = (today - start_date).days + 1
+        # Bitcoin Rainbow Chart model uses days since genesis (January 3, 2009)
+        bitcoin_genesis = datetime(2009, 1, 3)
+        today = datetime.now()
+        days = (today - bitcoin_genesis).days
         # The model skips the first 364 days, so we need to ensure we're at least at day 365
         if days < 365:
             days = 365
+        return days
     else:
+        # Gold and Silver use days since their respective start dates
+        start_dates = {
+            'Gold': '1975-01-03',
+            'Silver': '1970-02-04'
+        }
+        
+        start_date = datetime.strptime(start_dates[asset], '%Y-%m-%d')
+        today = datetime.now()
         days = (today - start_date).days
-    
-    return days
+        return days
 
 def get_premium_adjusted_price(asset):
     """

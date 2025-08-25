@@ -1,16 +1,17 @@
 COMPREHENSIVE GROWTH MODEL ANALYSIS
 ============================================================
 
-Analysis Date: 2025-08-25 13:51:16
+Analysis Date: 2025-08-25 18:50:56
 Data Sources: Updated Portfolio/Data/ files
 
 BITCOIN GROWTH MODELS
 ------------------------------
 Rainbow Chart Model:
-  Formula: log10(price) = 1.830239 * ln(day) + -10.898217
-  R² Score: 0.940965
-  Data Points: 5,153
-  Date Range: 2011-07-18 to 2025-08-25
+  Formula: log10(price) = 2.464300 * ln(day) + -16.448768
+  R² Score: 0.959960
+  Data Points: 5,518
+  Date Range: 2010-07-18 to 2025-08-25
+  Days Since Genesis: 561 to 6078
   Current Price: $112,929.71
   All-Time High: $123,365.63
 
@@ -36,10 +37,10 @@ Power Model:
   R² Score: 0.878364
   RMSE: 223.86
 
-Best Gold Model: Polynomial
-  Formula: Price = 7.22e-10*Days³ + -9.32e-06*Days² + 0.0485*Days + 246.43
-  R² Score: 0.880385
-  RMSE: 221.99
+Best Gold Model: Exponential
+  Formula: Price = 31.80 * exp(0.000233 * Days) + 232.42
+  R² Score: 0.876691
+  RMSE: 225.40
 
 SILVER GROWTH MODELS
 ---------------------------
@@ -63,10 +64,10 @@ Power Model:
   R² Score: 0.600951
   RMSE: 5.58
 
-Best Silver Model: Polynomial
-  Formula: Price = 4.67e-12*Days³ + -5.33e-08*Days² + 0.0004*Days + 4.67
-  R² Score: 0.602023
-  RMSE: 5.57
+Best Silver Model: Exponential
+  Formula: Price = 1.02 * exp(0.000160 * Days) + 3.46
+  R² Score: 0.594121
+  RMSE: 5.62
 
 SUMMARY
 ----------
@@ -74,6 +75,11 @@ All growth models have been updated using the latest data from:
 - Portfolio/Data/Bitcoin_all_time_price.csv
 - Portfolio/Data/Gold_all_time_price.csv
 - Portfolio/Data/Silver_all_time_price.csv
+
+Bitcoin Rainbow Chart Model Notes:
+- Uses days since Bitcoin genesis (January 3, 2009)
+- Skips first year (days 0-364) for stability
+- Formula: log10(price) = slope * ln(days_since_genesis) + intercept
 
 The models can be used for:
 - Price trend analysis

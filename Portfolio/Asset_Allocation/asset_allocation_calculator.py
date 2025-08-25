@@ -64,17 +64,14 @@ METALS_ADJUSTMENT_FACTOR = 0.9     # 90% adjustment for internal metals rebalanc
 def load_overvaluation_results():
     """Load the most recent overvaluation results"""
     
-    # Look for the most recent overvaluation results file
+    # Look for the latest overvaluation results file
     results_dir = "Portfolio/Overvaluedness"
-    results_files = [f for f in os.listdir(results_dir) if f.startswith("overvaluation_results_") and f.endswith(".txt")]
+    results_file = os.path.join(results_dir, "overvaluation_results_latest.txt")
     
-    if not results_files:
-        print("No overvaluation results found. Please run the overvalued calculator first.")
+    if not os.path.exists(results_file):
+        print(f"No overvaluation results found at: {results_file}")
+        print("Please run the overvalued calculator first.")
         return None
-    
-    # Get the most recent file
-    latest_file = max(results_files)
-    results_file = os.path.join(results_dir, latest_file)
     
     print(f"Loading results from: {results_file}")
     
@@ -440,7 +437,7 @@ def main():
     save_allocation_results(original_metals_allocation, final_allocation, changes, overvaluation_data)
     
     print(f"\n✅ Asset allocation analysis completed!")
-    print(f"📄 Results saved to: Portfolio/asset_allocation_results_latest.txt")
+    print(f"📄 Results saved to: Portfolio/Asset_Allocation/asset_allocation_results_latest.txt")
 
 if __name__ == "__main__":
     main() 
