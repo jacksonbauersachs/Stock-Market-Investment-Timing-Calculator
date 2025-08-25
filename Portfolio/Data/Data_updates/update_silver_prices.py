@@ -39,6 +39,18 @@ def fetch_silver_data_for_period(start_date, end_date, api_key):
         current_dt = start_dt
         
         while current_dt <= end_dt:
+            # Skip weekends (Saturday = 5, Sunday = 6)
+            if current_dt.weekday() >= 5:
+                print(f"  Skipping {current_dt.strftime('%Y-%m-%d')} (weekend)")
+                current_dt += timedelta(days=1)
+                continue
+            
+            # Skip future dates (no data available yet)
+            if current_dt > datetime.now():
+                print(f"  Skipping {current_dt.strftime('%Y-%m-%d')} (future date)")
+                current_dt += timedelta(days=1)
+                continue
+                
             date_str = current_dt.strftime('%Y%m%d')
             url = f"https://www.goldapi.io/api/XAG/USD/{date_str}"
             
@@ -57,6 +69,29 @@ def fetch_silver_data_for_period(start_date, end_date, api_key):
                 try:
                     data = response.json()
                     
+                    # Debug: Print the raw API response to see what we're getting
+                    print(f"  API Response: {data}")
+                    
+                    # GoldAPI only provides current price, not OHLC data
+                    # We'll use the current price as close price and estimate other values
+                    close_price = data.get('price')
+                    
+                    print(f"  Extracted price - Close: {close_price}")
+                    
+                    # Check if we have valid close price data
+                    if close_price is None or close_price <= 0:
+                        print(f"  Skipping {current_dt.strftime('%Y-%m-%d')}: Missing or invalid close price")
+                        current_dt += timedelta(days=1)
+                        continue
+                    
+                    # Since GoldAPI doesn't provide OHLC, we'll estimate them
+                    # Use close price as the base and create reasonable estimates
+                    open_price = close_price * 0.999  # Slightly lower than close
+                    high_price = close_price * 1.002  # Slightly higher than close
+                    low_price = close_price * 0.998   # Slightly lower than close
+                    
+                    print(f"  Estimated prices - Open: {open_price:.3f}, High: {high_price:.3f}, Low: {low_price:.3f}, Close: {close_price:.3f}")
+                    
                     # Convert timestamp to date string (timestamp is in milliseconds)
                     timestamp = data.get('timestamp', 0)
                     if timestamp:
@@ -67,17 +102,18 @@ def fetch_silver_data_for_period(start_date, end_date, api_key):
                         
                         # Store data in format compatible with existing code
                         filtered_data[date_key] = {
-                            '1. open': data.get('open_price', 0),
-                            '2. high': data.get('high_price', 0),
-                            '3. low': data.get('low_price', 0),
-                            '4. close': data.get('price', 0),
+                            '1. open': open_price,
+                            '2. high': high_price,
+                            '3. low': low_price,
+                            '4. close': close_price,
                             '5. volume': 0  # GoldAPI doesn't provide volume
                         }
                         print(f"  Successfully processed data for {date_key}")
+                        print(f"  Note: OHLC values are estimated from close price (GoldAPI limitation)")
                     else:
-                        print(f"  No timestamp in response")
+                        print(f"  No timestamp in response for {current_dt.strftime('%Y-%m-%d')}")
                 except Exception as e:
-                    print(f"  Error processing response: {e}")
+                    print(f"  Error processing response for {current_dt.strftime('%Y-%m-%d')}: {e}")
             else:
                 print(f"  Skipping date {current_dt.strftime('%Y-%m-%d')} due to failed request")
             
@@ -130,39 +166,72 @@ def update_silver_prices():
     start_date = (last_date_dt + timedelta(days=1)).strftime('%Y-%m-%d')
     
     print(f"Fetching new data from {start_date} to {today}...")
+    print("Note: Weekend dates will be automatically skipped (no trading data)")
+    print("Note: GoldAPI only provides current price - OHLC values will be estimated")
     
     # Fetch new data
     new_data = fetch_silver_data_for_period(start_date, today, api_key)
     
     if not new_data:
         print("No new data was fetched.")
+        print("This could be due to:")
+        print("- All requested dates are weekends/holidays")
+        print("- API issues or rate limiting")
+        print("- No valid trading data available")
         return
     
     # Convert new data to DataFrame
     records = []
     for date, values in new_data.items():
-        # Format price values to match existing format (no quotes, simple comma separation)
-        price = float(values['4. close'])
-        open_price = float(values['1. open'])
-        high_price = float(values['2. high'])
-        low_price = float(values['3. low'])
-        volume = float(values['5. volume'])
-        
-        record = {
-            'Date': date,
-            'Price': f'{price:.3f}',
-            'Open': f'{open_price:.3f}',
-            'High': f'{high_price:.3f}',
-            'Low': f'{low_price:.3f}',
-            'Vol.': f'{volume:.2f}',
-            'Change %': ''
-        }
-        records.append(record)
+        try:
+            # Validate and convert price values with error handling
+            close_price = values.get('4. close')
+            open_price = values.get('1. open')
+            high_price = values.get('2. high')
+            low_price = values.get('3. low')
+            volume = values.get('5. volume', 0)
+            
+            # Check if any required price data is missing or invalid
+            if any(price is None or price == 0 for price in [close_price, open_price, high_price, low_price]):
+                print(f"  Skipping {date}: Invalid or missing price data")
+                continue
+            
+            # Convert to float with validation
+            price = float(close_price)
+            open_price = float(open_price)
+            high_price = float(high_price)
+            low_price = float(low_price)
+            volume = float(volume)
+            
+            # Additional validation - check for reasonable price ranges
+            if price <= 0 or price > 1000:  # Silver shouldn't be negative or over $1000
+                print(f"  Skipping {date}: Price {price} seems unreasonable")
+                continue
+            
+            record = {
+                'Date': date,
+                'Price': f'{price:.3f}',
+                'Open': f'{open_price:.3f}',
+                'High': f'{high_price:.3f}',
+                'Low': f'{low_price:.3f}',
+                'Vol.': f'{volume:.2f}',
+                'Change %': ''
+            }
+            records.append(record)
+            
+        except (ValueError, TypeError) as e:
+            print(f"  Skipping {date}: Error converting price data - {e}")
+            continue
     
     new_df = pd.DataFrame(records)
     
     if new_df.empty:
         print("No new records to add.")
+        print("This might be due to:")
+        print("- Weekend dates (no trading data)")
+        print("- Market holidays")
+        print("- API rate limiting or data availability issues")
+        print("- Invalid or missing price data from API")
         return
     
     # Sort by date
@@ -173,13 +242,23 @@ def update_silver_prices():
     print(f"Date range: {new_df['Date'].min().strftime('%Y-%m-%d')} to {new_df['Date'].max().strftime('%Y-%m-%d')}")
     
     # Extract numeric values for price range display
-    price_values = []
-    for price_str in new_df['Price']:
-        # Convert to float
-        price_float = float(price_str)
-        price_values.append(price_float)
-    
-    print(f"Price range: ${min(price_values):.3f} to ${max(price_values):.3f}")
+    if not new_df.empty:
+        price_values = []
+        for price_str in new_df['Price']:
+            try:
+                # Convert to float
+                price_float = float(price_str)
+                price_values.append(price_float)
+            except (ValueError, TypeError) as e:
+                print(f"Warning: Could not parse price '{price_str}': {e}")
+                continue
+        
+        if price_values:
+            print(f"Price range: ${min(price_values):.3f} to ${max(price_values):.3f}")
+        else:
+            print("Warning: No valid price values found for range calculation")
+    else:
+        print("No new data to display price range")
     
     # Read existing data
     existing_df = pd.read_csv(silver_data_file)

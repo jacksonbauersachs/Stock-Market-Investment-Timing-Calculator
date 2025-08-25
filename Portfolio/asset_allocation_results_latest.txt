@@ -1,31 +1,31 @@
 ASSET ALLOCATION CALCULATOR RESULTS
 ==================================================
 
-Analysis Date: 2025-08-19 20:27:15
+Analysis Date: 2025-08-25 13:56:11
 
 OVERVALUATION DATA:
 --------------------
-Bitcoin: +54.4% overvalued
-Gold: +32.8% overvalued
-Silver: +27.4% overvalued
+Bitcoin: +53.6% overvalued
+Gold: +31.9% overvalued
+Silver: +27.3% overvalued
 
 ALLOCATION COMPARISON:
 -------------------------
 Asset                Base     Adjusted   Change  
 --------------------------------------------------
-Bitcoin              30.0     22.7       -7.3    
-Gold                 24.0     21.3       -2.7    
-Silver               12.0     13.2       +1.2    
-Roth IRA             24.0     29.3       +5.3    
-High-Yield Savings   10.0     13.5       +3.5    
+Bitcoin              35.00    28.51      -6.49   
+Gold                 28.00    26.45      -1.55   
+Silver               12.00    13.70      +1.70   
+Stocks               25.00    31.34      +6.34   
+--------------------------------------------------
+TOTAL                100.00   100.00     0.00    
 
 RECOMMENDATIONS:
 ---------------
-• Decrease Bitcoin allocation by 7.3%
-• Increase Roth IRA allocation by 5.3%
-• Increase High-Yield Savings allocation by 3.5%
-• Decrease Gold allocation by 2.7%
-• Increase Silver allocation by 1.2%
+• Decrease Bitcoin allocation by 6.49%
+• Increase Stocks allocation by 6.34%
+• Increase Silver allocation by 1.70%
+• Decrease Gold allocation by 1.55%
 
 RATIONALE:
 ----------
@@ -33,6 +33,5 @@ RATIONALE:
 • Less overvalued assets get increased allocation
 • Metals are treated as a unified asset class for portfolio rebalancing
 • Within metals, aggressive rebalancing between Gold and Silver based on relative overvaluation
-• Roth IRA is treated as neutral and can absorb rebalancing
-• HYS has dynamic stress response based on total market overvaluation
+• Stocks are treated as neutral and can absorb rebalancing
 • Conservative bounds prevent extreme allocation swings
