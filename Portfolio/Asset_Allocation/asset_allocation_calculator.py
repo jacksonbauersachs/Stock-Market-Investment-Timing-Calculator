@@ -307,7 +307,7 @@ def save_allocation_results(base_allocation, adjusted_allocation, changes, overv
     """Save the allocation results to a file"""
     
     # Use a fixed filename to replace the old results each time
-    results_file = "Portfolio/asset_allocation_results_latest.txt"
+    results_file = "Portfolio/Asset_Allocation/asset_allocation_results_latest.txt"
     
     with open(results_file, 'w') as f:
         f.write("ASSET ALLOCATION CALCULATOR RESULTS\n")
