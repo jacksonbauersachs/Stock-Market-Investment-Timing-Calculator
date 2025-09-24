@@ -435,6 +435,111 @@ def create_rainbow_chart(df, asset_name, model_results, output_dir):
     
     return output_file
 
+def _predict_future_price(df, asset_name, model_results, years_ahead):
+    """Predict future price using the fitted model for a given horizon (in years)."""
+    days_in_year = 365
+    if asset_name == 'Bitcoin':
+        days_col = 'Days_Since_Genesis'
+        last_day = int(df[days_col].iloc[-1])
+        future_day = last_day + years_ahead * days_in_year
+        price = 10**(model_results['slope'] * np.log(future_day) + model_results['intercept'])
+        return float(price)
+    else:
+        days_col = 'Days'
+        last_day = int(df[days_col].iloc[-1])
+        future_day = last_day + years_ahead * days_in_year
+        best_model = model_results['Best_Model']
+        if best_model['name'] == 'Linear':
+            return float(best_model['params'][0] * future_day + best_model['params'][1])
+        elif best_model['name'] == 'Exponential':
+            return float(best_model['params'][0] * np.exp(best_model['params'][1] * future_day) + best_model['params'][2])
+        elif best_model['name'] == 'Polynomial':
+            return float(best_model['params'][0] * future_day**3 + best_model['params'][1] * future_day**2 + best_model['params'][2] * future_day + best_model['params'][3])
+        elif best_model['name'] == 'Power':
+            return float(best_model['params'][0] * np.power(future_day, best_model['params'][1]) + best_model['params'][2])
+        else:
+            return float(best_model['params'][0] * future_day + best_model['params'][1])
+
+def compute_projections(df, asset_name, model_results):
+    """Compute 1, 5, and 10-year projected returns using the fitted model."""
+    if model_results is None:
+        return None
+    current_price = float(df['Price'].iloc[-1])
+    # Model-implied fair price today
+    if asset_name == 'Bitcoin':
+        days_col = 'Days_Since_Genesis'
+        last_day = int(df[days_col].iloc[-1])
+        fair_price = float(10**(model_results['slope'] * np.log(last_day) + model_results['intercept']))
+    else:
+        days_col = 'Days'
+        last_day = int(df[days_col].iloc[-1])
+        best_model = model_results['Best_Model']
+        if best_model['name'] == 'Linear':
+            fair_price = float(best_model['params'][0] * last_day + best_model['params'][1])
+        elif best_model['name'] == 'Exponential':
+            fair_price = float(best_model['params'][0] * np.exp(best_model['params'][1] * last_day) + best_model['params'][2])
+        elif best_model['name'] == 'Polynomial':
+            fair_price = float(best_model['params'][0] * last_day**3 + best_model['params'][1] * last_day**2 + best_model['params'][2] * last_day + best_model['params'][3])
+        elif best_model['name'] == 'Power':
+            fair_price = float(best_model['params'][0] * np.power(last_day, best_model['params'][1]) + best_model['params'][2])
+        else:
+            fair_price = float(best_model['params'][0] * last_day + best_model['params'][1])
+    horizons = [1, 5, 10]
+    projections = {}
+    for y in horizons:
+        future_price = _predict_future_price(df, asset_name, model_results, y)
+        ret_pct = (future_price / current_price - 1.0) * 100.0
+        projections[y] = {
+            'future_price': future_price,
+            'return_pct': ret_pct,
+            'fair_return_pct': (future_price / fair_price - 1.0) * 100.0
+        }
+    return {
+        'asset': asset_name,
+        'as_of_date': df['Date'].iloc[-1].strftime('%Y-%m-%d'),
+        'current_price': current_price,
+        'fair_price': fair_price,
+        'projections': projections
+    }
+
+def save_projections(bitcoin_proj, gold_proj, silver_proj):
+    """Write projections to Portfolio/Models/updated_projections.txt."""
+    os.makedirs("Portfolio/Models", exist_ok=True)
+    results_file = "Portfolio/Models/updated_projections.txt"
+    with open(results_file, 'w') as f:
+        f.write("MODEL-BASED FORWARD PROJECTIONS\n")
+        f.write("=" * 60 + "\n\n")
+        f.write(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+
+        def write_block(proj):
+            if not proj:
+                return
+            f.write(f"{proj['asset'].upper()} PROJECTIONS\n")
+            f.write("-" * (len(proj['asset']) + 12) + "\n")
+            f.write(f"As of: {proj['as_of_date']}\n")
+            f.write(f"Current Price: ${proj['current_price']:,.2f}\n")
+            f.write(f"Model Fair Price (today): ${proj['fair_price']:,.2f}\n")
+            for years in [1, 5, 10]:
+                p = proj['projections'][years]
+                f.write(f"{years}-Year Projected Price: ${p['future_price']:,.2f} | Return vs Current: {p['return_pct']:.2f}%\n")
+            f.write("Fair-Based Growth Rates (from model fair price):\n")
+            for years in [1, 5, 10]:
+                p = proj['projections'][years]
+                f.write(f"  {years}-Year Growth: {p['fair_return_pct']:.2f}%\n")
+            f.write("\n")
+
+        write_block(bitcoin_proj)
+        write_block(gold_proj)
+        write_block(silver_proj)
+
+        f.write("Notes:\n")
+        f.write("- Projections use the latest fitted models in this session.\n")
+        f.write("- Returns are computed versus the latest observed price.\n")
+        f.write("- Horizons are 1, 5, and 10 calendar years (365d per year).\n")
+
+    print(f"Projections saved to: {results_file}")
+    return results_file
+
 def save_comprehensive_results(bitcoin_results, gold_results, silver_results):
     """Save all growth model results to a comprehensive file."""
     
@@ -576,6 +681,13 @@ def main():
     print("\nSaving comprehensive results...")
     results_file = save_comprehensive_results(bitcoin_results, gold_results, silver_results)
     
+    # Compute and save projections
+    print("\nComputing forward projections (1y, 5y, 10y)...")
+    btc_proj = compute_projections(bitcoin_df if bitcoin_results else None and bitcoin_df, 'Bitcoin', bitcoin_results)
+    gold_proj = compute_projections(gold_df if gold_results else None and gold_df, 'Gold', gold_results)
+    silver_proj = compute_projections(silver_df if silver_results else None and silver_df, 'Silver', silver_results)
+    projections_file = save_projections(btc_proj, gold_proj, silver_proj)
+    
     # Print summary
     print("\n" + "=" * 60)
     print("ANALYSIS COMPLETE")
@@ -591,6 +703,7 @@ def main():
         print(f"Best Silver Model: {silver_results['Best_Model']['name']} (R² = {silver_results['Best_Model']['r2']:.6f})")
     
     print(f"\nResults saved to: {results_file}")
+    print(f"Projections saved to: {projections_file}")
     
     if chart_files:
         print(f"\nRainbow charts created:")

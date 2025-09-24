@@ -1,31 +1,31 @@
 ASSET ALLOCATION CALCULATOR RESULTS
 ==================================================
 
-Analysis Date: 2025-08-29 17:19:21
+Analysis Date: 2025-09-02 16:02:52
 
 OVERVALUATION DATA:
 --------------------
-Bitcoin: +2.4% overvalued
-Gold: +29.5% overvalued
-Silver: +31.1% overvalued
+Bitcoin: +4.7% overvalued
+Gold: +36.0% overvalued
+Silver: +37.3% overvalued
 
 ALLOCATION COMPARISON:
 -------------------------
 Asset                Base     Adjusted   Change  
 --------------------------------------------------
-Bitcoin              35.00    37.97      +2.97   
-Gold                 28.00    24.59      -3.41   
-Silver               12.00    9.83       -2.17   
-Stocks               25.00    27.61      +2.61   
+Bitcoin              35.00    38.28      +3.28   
+Gold                 28.00    23.77      -4.23   
+Silver               12.00    9.64       -2.36   
+Stocks               25.00    28.31      +3.31   
 --------------------------------------------------
 TOTAL                100.00   100.00     0.00    
 
 RECOMMENDATIONS:
 ---------------
-• Decrease Gold allocation by 3.41%
-• Increase Bitcoin allocation by 2.97%
-• Increase Stocks allocation by 2.61%
-• Decrease Silver allocation by 2.17%
+• Decrease Gold allocation by 4.23%
+• Increase Stocks allocation by 3.31%
+• Increase Bitcoin allocation by 3.28%
+• Decrease Silver allocation by 2.36%
 
 RATIONALE:
 ----------
